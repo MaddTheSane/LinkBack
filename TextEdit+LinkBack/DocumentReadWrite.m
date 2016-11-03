@@ -77,7 +77,7 @@ static NSString *tempFileName(NSString *origName);
 
 /* Loads from the specified path, sets encoding and textStorage. Note that if the file looks like RTF or RTFD, this method will open the file in rich text mode, regardless of the setting of encoding.
 */
-- (BOOL)loadFromPath:(NSString *)fileName encoding:(unsigned)encoding ignoreRTF:(BOOL)ignoreRTF ignoreHTML:(BOOL)ignoreHTML {
+- (BOOL)loadFromPath:(NSString *)fileName encoding:(NSStringEncoding)encoding ignoreRTF:(BOOL)ignoreRTF ignoreHTML:(BOOL)ignoreHTML {
     NSMutableDictionary *options = [NSMutableDictionary dictionary];
     NSDictionary *docAttrs;
     NSTextStorage *text = [self textStorage];
@@ -89,7 +89,7 @@ static NSString *tempFileName(NSString *origName);
     
     // Set up the options dictionary with desired parameters
     [options setObject:url forKey:@"BaseURL"];
-    if (encoding < SmallestCustomStringEncoding) [options setObject:[NSNumber numberWithUnsignedInt:encoding] forKey:@"CharacterEncoding"];
+    if (encoding < SmallestCustomStringEncoding) [options setObject:@(encoding) forKey:@"CharacterEncoding"];
 
     // Check extensions to see if we should load the document as plain. Note that this check isn't always conclusive,
     // which is why we do another check below, after the document has been loaded (and correctly categorized).
@@ -146,7 +146,7 @@ static NSString *tempFileName(NSString *origName);
 
     [self setEncoding:encoding];
 
-    if (val = [docAttrs objectForKey:@"Converted"]) {
+    if ((val = [docAttrs objectForKey:@"Converted"])) {
         [self setConverted:([val intValue] > 0)];	// Indicates filtered
         [self setLossy:([val intValue] < 0)];		// Indicates lossily loaded
     }
@@ -201,7 +201,7 @@ static NSString *tempFileName(NSString *origName);
     return YES;
 }
 
-- (SaveStatus)saveToPath:(NSString *)fileName encoding:(unsigned)encoding updateFilenames:(BOOL)updateFileNamesFlag overwriteOK:(BOOL)overwrite hideExtension:(FileExtensionStatus)extensionStatus {
+- (SaveStatus)saveToPath:(NSString *)fileName encoding:(NSStringEncoding)encoding updateFilenames:(BOOL)updateFileNamesFlag overwriteOK:(BOOL)overwrite hideExtension:(FileExtensionStatus)extensionStatus {
     BOOL success = NO;
     NSString *intermediateFileNameToSave;
     NSFileManager *fileManager = [NSFileManager defaultManager];

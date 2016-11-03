@@ -29,7 +29,7 @@
     if (hasLinkBack && (hasPDF || hasTIFF)) {
         
         // construct a file wrapper with the graphic from the pasteboard.
-        NSString* fileName = [NSString stringWithFormat: @"_%.8x.%@", [pboard changeCount], ((hasPDF) ? @"pdf" : @"tiff")];
+        NSString* fileName = [NSString stringWithFormat: @"_%.8x.%@", (int)[pboard changeCount], ((hasPDF) ? @"pdf" : @"tiff")];
         NSData* dta = [pboard dataForType: (hasPDF) ? NSPDFPboardType : NSTIFFPboardType] ;
         NSFileWrapper* fw = [[NSFileWrapper alloc] initRegularFileWithContents: dta] ;
         [fw setPreferredFilename: fileName] ;

@@ -83,11 +83,10 @@
     }
 }
 
-- (NSPrintInfo *)printInfo {
-    return printInfo;
-}
+@synthesize printInfo = printInfo;
+@synthesize numberOfPages = numPages;
 
-- (void)setNumberOfPages:(unsigned)num {
+- (void)setNumberOfPages:(NSUInteger)num {
     if (numPages != num) {
 	NSRect oldFrame = [self frame];
         NSRect newFrame;
@@ -100,11 +99,7 @@
     }
 }
 
-- (unsigned)numberOfPages {
-    return numPages;
-}
-    
-- (float)pageSeparatorHeight {
+- (CGFloat)pageSeparatorHeight {
     return 5.0;
 }
 
@@ -120,7 +115,7 @@
     return paperSize;
 }
 
-- (NSRect)documentRectForPageNumber:(unsigned)pageNumber {	/* First page is page 0, of course! */
+- (NSRect)documentRectForPageNumber:(NSUInteger)pageNumber {	/* First page is page 0, of course! */
     NSRect rect = [self pageRectForPageNumber:pageNumber];
     rect.origin.x += [printInfo leftMargin] - defaultTextPadding();
     rect.origin.y += [printInfo topMargin];
@@ -128,7 +123,7 @@
     return rect;
 }
 
-- (NSRect)pageRectForPageNumber:(unsigned)pageNumber {
+- (NSRect)pageRectForPageNumber:(NSUInteger)pageNumber {
     NSRect rect;
     rect.size = [printInfo paperSize];
     rect.origin = [self frame].origin;
@@ -189,12 +184,12 @@
 
 /**** Printing support... ****/
 
-- (BOOL)knowsPagesFirst:(int *)firstPageNum last:(int *)lastPageNum {
+- (BOOL)knowsPagesFirst:(NSInteger *)firstPageNum last:(NSInteger *)lastPageNum {
     *lastPageNum = [self numberOfPages];
     return YES;     
 }
 
-- (NSRect)rectForPage:(int)page {
+- (NSRect)rectForPage:(NSInteger)page {
     return [self documentRectForPageNumber:page-1];  /* Our page numbers start from 0; the kit's from 1 */
 }
 

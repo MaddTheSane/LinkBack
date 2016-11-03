@@ -52,6 +52,11 @@
 #import <LinkBack/LinkBack.h>
 #import "LinkBackTextAttachment.h"
 
+@interface NSFont (SoDeprecated)
+- (CGFloat)widthOfString:(NSString *)string NS_DEPRECATED_MAC(10_0, 10_6);
+- (BOOL)glyphIsEncoded:(NSGlyph)glyph NS_DEPRECATED_MAC(10_0, 10_6);
+@end
+
 // Functions implemented later in this file
 static int nextAvailableUntitledDocNumber(void);
 
@@ -76,7 +81,7 @@ static NSZone *zoneForNewDocument(void) {
 	NSTextStorage* ts = [self textStorage] ;
 	NSRange range = [[[self layoutManager] firstTextView] selectedRange] ;
 	NSRange erange ;
-	unsigned maxloc = NSMaxRange(range) ;
+	NSUInteger maxloc = NSMaxRange(range) ;
 	
 	NSTextAttachment* attachment ;
 
@@ -103,7 +108,7 @@ static NSZone *zoneForNewDocument(void) {
 {
 	NSLog(@"edit linkback items") ;
 	NSArray* attachments = [self selectedLinkBackTextAttachments] ;
-	int idx = [attachments count] ;
+	NSInteger idx = [attachments count] ;
 	while(--idx >= 0) {
 		LinkBackTextAttachment* attachment = [attachments objectAtIndex: idx];
 		[self editLinkBackInTextAttachment: attachment] ;
@@ -150,8 +155,8 @@ static NSZone *zoneForNewDocument(void) {
     
     // find the current attachment's range.
     NSTextStorage* ts = [self textStorage] ;
-    unsigned loc = 0 ;
-    unsigned lim = [ts length] ;
+    NSUInteger loc = 0 ;
+    NSUInteger lim = [ts length] ;
     NSRange erange ;
     
     while((0==attachmentRange.length) && (loc<lim)) {
@@ -268,7 +273,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
     return self;
 }
 
-- (id)initWithPath:(NSString *)filename encoding:(unsigned)encoding ignoreRTF:(BOOL)ignoreRTF ignoreHTML:(BOOL)ignoreHTML uniqueZone:(BOOL)flag {
+- (id)initWithPath:(NSString *)filename encoding:(NSStringEncoding)encoding ignoreRTF:(BOOL)ignoreRTF ignoreHTML:(BOOL)ignoreHTML uniqueZone:(BOOL)flag {
     if (!(self = [self init])) {
         if (flag) NSRecycleZone([self zone]);
         return nil;
@@ -294,7 +299,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
 /* Calls the above routine with the default values for ignoreRTF and ignoreHTML
 */
-- (id)initWithPath:(NSString *)filename encoding:(unsigned)encoding uniqueZone:(BOOL)flag {
+- (id)initWithPath:(NSString *)filename encoding:(NSStringEncoding)encoding uniqueZone:(BOOL)flag {
     BOOL ignoreRTF = [[Preferences objectForKey:IgnoreRichText] boolValue];
     BOOL ignoreHTML = [[Preferences objectForKey:IgnoreHTML] boolValue];
     return [self initWithPath:filename encoding:encoding ignoreRTF:ignoreRTF ignoreHTML:ignoreHTML uniqueZone:flag];
@@ -318,7 +323,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
     }
 }
 
-+ (id)openDocumentWithPath:(NSString *)filename encoding:(unsigned)encoding ignoreRTF:(BOOL)ignoreRTF ignoreHTML:(BOOL)ignoreHTML {
++ (id)openDocumentWithPath:(NSString *)filename encoding:(NSStringEncoding)encoding ignoreRTF:(BOOL)ignoreRTF ignoreHTML:(BOOL)ignoreHTML {
     Document *document = [self documentForPath:filename];
     if (document && [document isEditedExternally:nil]) {	// If the document is already open, but has been edited externally
         if ([document isDocumentEdited]) {		//  and has also been edited in TextEdit, do the conservative thing and don't open
@@ -341,7 +346,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
     return document;
 }
 
-+ (id)openDocumentWithPath:(NSString *)filename encoding:(unsigned)encoding {
++ (id)openDocumentWithPath:(NSString *)filename encoding:(NSStringEncoding)encoding {
     BOOL ignoreRTF = [[Preferences objectForKey:IgnoreRichText] boolValue];
     BOOL ignoreHTML = [[Preferences objectForKey:IgnoreHTML] boolValue];
     return [self openDocumentWithPath:filename encoding:encoding ignoreRTF:ignoreRTF ignoreHTML:ignoreHTML];
@@ -445,8 +450,8 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
 /* This method causes the text to be laid out in the foreground (approximately) up to the indicated character index.
 */
-- (void)doForegroundLayoutToCharacterIndex:(unsigned)loc {
-    unsigned len;
+- (void)doForegroundLayoutToCharacterIndex:(NSUInteger)loc {
+    NSUInteger len;
     if (loc > 0 && (len = [[self textStorage] length]) > 0) {
         NSRange glyphRange;
         if (loc >= len) loc = len - 1;
@@ -591,7 +596,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
 - (void)printInfoUpdated {
     if ([self hasMultiplePages]) {
-        unsigned cnt, numberOfPages = [self numberOfPages];
+        NSUInteger cnt, numberOfPages = [self numberOfPages];
         MultiplePageView *pagesView = [scrollView documentView];
         NSArray *textContainers = [[self layoutManager] textContainers];
 
@@ -641,7 +646,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
 /* Multiple page related code */
 
-- (unsigned)numberOfPages {
+- (NSUInteger)numberOfPages {
     return hasMultiplePages ? [[scrollView documentView] numberOfPages] : 1;
 }
 
@@ -651,7 +656,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
 - (void)addPage {
     NSZone *zone = [self zone];
-    unsigned numberOfPages = [self numberOfPages];
+    NSUInteger numberOfPages = [self numberOfPages];
     MultiplePageView *pagesView = [scrollView documentView];
     NSSize textSize = [pagesView documentSizeInPage];
     NSTextContainer *textContainer = [[NSTextContainer allocWithZone:zone] initWithContainerSize:textSize];
@@ -667,7 +672,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 }
 
 - (void)removePage {
-    unsigned numberOfPages = [self numberOfPages];
+    NSUInteger numberOfPages = [self numberOfPages];
     NSArray *textContainers = [[self layoutManager] textContainers];
     NSTextContainer *lastContainer = [textContainers objectAtIndex:[textContainers count] - 1];
     MultiplePageView *pagesView = [scrollView documentView];
@@ -724,7 +729,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
         if ([[scrollView documentView] isKindOfClass:[MultiplePageView class]]) {
             NSArray *textContainers = [[self layoutManager] textContainers];
-            unsigned cnt = [textContainers count];
+            NSUInteger cnt = [textContainers count];
             while (cnt-- > 1) {
                 [[self layoutManager] removeTextContainerAtIndex:cnt];
             }
@@ -760,8 +765,8 @@ activeLinks = [[NSMutableArray alloc] init] ;
 */
 - (void)removeAttachments {
     NSTextStorage *attrString = [self textStorage];
-    unsigned loc = 0;
-    unsigned end = [attrString length];
+    NSUInteger loc = 0;
+    NSUInteger end = [attrString length];
     [attrString beginEditing];
     while (loc < end) {	/* Run through the string in terms of attachment runs */
         NSRange attachmentRange;	/* Attachment attribute run */
@@ -793,11 +798,11 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
 /* Encoding...
 */
-- (unsigned)encoding {
+- (NSStringEncoding)encoding {
     return documentEncoding;
 }
 
-- (void)setEncoding:(unsigned)encoding {
+- (void)setEncoding:(NSStringEncoding)encoding {
     documentEncoding = encoding;
 }
 
@@ -904,7 +909,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 /* toggleRich: puts up an alert before ultimately calling doToggleRich
 */
 - (void)toggleRich:(id)sender {
-    int length = [textStorage length];
+    NSInteger length = [textStorage length];
     NSRange range;
     NSDictionary *attrs;
     // If we are rich and any ofthe text attrs have been changed from the default, then put up an alert first...
@@ -1011,7 +1016,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 + (void)saveAllEnumeration:(BOOL)cont {
     if (cont) {
         NSArray *windows = [NSApp windows];
-        unsigned count = [windows count];
+        NSUInteger count = [windows count];
         while (count--) {
             NSWindow *window = [windows objectAtIndex:count];
             Document *document = [Document documentForWindow:window];
@@ -1030,7 +1035,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 + (void)reviewChangesAndQuitEnumeration:(BOOL)cont {
     if (cont) {
         NSArray *windows = [NSApp windows];
-        unsigned count = [windows count];
+        NSUInteger count = [windows count];
         while (count--) {
             NSWindow *window = [windows objectAtIndex:count];
             Document *document = [Document documentForWindow:window];
@@ -1072,7 +1077,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
     if ([panel runModal]) {
         NSMutableArray *unopenedFilenames = nil;
         NSArray *filenames = [panel filenames];
-        unsigned cnt, numFiles = [filenames count];
+        NSUInteger cnt, numFiles = [filenames count];
 
 	if (flag) {
 	    if ([ignoreRichTextButton state] == NSOffState) {
@@ -1100,7 +1105,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 /* Put up panel indicating failure to open one or more files. failedFiles is a list of filenames which couldn't be opened; allFiles is optional (can be nil if not known); alertTitle is the title to be shown.
 */
 + (void)displayOpenFailureForFiles:(NSArray *)failedFiles someSucceeded:(BOOL)someFilesOpened title:(NSString *)alertTitle {
-    int numFailedFiles = [failedFiles count];
+    NSInteger numFailedFiles = [failedFiles count];
 
     if (numFailedFiles == 1) {	// Just one file failed
 	(void)NSRunAlertPanel(alertTitle, 
@@ -1113,7 +1118,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 		NSLocalizedString(@"OK", @"OK"), nil, nil);
     } else {	// Multiple failures but there might have been some successfully opened
 	NSMutableString *string = [NSMutableString stringWithString:NSLocalizedString(@"Couldn\\U2019t open the following files:", @"Message indicating multiple files couldn't be opened, with list of filenames to follow.")];
-	int cnt, numFiles = [failedFiles count];
+	NSInteger cnt, numFiles = [failedFiles count];
 	if (numFiles > 8) numFiles = 5;	// If many, just show a subset
 	for (cnt = 0; cnt < numFiles; cnt++) [string appendFormat:@"\n  %@", displayName([failedFiles objectAtIndex:cnt])];
 	if (numFiles < numFailedFiles) [string appendFormat:@"\n  %@", NSLocalizedString(@"(And others)", @"Shown at the end of the list of filenames when there are too many filenames to show.")];
@@ -1195,7 +1200,7 @@ static void deallocateDocumentContext(DocumentSaveInfo *docInfo) {
 const static unsigned chooseableRichTextDocumentFormats[NumChooseableRichTextDocumentFormats] = {RichTextStringEncoding, DocStringEncoding};
 NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFormats] = {@"Rich Text Format (RTF)", @"Word Format"};
 
-- (void)setupRichTextDocumentFormatAccessory:(NSSavePanel *)panel withDocumentFormat:(unsigned)currentlySelectedDocumentFormat {
+- (void)setupRichTextDocumentFormatAccessory:(NSSavePanel *)panel withDocumentFormat:(NSStringEncoding)currentlySelectedDocumentFormat {
     int cnt;
     if (!richTextDocumentFormatAccessory) {	// Loaded per document, as there might be multiple save panels active at any one time
         if (![NSBundle loadNibNamed:@"RichTextDocumentFormatAccessory" owner:self])  {
@@ -1300,7 +1305,7 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
                 docInfo->encodingForSaving = defaultEncoding;
             } else {
                 NSArray *encodings = [[EncodingManager sharedInstance] enabledEncodings];
-                int cnt, numEncodings = [encodings count];
+                NSInteger cnt, numEncodings = [encodings count];
                 for (cnt = 0; cnt < numEncodings; cnt++) {	// First see if the defaultCStringEncoding can be used
                     NSStringEncoding encoding = [[encodings objectAtIndex:cnt] unsignedIntValue];
                     if ((encoding == [NSString defaultCStringEncoding]) && [string canBeConvertedToEncoding:encoding]) {
@@ -1334,7 +1339,7 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
 
 /* Called from the alert that asks user whether they're sure they want to save... If yes, we go onto put up a save panel
 */
-- (void)didEndFormatWarningSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+- (void)didEndFormatWarningSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     DocumentSaveInfo *docInfo = contextInfo;
     if (returnCode == NSAlertDefaultReturn) {		// "Save with new name"
         [docInfo->nameForSaving release];
@@ -1382,13 +1387,13 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
                 [panel setDelegate:self];
                 if (updateEncoding) {
                     NSString *string;
-                    int cnt;
+                    NSInteger cnt;
                     [panel setAccessoryView:[[EncodingManager sharedInstance] encodingAccessory:docInfo->encodingForSaving includeDefaultEntry:NO enableIgnoreRichTextButton:NO encodingPopUp:&(docInfo->encodingPopUp) ignoreRichTextButton:&(docInfo->ignoreRichTextButton)]];
                     cnt = [docInfo->encodingPopUp numberOfItems];
                     string = [textStorage string];
                     if (cnt * [string length] < 5000000) {	// Otherwise it's just too slow; would be nice to make this more dynamic. With large docs and many encodings, the items just won't be validated.
                         while (cnt--) {	// No reason go backwards accept to use one variable instead of two
-                            int encoding = [[docInfo->encodingPopUp itemAtIndex:cnt] tag];
+                            NSInteger encoding = [[docInfo->encodingPopUp itemAtIndex:cnt] tag];
                             // Hardwire some encodings known to allow any content
                             if ((encoding != UnknownStringEncoding) && (encoding != NSUnicodeStringEncoding) && (encoding != NSUTF8StringEncoding) && (encoding != NSNonLossyASCIIStringEncoding) &&                                                                     ![string canBeConvertedToEncoding:encoding]) {
                                 [[docInfo->encodingPopUp itemAtIndex:cnt] setEnabled:NO];
@@ -1496,7 +1501,7 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
     }
 }
 
-- (void)didEndSaveErrorAlert:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+- (void)didEndSaveErrorAlert:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     DocumentSaveInfo *docInfo = contextInfo;
     
     if (returnCode == NSAlertAlternateReturn) {	// This time, attempt to save with overwrite
@@ -1575,7 +1580,7 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
 
 /* Text view delegation messages */
 
-- (BOOL)textView:(NSTextView *)textView clickedOnLink:(id)link atIndex:(unsigned)charIndex {
+- (BOOL)textView:(NSTextView *)textView clickedOnLink:(id)link atIndex:(NSUInteger)charIndex {
     NSURL *linkURL = nil;
     
     if ([link isKindOfClass:[NSURL class]]) {	// Handle NSURL links
@@ -1626,7 +1631,7 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
     }
 }
 
-- (NSArray *)textView:(NSTextView *)view writablePasteboardTypesForCell:(id <NSTextAttachmentCell>)cell atIndex:(unsigned)charIndex {
+- (NSArray *)textView:(NSTextView *)view writablePasteboardTypesForCell:(id <NSTextAttachmentCell>)cell atIndex:(NSUInteger)charIndex {
     NSArray *types = nil;
     NSString *name = [[[cell attachment] fileWrapper] filename];
     if (name && documentName && ![name isEqualToString:@""] && ![documentName isEqualToString:@""]) {
@@ -1635,7 +1640,7 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
     return types;
 }
 
-- (BOOL)textView:(NSTextView *)view writeCell:(id <NSTextAttachmentCell>)cell atIndex:(unsigned)charIndex toPasteboard:(NSPasteboard *)pboard type:(NSString *)type {
+- (BOOL)textView:(NSTextView *)view writeCell:(id <NSTextAttachmentCell>)cell atIndex:(NSUInteger)charIndex toPasteboard:(NSPasteboard *)pboard type:(NSString *)type {
     BOOL success = NO;
     NSString *name = [[[cell attachment] fileWrapper] filename];
     if ([type isEqualToString:NSFilenamesPboardType] && name && documentName && ![name isEqualToString:@""] && ![documentName isEqualToString:@""]) {
@@ -1663,8 +1668,8 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
             }
         } else {
             // Layout is done and it all fit.  See if we can axe some pages.
-            unsigned lastUsedContainerIndex = [containers indexOfObjectIdenticalTo:textContainer];
-            unsigned numContainers = [containers count];
+            NSUInteger lastUsedContainerIndex = [containers indexOfObjectIdenticalTo:textContainer];
+            NSUInteger numContainers = [containers count];
             while (++lastUsedContainerIndex < numContainers) {
                 [self removePage];
             }
@@ -1677,9 +1682,9 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
 static NSArray *tabStopArrayForFontAndTabWidth(NSFont *font, unsigned tabWidth) {
     static NSMutableArray *array = nil;
     static float currentWidthOfTab = -1;
-    float charWidth;
-    float widthOfTab;
-    unsigned i;
+    CGFloat charWidth;
+    CGFloat widthOfTab;
+    NSUInteger i;
 
     if ([font glyphIsEncoded:(NSGlyph)' ']) {
         charWidth = [font advancementForGlyph:(NSGlyph)' '].width;
@@ -1708,7 +1713,7 @@ static NSArray *tabStopArrayForFontAndTabWidth(NSFont *font, unsigned tabWidth) 
 
 - (void)fixUpTabsInRange:(NSRange)editedRange {
     NSString *string = [textStorage string];
-    int length = [string length];
+    NSInteger length = [string length];
 
     if (length > 0) {
         // Generally NSTextStorage's attached to plain text NSTextViews only have one font.  But this is not generally true.  To ensure the tabstops are uniform throughout the document we always base them on the font of the first character in the NSTextStorage.
@@ -1780,7 +1785,7 @@ static NSArray *tabStopArrayForFontAndTabWidth(NSFont *font, unsigned tabWidth) 
 */
 + (Document *)documentForPath:(NSString *)filename {
     NSArray *windows = [[NSApplication sharedApplication] windows];
-    unsigned cnt, numWindows = [windows count];
+    NSUInteger cnt, numWindows = [windows count];
     filename = [self cleanedUpPath:filename];	/* Clean up the incoming path */
     for (cnt = 0; cnt < numWindows; cnt++) {
         Document *document = [Document documentForWindow:[windows objectAtIndex:cnt]];
@@ -1790,9 +1795,9 @@ static NSArray *tabStopArrayForFontAndTabWidth(NSFont *font, unsigned tabWidth) 
     return nil;
 }
 
-+ (unsigned)numberOfOpenDocuments {
++ (NSUInteger)numberOfOpenDocuments {
     NSArray *windows = [[NSApplication sharedApplication] windows];
-    unsigned cnt, numWindows = [windows count], numDocuments = 0;
+    NSUInteger cnt, numWindows = [windows count], numDocuments = 0;
     for (cnt = 0; cnt < numWindows; cnt++) {
         if ([Document documentForWindow:[windows objectAtIndex:cnt]]) numDocuments++;
     }
@@ -1917,7 +1922,7 @@ NSString *displayName(NSString *path) {
 
 - (NSScriptObjectSpecifier *)objectSpecifier {
     NSArray *orderedDocs = [NSApp valueForKey:@"orderedDocuments"];
-    unsigned theIndex = [orderedDocs indexOfObjectIdenticalTo:self];
+    NSUInteger theIndex = [orderedDocs indexOfObjectIdenticalTo:self];
 
     if (theIndex != NSNotFound) {
         NSScriptClassDescription *desc = (NSScriptClassDescription *)[NSScriptClassDescription classDescriptionForClass:[NSApplication class]];

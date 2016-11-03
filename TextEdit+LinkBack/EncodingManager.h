@@ -35,11 +35,11 @@ enum {
 
 /* Returns a fresh encoding accessory to be used in open/save panels. Also returns pointers to the encoding popup and ignore rich text button if desired.
 */
-- (NSView *)encodingAccessory:(unsigned)encoding includeDefaultEntry:(BOOL)includeDefaultItem enableIgnoreRichTextButton:(BOOL)includeRichTextButton encodingPopUp:(NSPopUpButton **)popup ignoreRichTextButton:(NSButton **)button;
+- (NSView *)encodingAccessory:(NSStringEncoding)encoding includeDefaultEntry:(BOOL)includeDefaultItem enableIgnoreRichTextButton:(BOOL)includeRichTextButton encodingPopUp:(NSPopUpButton **)popup ignoreRichTextButton:(NSButton **)button;
 
 /* Empties then initializes the supplied popup with the supported encodings.
 */
-- (void)setupPopUp:(NSPopUpButton *)button selectedEncoding:(unsigned)selectedEncoding withDefaultEntry:(BOOL)flag;
+- (void)setupPopUp:(NSPopUpButton *)button selectedEncoding:(NSStringEncoding)selectedEncoding withDefaultEntry:(BOOL)flag;
 
 /* Action methods for bringing up and dealing with changes in the encodings list panel
 */

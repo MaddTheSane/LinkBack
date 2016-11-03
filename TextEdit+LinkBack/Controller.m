@@ -68,8 +68,8 @@ static NSString *fullPathOfAppForType(NSString *type);	// Return app to open doc
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)app {
     NSArray *windows = [app windows];
-    unsigned count = [windows count];
-    unsigned needsSaving = 0;
+    NSUInteger count = [windows count];
+    NSUInteger needsSaving = 0;
  
     // Determine if there are any unsaved documents...
 
@@ -80,7 +80,7 @@ static NSString *fullPathOfAppForType(NSString *type);	// Return app to open doc
     }
 
     if (needsSaving > 0) {
-        int choice = NSAlertDefaultReturn;	// Meaning, review changes
+        NSInteger choice = NSAlertDefaultReturn;	// Meaning, review changes
 	if (needsSaving > 1) {	// If we only have 1 unsaved document, we skip the "review changes?" panel
             NSString *title = [NSString stringWithFormat:NSLocalizedString(@"You have %d documents with unsaved changes. Do you want to review these changes before quitting?", @"Title of alert panel which comes up when user chooses Quit and there are multiple unsaved documents."), needsSaving];
 	    choice = NSRunAlertPanel(title, 
@@ -236,7 +236,7 @@ static NSString *fullPathOfAppForType(NSString *type);	// Return app to open doc
 
 - (NSArray *)orderedDocuments {
     NSArray *orderedWindows = [NSApp valueForKey:@"orderedWindows"];
-    unsigned i, c = [orderedWindows count];
+    NSUInteger i, c = [orderedWindows count];
     NSMutableArray *orderedDocs = [NSMutableArray array];
     id curDelegate;
     

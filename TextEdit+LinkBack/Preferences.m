@@ -185,8 +185,8 @@ static void showFontInField(NSFont *font, NSTextField *field) {
     [displayedValues setObject:[overwriteReadOnlyFilesButton state] ? yes : no forKey:OverwriteReadOnlyFiles];
     [displayedValues setObject:[addExtensionToNewPlainTextFilesButton state] ? yes : no forKey:AddExtensionToNewPlainTextFiles];
     [displayedValues setObject:[showPageBreaksButton state] ? yes : no forKey:ShowPageBreaks];
-    [displayedValues setObject:[NSNumber numberWithInt:[[plainTextEncodingForReadPopup selectedItem] tag]] forKey:PlainTextEncodingForRead];
-    [displayedValues setObject:[NSNumber numberWithInt:[[plainTextEncodingForWritePopup selectedItem] tag]] forKey:PlainTextEncodingForWrite];
+    [displayedValues setObject:@([[plainTextEncodingForReadPopup selectedItem] tag]) forKey:PlainTextEncodingForRead];
+    [displayedValues setObject:@([[plainTextEncodingForWritePopup selectedItem] tag]) forKey:PlainTextEncodingForWrite];
     [displayedValues setObject:[ignoreRichTextButton state] ? yes : no forKey:IgnoreRichText];
     [displayedValues setObject:[ignoreHTMLButton state] ? yes : no forKey:IgnoreHTML];
     [displayedValues setObject:[checkSpellingAsYouTypeButton state] ? yes : no forKey:CheckSpellingAsYouType];
@@ -276,7 +276,7 @@ static BOOL changingRTFFont = NO;
 
 #define getIntDefault(name) \
   {id obj = [defaults objectForKey:name]; \
-      [dict setObject:obj ? [NSNumber numberWithInt:[defaults integerForKey:name]] : [defaultValues() objectForKey:name] forKey:name];}
+      [dict setObject:obj ? [NSNumber numberWithInteger:[defaults integerForKey:name]] : [defaultValues() objectForKey:name] forKey:name];}
 
 + (NSDictionary *)preferencesFromDefaults {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

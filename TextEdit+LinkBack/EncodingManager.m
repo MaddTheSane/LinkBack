@@ -52,7 +52,7 @@
 
 /* Do not allow selecting the "Customize" item and the separator before it. (Note that the customize item can be chosen and an action will be sent, but the selection doesn't change to it.)
 */
-- (void)selectItemAtIndex:(int)index {
+- (void)selectItemAtIndex:(NSInteger)index {
     if (index + 2 <= [self numberOfItems]) [super selectItemAtIndex:index];
 }
 
@@ -93,7 +93,7 @@
 /* Update contents based on encodings list customization
 */
 - (void)encodingsListChanged:(NSNotification *)notification {
-    int tag = [[self selectedItem] tag];
+    NSInteger tag = [[self selectedItem] tag];
     if (tag != 0 && tag != NoStringEncoding) defaultEncoding = tag;
     [[EncodingManager sharedInstance] setupPopUp:self selectedEncoding:defaultEncoding withDefaultEntry:hasDefaultEntry];
 }
@@ -159,7 +159,7 @@ static int encodingCompare(const void *firstPtr, const void *secondPtr) {
         allEncodings = [[NSMutableArray alloc] init];			// Now put it in an NSArray
         for (cnt = 0; cnt < num; cnt++) {
             NSStringEncoding nsEncoding = CFStringConvertEncodingToNSStringEncoding(tmp[cnt]);
-            if (nsEncoding && [NSString localizedNameOfStringEncoding:nsEncoding]) [allEncodings addObject:[NSNumber numberWithUnsignedInt:nsEncoding]];
+            if (nsEncoding && [NSString localizedNameOfStringEncoding:nsEncoding]) [allEncodings addObject:@(nsEncoding)];
         }
         free(tmp);
     }
@@ -171,7 +171,7 @@ static int encodingCompare(const void *firstPtr, const void *secondPtr) {
 */
 - (void)setupEncodingsList {
     NSArray *allEncodings = [[self class] allAvailableStringEncodings];
-    int cnt, numEncodings = [allEncodings count];
+    NSInteger cnt, numEncodings = [allEncodings count];
 
     for (cnt = 0; cnt < numEncodings; cnt++) {
         NSStringEncoding encoding = [[allEncodings objectAtIndex:cnt] unsignedIntValue];
@@ -189,9 +189,9 @@ static int encodingCompare(const void *firstPtr, const void *secondPtr) {
 
 /* This method initializes the provided popup with list of encodings; it also sets up the selected encoding as indicated and if includeDefaultItem is YES, includes an initial item for selecting "Automatic" choice.  These non-encoding items all have NoStringEncoding as their tags. Otherwise the tags are set to the NSStringEncoding value for the encoding.
 */
-- (void)setupPopUp:(NSPopUpButton *)popup selectedEncoding:(unsigned)selectedEncoding withDefaultEntry:(BOOL)includeDefaultItem {
+- (void)setupPopUp:(NSPopUpButton *)popup selectedEncoding:(NSStringEncoding)selectedEncoding withDefaultEntry:(BOOL)includeDefaultItem {
     NSArray *encs = [self enabledEncodings];
-    unsigned cnt, numEncodings, itemToSelect = 0;
+    NSUInteger cnt, numEncodings, itemToSelect = 0;
         
     // Put the encodings in the popup
     [popup removeAllItems];
@@ -203,13 +203,13 @@ static int encodingCompare(const void *firstPtr, const void *secondPtr) {
     }
 
     // Make sure the initial selected encoding appears in the list
-    if (!includeDefaultItem && (selectedEncoding != NoStringEncoding) && ![encs containsObject:[NSNumber numberWithUnsignedInt:selectedEncoding]]) encs = [encs arrayByAddingObject:[NSNumber numberWithUnsignedInt:selectedEncoding]];
+    if (!includeDefaultItem && (selectedEncoding != NoStringEncoding) && ![encs containsObject:@(selectedEncoding)]) encs = [encs arrayByAddingObject:@(selectedEncoding)];
 
     numEncodings = [encs count];
 
     // Fill with encodings
     for (cnt = 0; cnt < numEncodings; cnt++) {
-        NSStringEncoding enc = [[encs objectAtIndex:cnt] unsignedIntValue];
+        NSStringEncoding enc = [[encs objectAtIndex:cnt] unsignedIntegerValue];
         [popup addItemWithTitle:[NSString localizedNameOfStringEncoding:enc]];
         [[popup lastItem] setTag:enc];
         [[popup lastItem] setEnabled:YES];
@@ -246,11 +246,11 @@ static int encodingCompare(const void *firstPtr, const void *secondPtr) {
             encs = [[NSMutableArray alloc] init];
             while (plainTextFileStringEncodingsSupported[cnt] != -1) {
                 if ((encoding = CFStringConvertEncodingToNSStringEncoding(plainTextFileStringEncodingsSupported[cnt++])) != kCFStringEncodingInvalidId) {
-                    [encs addObject:[NSNumber numberWithUnsignedInt:encoding]];
+                    [encs addObject:@(encoding)];
                     if (encoding == defaultEncoding) hasDefault = YES;
                 }
             }
-            if (!hasDefault) [encs addObject:[NSNumber numberWithUnsignedInt:defaultEncoding]];
+            if (!hasDefault) [encs addObject:@(defaultEncoding)];
         }
         encodings = encs;
     }
@@ -263,10 +263,10 @@ static int encodingCompare(const void *firstPtr, const void *secondPtr) {
     if (writeDefault) [[NSUserDefaults standardUserDefaults] setObject:encodings forKey:@"Encodings"];
 
     if (updateList) {
-        int cnt, numEncodings = [encodingMatrix numberOfRows];
+        NSInteger cnt, numEncodings = [encodingMatrix numberOfRows];
         for (cnt = 0; cnt < numEncodings; cnt++) {
             NSCell *cell = [encodingMatrix cellAtRow:cnt column:0];
-            [cell setState:[encodings containsObject:[NSNumber numberWithUnsignedInt:[cell tag]]] ? NSOnState : NSOffState];
+            [cell setState:[encodings containsObject:@([cell tag])] ? NSOnState : NSOffState];
         }
     }
 
@@ -275,7 +275,7 @@ static int encodingCompare(const void *firstPtr, const void *secondPtr) {
 
 /* Use this method to get a new accessory view. It reinitializes the popup, selects the specified item, and also includes or deletes the default entry (corresponding to "Automatic")
 */
-- (NSView *)encodingAccessory:(unsigned)encoding includeDefaultEntry:(BOOL)includeDefaultItem enableIgnoreRichTextButton:(BOOL)includeRichTextButton encodingPopUp:(NSPopUpButton **)popup ignoreRichTextButton:(NSButton **)button {
+- (NSView *)encodingAccessory:(NSStringEncoding)encoding includeDefaultEntry:(BOOL)includeDefaultItem enableIgnoreRichTextButton:(BOOL)includeRichTextButton encodingPopUp:(NSPopUpButton **)popup ignoreRichTextButton:(NSButton **)button {
     // For now rather than caching, load the accessory view everytime, as it might appear in multiple panels simultaneously.
     if (![NSBundle loadNibNamed:@"EncodingAccessory" owner:self])  {
         NSLog(@"Failed to load EncodingAccessory.nib");
@@ -314,12 +314,12 @@ static int encodingCompare(const void *firstPtr, const void *secondPtr) {
 }
 
 - (IBAction)encodingListChanged:(id)sender {
-    int cnt, numRows = [encodingMatrix numberOfRows];
+    NSInteger cnt, numRows = [encodingMatrix numberOfRows];
     NSMutableArray *encs = [[NSMutableArray alloc] init];
 
     for (cnt = 0; cnt < numRows; cnt++) {
         NSCell *cell = [encodingMatrix cellAtRow:cnt column:0];
-        if (([cell tag] != NoStringEncoding) && ([cell state] == NSOnState)) [encs addObject:[NSNumber numberWithUnsignedInt:[cell tag]]];
+        if (([cell tag] != NoStringEncoding) && ([cell state] == NSOnState)) [encs addObject:@([cell tag])];
     }
 
     [encodings autorelease];

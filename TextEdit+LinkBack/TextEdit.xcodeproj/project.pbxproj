@@ -82,7 +82,7 @@
 		20D86796067FAD24001F0052 /* LinkBackTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkBackTextView.m; sourceTree = "<group>"; };
 		20D8679F067FC607001F0052 /* LinkBackTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkBackTextAttachment.h; sourceTree = "<group>"; };
 		20D867A0067FC607001F0052 /* LinkBackTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkBackTextAttachment.m; sourceTree = "<group>"; };
-		41249AD603895A6700F1DAE5 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		41249AD603895A6700F1DAE5 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
 		41D4821D041D087C00CA0C9F /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/RichTextDocumentFormatAccessory.nib; sourceTree = "<group>"; };
 		55877E291DCAC93F00052688 /* Info-TextEdit__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-TextEdit__Upgraded_.plist"; sourceTree = "<group>"; };
 		55877E2A1DCAC93F00052688 /* TextEdit+LiveLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TextEdit+LiveLink.app"; sourceTree = BUILT_PRODUCTS_DIR; };
