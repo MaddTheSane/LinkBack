@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55877E471DCAC97300052688 /* SKTDrawAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE3FE888A39C02AAC07 /* SKTDrawAppDelegate.h */; };
+		55877E481DCAC97300052688 /* SKTDrawWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE4FE888A39C02AAC07 /* SKTDrawWindowController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E491DCAC97300052688 /* SKTGraphicView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE5FE888A39C02AAC07 /* SKTGraphicView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E4A1DCAC97300052688 /* SKTFoundationExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE6FE888A39C02AAC07 /* SKTFoundationExtras.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E4B1DCAC97300052688 /* SKTInspectorController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE7FE888A39C02AAC07 /* SKTInspectorController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E4C1DCAC97300052688 /* SKTToolPaletteController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE8FE888A39C02AAC07 /* SKTToolPaletteController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E4D1DCAC97300052688 /* SKTGridPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE9FE888A39C02AAC07 /* SKTGridPanelController.h */; };
+		55877E4E1DCAC97300052688 /* SKTGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEEAFE888A39C02AAC07 /* SKTGridView.h */; };
+		55877E4F1DCAC97300052688 /* SKTDrawDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECF21FE888A39C02AAC07 /* SKTDrawDocument.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E501DCAC97300052688 /* SKTGraphic.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECF22FE888A39C02AAC07 /* SKTGraphic.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E511DCAC97300052688 /* SKTRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECF23FE888A39C02AAC07 /* SKTRectangle.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E521DCAC97300052688 /* SKTCircle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECF24FE888A39C02AAC07 /* SKTCircle.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E531DCAC97300052688 /* SKTLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECF25FE888A39C02AAC07 /* SKTLine.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E541DCAC97300052688 /* SKTTextArea.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECF26FE888A39C02AAC07 /* SKTTextArea.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E551DCAC97300052688 /* SKTImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECF27FE888A39C02AAC07 /* SKTImage.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55877E561DCAC97300052688 /* SKTRenderingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECF28FE888A39C02AAC07 /* SKTRenderingView.h */; settings = {ATTRIBUTES = (); }; };
+		55877E571DCAC97300052688 /* SKT_Prefix.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D1BC9902E4B4D608C917DD /* SKT_Prefix.h */; };
+		55877E591DCAC97300052688 /* DrawWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECEEEFE888A39C02AAC07 /* DrawWindow.nib */; };
+		55877E5A1DCAC97300052688 /* GridPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECEF0FE888A39C02AAC07 /* GridPanel.nib */; };
+		55877E5B1DCAC97300052688 /* Inspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECEF3FE888A39C02AAC07 /* Inspector.nib */; };
+		55877E5C1DCAC97300052688 /* ToolPalette.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECEF6FE888A39C02AAC07 /* ToolPalette.nib */; };
+		55877E5D1DCAC97300052688 /* Draw2.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECEF9FE888A39C02AAC07 /* Draw2.nib */; };
+		55877E5E1DCAC97300052688 /* Draw2App.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECEFDFE888A39C02AAC07 /* Draw2App.tiff */; };
+		55877E5F1DCAC97300052688 /* Curve.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECEFEFE888A39C02AAC07 /* Curve.tiff */; };
+		55877E601DCAC97300052688 /* Draw2File.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECEFFFE888A39C02AAC07 /* Draw2File.tiff */; };
+		55877E611DCAC97300052688 /* Line.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF00FE888A39C02AAC07 /* Line.tiff */; };
+		55877E621DCAC97300052688 /* Draw2App.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF01FE888A39C02AAC07 /* Draw2App.icns */; };
+		55877E631DCAC97300052688 /* Scribble.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF02FE888A39C02AAC07 /* Scribble.tiff */; };
+		55877E641DCAC97300052688 /* Cross.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF03FE888A39C02AAC07 /* Cross.tiff */; };
+		55877E651DCAC97300052688 /* Arrow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF04FE888A39C02AAC07 /* Arrow.tiff */; };
+		55877E661DCAC97300052688 /* TextGraphic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF05FE888A39C02AAC07 /* TextGraphic.tiff */; };
+		55877E671DCAC97300052688 /* Polygon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF06FE888A39C02AAC07 /* Polygon.tiff */; };
+		55877E681DCAC97300052688 /* Circle.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF08FE888A39C02AAC07 /* Circle.tiff */; };
+		55877E691DCAC97300052688 /* Rectangle.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF0AFE888A39C02AAC07 /* Rectangle.tiff */; };
+		55877E6A1DCAC97300052688 /* Draw2File.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF0BFE888A39C02AAC07 /* Draw2File.icns */; };
+		55877E6B1DCAC97300052688 /* Pencil.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF0CFE888A39C02AAC07 /* Pencil.tiff */; };
+		55877E6C1DCAC97300052688 /* Sketch.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF0EFE888A39C02AAC07 /* Sketch.scriptTerminology */; };
+		55877E6D1DCAC97300052688 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF10FE888A39C02AAC07 /* Credits.rtf */; };
+		55877E6E1DCAC97300052688 /* Sketch.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF12FE888A39C02AAC07 /* Sketch.scriptSuite */; };
+		55877E6F1DCAC97300052688 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF13FE888A39C02AAC07 /* InfoPlist.strings */; };
+		55877E711DCAC97300052688 /* SKTDrawAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDAFE888A39C02AAC07 /* SKTDrawAppDelegate.m */; settings = {ATTRIBUTES = (); }; };
+		55877E721DCAC97300052688 /* SKTDrawWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDBFE888A39C02AAC07 /* SKTDrawWindowController.m */; settings = {ATTRIBUTES = (); }; };
+		55877E731DCAC97300052688 /* SKTGraphicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDCFE888A39C02AAC07 /* SKTGraphicView.m */; settings = {ATTRIBUTES = (); }; };
+		55877E741DCAC97300052688 /* SKTFoundationExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDDFE888A39C02AAC07 /* SKTFoundationExtras.m */; settings = {ATTRIBUTES = (); }; };
+		55877E751DCAC97300052688 /* SKTInspectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDEFE888A39C02AAC07 /* SKTInspectorController.m */; settings = {ATTRIBUTES = (); }; };
+		55877E761DCAC97300052688 /* SKTToolPaletteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDFFE888A39C02AAC07 /* SKTToolPaletteController.m */; settings = {ATTRIBUTES = (); }; };
+		55877E771DCAC97300052688 /* SKTGridPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEE0FE888A39C02AAC07 /* SKTGridPanelController.m */; settings = {ATTRIBUTES = (); }; };
+		55877E781DCAC97300052688 /* SKTGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEE1FE888A39C02AAC07 /* SKTGridView.m */; settings = {ATTRIBUTES = (); }; };
+		55877E791DCAC97300052688 /* SKTDrawDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECF18FE888A39C02AAC07 /* SKTDrawDocument.m */; settings = {ATTRIBUTES = (); }; };
+		55877E7A1DCAC97300052688 /* SKTGraphic.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECF19FE888A39C02AAC07 /* SKTGraphic.m */; settings = {ATTRIBUTES = (); }; };
+		55877E7B1DCAC97300052688 /* SKTRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECF1AFE888A39C02AAC07 /* SKTRectangle.m */; settings = {ATTRIBUTES = (); }; };
+		55877E7C1DCAC97300052688 /* SKTCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECF1BFE888A39C02AAC07 /* SKTCircle.m */; settings = {ATTRIBUTES = (); }; };
+		55877E7D1DCAC97300052688 /* SKTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECF1CFE888A39C02AAC07 /* SKTLine.m */; settings = {ATTRIBUTES = (); }; };
+		55877E7E1DCAC97300052688 /* SKTTextArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECF1DFE888A39C02AAC07 /* SKTTextArea.m */; settings = {ATTRIBUTES = (); }; };
+		55877E7F1DCAC97300052688 /* SKTImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECF1EFE888A39C02AAC07 /* SKTImage.m */; settings = {ATTRIBUTES = (); }; };
+		55877E801DCAC97300052688 /* SKTRenderingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECF1FFE888A39C02AAC07 /* SKTRenderingView.m */; settings = {ATTRIBUTES = (); }; };
+		55877E811DCAC97300052688 /* Sketch_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEECFE888A39C02AAC07 /* Sketch_main.m */; settings = {ATTRIBUTES = (); }; };
+		55877E841DCAC97300052688 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B61A73FFA8B0EB11CA2CEA /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		55877E9C1DCAC9EC00052688 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20C6D44707D44CE900600D19 /* LinkBack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = LinkBack;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		55877E861DCAC97300052688 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		09B61A73FFA8B0EB11CA2CEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0A3ECEDAFE888A39C02AAC07 /* SKTDrawAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTDrawAppDelegate.m; sourceTree = "<group>"; };
+		0A3ECEDBFE888A39C02AAC07 /* SKTDrawWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTDrawWindowController.m; sourceTree = "<group>"; };
+		0A3ECEDCFE888A39C02AAC07 /* SKTGraphicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTGraphicView.m; sourceTree = "<group>"; };
+		0A3ECEDDFE888A39C02AAC07 /* SKTFoundationExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTFoundationExtras.m; sourceTree = "<group>"; };
+		0A3ECEDEFE888A39C02AAC07 /* SKTInspectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTInspectorController.m; sourceTree = "<group>"; };
+		0A3ECEDFFE888A39C02AAC07 /* SKTToolPaletteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTToolPaletteController.m; sourceTree = "<group>"; };
+		0A3ECEE0FE888A39C02AAC07 /* SKTGridPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTGridPanelController.m; sourceTree = "<group>"; };
+		0A3ECEE1FE888A39C02AAC07 /* SKTGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTGridView.m; sourceTree = "<group>"; };
+		0A3ECEE3FE888A39C02AAC07 /* SKTDrawAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTDrawAppDelegate.h; sourceTree = "<group>"; };
+		0A3ECEE4FE888A39C02AAC07 /* SKTDrawWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTDrawWindowController.h; sourceTree = "<group>"; };
+		0A3ECEE5FE888A39C02AAC07 /* SKTGraphicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTGraphicView.h; sourceTree = "<group>"; };
+		0A3ECEE6FE888A39C02AAC07 /* SKTFoundationExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTFoundationExtras.h; sourceTree = "<group>"; };
+		0A3ECEE7FE888A39C02AAC07 /* SKTInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTInspectorController.h; sourceTree = "<group>"; };
+		0A3ECEE8FE888A39C02AAC07 /* SKTToolPaletteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTToolPaletteController.h; sourceTree = "<group>"; };
+		0A3ECEE9FE888A39C02AAC07 /* SKTGridPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTGridPanelController.h; sourceTree = "<group>"; };
+		0A3ECEEAFE888A39C02AAC07 /* SKTGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTGridView.h; sourceTree = "<group>"; };
+		0A3ECEECFE888A39C02AAC07 /* Sketch_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sketch_main.m; sourceTree = "<group>"; };
+		0A3ECEEFFE888A39C02AAC07 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/DrawWindow.nib; sourceTree = "<group>"; };
+		0A3ECEF1FE888A39C02AAC07 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/GridPanel.nib; sourceTree = "<group>"; };
+		0A3ECEF4FE888A39C02AAC07 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Inspector.nib; sourceTree = "<group>"; };
+		0A3ECEF7FE888A39C02AAC07 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ToolPalette.nib; sourceTree = "<group>"; };
+		0A3ECEFBFE888A39C02AAC07 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Draw2.nib; sourceTree = "<group>"; };
+		0A3ECEFDFE888A39C02AAC07 /* Draw2App.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Draw2App.tiff; sourceTree = "<group>"; };
+		0A3ECEFEFE888A39C02AAC07 /* Curve.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Curve.tiff; sourceTree = "<group>"; };
+		0A3ECEFFFE888A39C02AAC07 /* Draw2File.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Draw2File.tiff; sourceTree = "<group>"; };
+		0A3ECF00FE888A39C02AAC07 /* Line.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Line.tiff; sourceTree = "<group>"; };
+		0A3ECF01FE888A39C02AAC07 /* Draw2App.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Draw2App.icns; sourceTree = "<group>"; };
+		0A3ECF02FE888A39C02AAC07 /* Scribble.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Scribble.tiff; sourceTree = "<group>"; };
+		0A3ECF03FE888A39C02AAC07 /* Cross.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Cross.tiff; sourceTree = "<group>"; };
+		0A3ECF04FE888A39C02AAC07 /* Arrow.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Arrow.tiff; sourceTree = "<group>"; };
+		0A3ECF05FE888A39C02AAC07 /* TextGraphic.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TextGraphic.tiff; sourceTree = "<group>"; };
+		0A3ECF06FE888A39C02AAC07 /* Polygon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Polygon.tiff; sourceTree = "<group>"; };
+		0A3ECF08FE888A39C02AAC07 /* Circle.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Circle.tiff; sourceTree = "<group>"; };
+		0A3ECF0AFE888A39C02AAC07 /* Rectangle.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Rectangle.tiff; sourceTree = "<group>"; };
+		0A3ECF0BFE888A39C02AAC07 /* Draw2File.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Draw2File.icns; sourceTree = "<group>"; };
+		0A3ECF0CFE888A39C02AAC07 /* Pencil.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Pencil.tiff; sourceTree = "<group>"; };
+		0A3ECF0FFE888A39C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = English; path = English.lproj/Sketch.scriptTerminology; sourceTree = "<group>"; };
+		0A3ECF11FE888A39C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		0A3ECF12FE888A39C02AAC07 /* Sketch.scriptSuite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sketch.scriptSuite; sourceTree = "<group>"; };
+		0A3ECF14FE888A39C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0A3ECF18FE888A39C02AAC07 /* SKTDrawDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTDrawDocument.m; sourceTree = "<group>"; };
+		0A3ECF19FE888A39C02AAC07 /* SKTGraphic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTGraphic.m; sourceTree = "<group>"; };
+		0A3ECF1AFE888A39C02AAC07 /* SKTRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTRectangle.m; sourceTree = "<group>"; };
+		0A3ECF1BFE888A39C02AAC07 /* SKTCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTCircle.m; sourceTree = "<group>"; };
+		0A3ECF1CFE888A39C02AAC07 /* SKTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTLine.m; sourceTree = "<group>"; };
+		0A3ECF1DFE888A39C02AAC07 /* SKTTextArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTextArea.m; sourceTree = "<group>"; };
+		0A3ECF1EFE888A39C02AAC07 /* SKTImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTImage.m; sourceTree = "<group>"; };
+		0A3ECF1FFE888A39C02AAC07 /* SKTRenderingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTRenderingView.m; sourceTree = "<group>"; };
+		0A3ECF21FE888A39C02AAC07 /* SKTDrawDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTDrawDocument.h; sourceTree = "<group>"; };
+		0A3ECF22FE888A39C02AAC07 /* SKTGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTGraphic.h; sourceTree = "<group>"; };
+		0A3ECF23FE888A39C02AAC07 /* SKTRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTRectangle.h; sourceTree = "<group>"; };
+		0A3ECF24FE888A39C02AAC07 /* SKTCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTCircle.h; sourceTree = "<group>"; };
+		0A3ECF25FE888A39C02AAC07 /* SKTLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTLine.h; sourceTree = "<group>"; };
+		0A3ECF26FE888A39C02AAC07 /* SKTTextArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTextArea.h; sourceTree = "<group>"; };
+		0A3ECF27FE888A39C02AAC07 /* SKTImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTImage.h; sourceTree = "<group>"; };
+		0A3ECF28FE888A39C02AAC07 /* SKTRenderingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTRenderingView.h; sourceTree = "<group>"; };
+		0A3ECF35FE888A39C02AAC07 /* ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo.txt; sourceTree = "<group>"; };
+		0A3ECF36FE888A39C02AAC07 /* ReadMe.rtf */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
+		0A3ECF39FE888A39C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0A3ECF3AFE888A39C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		20C6D44707D44CE900600D19 /* LinkBack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LinkBack.xcodeproj; path = ../Source/LinkBack.xcodeproj; sourceTree = SOURCE_ROOT; };
+		26D1BC9902E4B4D608C917DD /* SKT_Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKT_Prefix.h; sourceTree = "<group>"; };
+		55877E8C1DCAC97300052688 /* Info-Sketch__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Sketch__Upgraded_.plist"; sourceTree = "<group>"; };
+		55877E8D1DCAC97300052688 /* LiveSketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveSketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		55877E821DCAC97300052688 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55877E841DCAC97300052688 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A3ECED8FE888A39C02AAC07 /* Sketch */ = {
+			isa = PBXGroup;
+			children = (
+				0A3ECED9FE888A39C02AAC07 /* View & Controller Classes */,
+				0A3ECF16FE888A39C02AAC07 /* Model Classes */,
+				0A3ECEEBFE888A39C02AAC07 /* Other Sources */,
+				0A3ECF0DFE888A39C02AAC07 /* Resources */,
+				0A3ECF2DFE888A39C02AAC07 /* Notes */,
+				0A3ECF37FE888A39C02AAC07 /* Frameworks */,
+				20846A42FE943C2411CA2CEA /* Products */,
+				55877E8C1DCAC97300052688 /* Info-Sketch__Upgraded_.plist */,
+			);
+			name = Sketch;
+			sourceTree = "<group>";
+		};
+		0A3ECED9FE888A39C02AAC07 /* View & Controller Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0A3ECEE3FE888A39C02AAC07 /* SKTDrawAppDelegate.h */,
+				0A3ECEDAFE888A39C02AAC07 /* SKTDrawAppDelegate.m */,
+				0A3ECEE4FE888A39C02AAC07 /* SKTDrawWindowController.h */,
+				0A3ECEDBFE888A39C02AAC07 /* SKTDrawWindowController.m */,
+				0A3ECEE5FE888A39C02AAC07 /* SKTGraphicView.h */,
+				0A3ECEDCFE888A39C02AAC07 /* SKTGraphicView.m */,
+				0A3ECEE6FE888A39C02AAC07 /* SKTFoundationExtras.h */,
+				0A3ECEDDFE888A39C02AAC07 /* SKTFoundationExtras.m */,
+				0A3ECEE7FE888A39C02AAC07 /* SKTInspectorController.h */,
+				0A3ECEDEFE888A39C02AAC07 /* SKTInspectorController.m */,
+				0A3ECEE8FE888A39C02AAC07 /* SKTToolPaletteController.h */,
+				0A3ECEDFFE888A39C02AAC07 /* SKTToolPaletteController.m */,
+				0A3ECEE9FE888A39C02AAC07 /* SKTGridPanelController.h */,
+				0A3ECEE0FE888A39C02AAC07 /* SKTGridPanelController.m */,
+				0A3ECEEAFE888A39C02AAC07 /* SKTGridView.h */,
+				0A3ECEE1FE888A39C02AAC07 /* SKTGridView.m */,
+			);
+			name = "View & Controller Classes";
+			sourceTree = "<group>";
+		};
+		0A3ECEEBFE888A39C02AAC07 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				26D1BC9902E4B4D608C917DD /* SKT_Prefix.h */,
+				0A3ECEECFE888A39C02AAC07 /* Sketch_main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		0A3ECEFCFE888A39C02AAC07 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0A3ECEFDFE888A39C02AAC07 /* Draw2App.tiff */,
+				0A3ECF01FE888A39C02AAC07 /* Draw2App.icns */,
+				0A3ECEFFFE888A39C02AAC07 /* Draw2File.tiff */,
+				0A3ECF0BFE888A39C02AAC07 /* Draw2File.icns */,
+				0A3ECF04FE888A39C02AAC07 /* Arrow.tiff */,
+				0A3ECF08FE888A39C02AAC07 /* Circle.tiff */,
+				0A3ECF03FE888A39C02AAC07 /* Cross.tiff */,
+				0A3ECEFEFE888A39C02AAC07 /* Curve.tiff */,
+				0A3ECF00FE888A39C02AAC07 /* Line.tiff */,
+				0A3ECF0CFE888A39C02AAC07 /* Pencil.tiff */,
+				0A3ECF06FE888A39C02AAC07 /* Polygon.tiff */,
+				0A3ECF0AFE888A39C02AAC07 /* Rectangle.tiff */,
+				0A3ECF02FE888A39C02AAC07 /* Scribble.tiff */,
+				0A3ECF05FE888A39C02AAC07 /* TextGraphic.tiff */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		0A3ECF0DFE888A39C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A3ECEF9FE888A39C02AAC07 /* Draw2.nib */,
+				0A3ECEEEFE888A39C02AAC07 /* DrawWindow.nib */,
+				0A3ECEF3FE888A39C02AAC07 /* Inspector.nib */,
+				0A3ECEF6FE888A39C02AAC07 /* ToolPalette.nib */,
+				0A3ECEF0FE888A39C02AAC07 /* GridPanel.nib */,
+				0A3ECF13FE888A39C02AAC07 /* InfoPlist.strings */,
+				0A3ECF10FE888A39C02AAC07 /* Credits.rtf */,
+				0A3ECF12FE888A39C02AAC07 /* Sketch.scriptSuite */,
+				0A3ECF0EFE888A39C02AAC07 /* Sketch.scriptTerminology */,
+				0A3ECEFCFE888A39C02AAC07 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0A3ECF16FE888A39C02AAC07 /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0A3ECF21FE888A39C02AAC07 /* SKTDrawDocument.h */,
+				0A3ECF18FE888A39C02AAC07 /* SKTDrawDocument.m */,
+				0A3ECF22FE888A39C02AAC07 /* SKTGraphic.h */,
+				0A3ECF19FE888A39C02AAC07 /* SKTGraphic.m */,
+				0A3ECF23FE888A39C02AAC07 /* SKTRectangle.h */,
+				0A3ECF1AFE888A39C02AAC07 /* SKTRectangle.m */,
+				0A3ECF24FE888A39C02AAC07 /* SKTCircle.h */,
+				0A3ECF1BFE888A39C02AAC07 /* SKTCircle.m */,
+				0A3ECF25FE888A39C02AAC07 /* SKTLine.h */,
+				0A3ECF1CFE888A39C02AAC07 /* SKTLine.m */,
+				0A3ECF26FE888A39C02AAC07 /* SKTTextArea.h */,
+				0A3ECF1DFE888A39C02AAC07 /* SKTTextArea.m */,
+				0A3ECF27FE888A39C02AAC07 /* SKTImage.h */,
+				0A3ECF1EFE888A39C02AAC07 /* SKTImage.m */,
+				0A3ECF28FE888A39C02AAC07 /* SKTRenderingView.h */,
+				0A3ECF1FFE888A39C02AAC07 /* SKTRenderingView.m */,
+			);
+			name = "Model Classes";
+			path = DocumentModel.subproj;
+			sourceTree = "<group>";
+		};
+		0A3ECF2DFE888A39C02AAC07 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				0A3ECF35FE888A39C02AAC07 /* ToDo.txt */,
+				0A3ECF36FE888A39C02AAC07 /* ReadMe.rtf */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
+		0A3ECF37FE888A39C02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20C6D44707D44CE900600D19 /* LinkBack.xcodeproj */,
+				09B61A73FFA8B0EB11CA2CEA /* Cocoa.framework */,
+				0A3ECF3AFE888A39C02AAC07 /* Foundation.framework */,
+				0A3ECF39FE888A39C02AAC07 /* AppKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20846A42FE943C2411CA2CEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55877E8D1DCAC97300052688 /* LiveSketch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55877E991DCAC9EC00052688 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55877E9D1DCAC9EC00052688 /* LinkBack.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		55877E461DCAC97300052688 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55877E471DCAC97300052688 /* SKTDrawAppDelegate.h in Headers */,
+				55877E481DCAC97300052688 /* SKTDrawWindowController.h in Headers */,
+				55877E491DCAC97300052688 /* SKTGraphicView.h in Headers */,
+				55877E4A1DCAC97300052688 /* SKTFoundationExtras.h in Headers */,
+				55877E4B1DCAC97300052688 /* SKTInspectorController.h in Headers */,
+				55877E4C1DCAC97300052688 /* SKTToolPaletteController.h in Headers */,
+				55877E4D1DCAC97300052688 /* SKTGridPanelController.h in Headers */,
+				55877E4E1DCAC97300052688 /* SKTGridView.h in Headers */,
+				55877E4F1DCAC97300052688 /* SKTDrawDocument.h in Headers */,
+				55877E501DCAC97300052688 /* SKTGraphic.h in Headers */,
+				55877E511DCAC97300052688 /* SKTRectangle.h in Headers */,
+				55877E521DCAC97300052688 /* SKTCircle.h in Headers */,
+				55877E531DCAC97300052688 /* SKTLine.h in Headers */,
+				55877E541DCAC97300052688 /* SKTTextArea.h in Headers */,
+				55877E551DCAC97300052688 /* SKTImage.h in Headers */,
+				55877E561DCAC97300052688 /* SKTRenderingView.h in Headers */,
+				55877E571DCAC97300052688 /* SKT_Prefix.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		55877E451DCAC97300052688 /* Sketch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55877E881DCAC97300052688 /* Build configuration list for PBXNativeTarget "Sketch" */;
+			buildPhases = (
+				55877E461DCAC97300052688 /* Headers */,
+				55877E581DCAC97300052688 /* Resources */,
+				55877E701DCAC97300052688 /* Sources */,
+				55877E821DCAC97300052688 /* Frameworks */,
+				55877E851DCAC97300052688 /* ShellScript */,
+				55877E861DCAC97300052688 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			comments = "This is the main target that builds the Sketch application.  Because we do not ship the binary for the Objective-C version of Sketch as a built application, the Install Location for this target has been set to \"None\".";
+			dependencies = (
+			);
+			name = Sketch;
+			productName = Sketch;
+			productReference = 55877E8D1DCAC97300052688 /* LiveSketch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A3ECED7FE888A39C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+			};
+			buildConfigurationList = 55877E8F1DCAC97300052688 /* Build configuration list for PBXProject "Sketch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0A3ECED8FE888A39C02AAC07 /* Sketch */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 55877E991DCAC9EC00052688 /* Products */;
+					ProjectRef = 20C6D44707D44CE900600D19 /* LinkBack.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				55877E451DCAC97300052688 /* Sketch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		55877E9D1DCAC9EC00052688 /* LinkBack.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LinkBack.framework;
+			remoteRef = 55877E9C1DCAC9EC00052688 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55877E581DCAC97300052688 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55877E591DCAC97300052688 /* DrawWindow.nib in Resources */,
+				55877E5A1DCAC97300052688 /* GridPanel.nib in Resources */,
+				55877E5B1DCAC97300052688 /* Inspector.nib in Resources */,
+				55877E5C1DCAC97300052688 /* ToolPalette.nib in Resources */,
+				55877E5D1DCAC97300052688 /* Draw2.nib in Resources */,
+				55877E5E1DCAC97300052688 /* Draw2App.tiff in Resources */,
+				55877E5F1DCAC97300052688 /* Curve.tiff in Resources */,
+				55877E601DCAC97300052688 /* Draw2File.tiff in Resources */,
+				55877E611DCAC97300052688 /* Line.tiff in Resources */,
+				55877E621DCAC97300052688 /* Draw2App.icns in Resources */,
+				55877E631DCAC97300052688 /* Scribble.tiff in Resources */,
+				55877E641DCAC97300052688 /* Cross.tiff in Resources */,
+				55877E651DCAC97300052688 /* Arrow.tiff in Resources */,
+				55877E661DCAC97300052688 /* TextGraphic.tiff in Resources */,
+				55877E671DCAC97300052688 /* Polygon.tiff in Resources */,
+				55877E681DCAC97300052688 /* Circle.tiff in Resources */,
+				55877E691DCAC97300052688 /* Rectangle.tiff in Resources */,
+				55877E6A1DCAC97300052688 /* Draw2File.icns in Resources */,
+				55877E6B1DCAC97300052688 /* Pencil.tiff in Resources */,
+				55877E6C1DCAC97300052688 /* Sketch.scriptTerminology in Resources */,
+				55877E6D1DCAC97300052688 /* Credits.rtf in Resources */,
+				55877E6E1DCAC97300052688 /* Sketch.scriptSuite in Resources */,
+				55877E6F1DCAC97300052688 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55877E851DCAC97300052688 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# This shell-script build phase happens only when installing and causes the \n# project sources (which are shipped as an example) to be installed.\n\nEXAMPLESDIR=${SYSTEM_DEVELOPER_DIR}/Examples/AppKit\n\n# install the source\npbxbuild installsrc \"SYMROOT=${SYMROOT}\" \"OBJROOT=${OBJROOT}\" \"DSTROOT=${DSTROOT}\" \"SRCROOT=${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME}\"\n\n# strip out garbage\nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \"*~\" -exec rm -rf {} \\; -prune ; \nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -type d -name \"CVS\" -exec rm -rf {} \\; -prune ;\nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \"*.pbxuser\" -exec rm -rf {} \\; ;\nrm -rf ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME}/build\n\n# set permissions\nchmod -R u+rwX,go+rX,go-w ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME}\n\nif [ z\"WINDOWS\" != z\"${OS}\" ] ; then\n    chown -R ${INSTALL_OWNER}.${INSTALL_GROUP} ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME}\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		55877E701DCAC97300052688 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55877E711DCAC97300052688 /* SKTDrawAppDelegate.m in Sources */,
+				55877E721DCAC97300052688 /* SKTDrawWindowController.m in Sources */,
+				55877E731DCAC97300052688 /* SKTGraphicView.m in Sources */,
+				55877E741DCAC97300052688 /* SKTFoundationExtras.m in Sources */,
+				55877E751DCAC97300052688 /* SKTInspectorController.m in Sources */,
+				55877E761DCAC97300052688 /* SKTToolPaletteController.m in Sources */,
+				55877E771DCAC97300052688 /* SKTGridPanelController.m in Sources */,
+				55877E781DCAC97300052688 /* SKTGridView.m in Sources */,
+				55877E791DCAC97300052688 /* SKTDrawDocument.m in Sources */,
+				55877E7A1DCAC97300052688 /* SKTGraphic.m in Sources */,
+				55877E7B1DCAC97300052688 /* SKTRectangle.m in Sources */,
+				55877E7C1DCAC97300052688 /* SKTCircle.m in Sources */,
+				55877E7D1DCAC97300052688 /* SKTLine.m in Sources */,
+				55877E7E1DCAC97300052688 /* SKTTextArea.m in Sources */,
+				55877E7F1DCAC97300052688 /* SKTImage.m in Sources */,
+				55877E801DCAC97300052688 /* SKTRenderingView.m in Sources */,
+				55877E811DCAC97300052688 /* Sketch_main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0A3ECEEEFE888A39C02AAC07 /* DrawWindow.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A3ECEEFFE888A39C02AAC07 /* English */,
+			);
+			name = DrawWindow.nib;
+			sourceTree = "<group>";
+		};
+		0A3ECEF0FE888A39C02AAC07 /* GridPanel.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A3ECEF1FE888A39C02AAC07 /* English */,
+			);
+			name = GridPanel.nib;
+			sourceTree = "<group>";
+		};
+		0A3ECEF3FE888A39C02AAC07 /* Inspector.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A3ECEF4FE888A39C02AAC07 /* English */,
+			);
+			name = Inspector.nib;
+			sourceTree = "<group>";
+		};
+		0A3ECEF6FE888A39C02AAC07 /* ToolPalette.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A3ECEF7FE888A39C02AAC07 /* English */,
+			);
+			name = ToolPalette.nib;
+			sourceTree = "<group>";
+		};
+		0A3ECEF9FE888A39C02AAC07 /* Draw2.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A3ECEFBFE888A39C02AAC07 /* English */,
+			);
+			name = Draw2.nib;
+			sourceTree = "<group>";
+		};
+		0A3ECF0EFE888A39C02AAC07 /* Sketch.scriptTerminology */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A3ECF0FFE888A39C02AAC07 /* English */,
+			);
+			name = Sketch.scriptTerminology;
+			sourceTree = "<group>";
+		};
+		0A3ECF10FE888A39C02AAC07 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A3ECF11FE888A39C02AAC07 /* English */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		0A3ECF13FE888A39C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A3ECF14FE888A39C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		55877E891DCAC97300052688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 42;
+				FRAMEWORK_SEARCH_PATHS = /Users/Shared/build/LinkBack.framework;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SKT_Prefix.h;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_USE_GCC3_PFE_SUPPORT = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-Sketch__Upgraded_.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nisus.LiveLinkExamples.LiveSketch;
+				PRODUCT_NAME = LiveSketch;
+				RC_PROJECT_NAME = Draw2;
+				SECTORDER_FLAGS = "";
+				VERSIONING_SYSTEM = "apple-generic";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		55877E8A1DCAC97300052688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 42;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DSTROOT = /tmp/Sketch.root;
+				FRAMEWORK_SEARCH_PATHS = /Users/Shared/build/LinkBack.framework;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SKT_Prefix.h;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_USE_GCC3_PFE_SUPPORT = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-Sketch__Upgraded_.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nisus.LiveLinkExamples.LiveSketch;
+				PRODUCT_NAME = LiveSketch;
+				RC_PROJECT_NAME = Draw2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /tmp/Sketch.installSyms;
+				VERSIONING_SYSTEM = "apple-generic";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		55877E901DCAC97300052688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		55877E911DCAC97300052688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55877E881DCAC97300052688 /* Build configuration list for PBXNativeTarget "Sketch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55877E891DCAC97300052688 /* Debug */,
+				55877E8A1DCAC97300052688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55877E8F1DCAC97300052688 /* Build configuration list for PBXProject "Sketch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55877E901DCAC97300052688 /* Debug */,
+				55877E911DCAC97300052688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A3ECED7FE888A39C02AAC07 /* Project object */;
+}
