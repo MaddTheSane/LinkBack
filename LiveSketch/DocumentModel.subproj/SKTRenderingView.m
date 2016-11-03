@@ -10,18 +10,13 @@
 - (id)initWithFrame:(NSRect)frame graphics:(NSArray *)graphics {
     self = [super initWithFrame:frame];
     if (self) {
-        _graphics = [graphics retain];
+        _graphics = graphics;
     }
     return self;
 }
 
-- (void)dealloc {
-    [_graphics release];
-    [super dealloc];
-}
-
 - (void)drawRect:(NSRect)rect {
-    unsigned i;
+    NSUInteger i;
     SKTGraphic *curGraphic;
     NSRect drawingBounds;
     NSGraphicsContext *currentContext = [NSGraphicsContext currentContext];

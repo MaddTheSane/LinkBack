@@ -550,6 +550,7 @@
 		55877E891DCAC97300052688 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CURRENT_PROJECT_VERSION = 42;
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/build/LinkBack.framework;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -583,6 +584,7 @@
 		55877E8A1DCAC97300052688 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CURRENT_PROJECT_VERSION = 42;
 				DEPLOYMENT_LOCATION = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;

@@ -11,7 +11,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _contents = [[NSTextStorage allocWithZone:[self zone]] init];
+        _contents = [[NSTextStorage alloc] init];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(SKT_contentsChanged:) name:NSTextStorageDidProcessEditingNotification object:_contents];
     }
     return self;
@@ -19,8 +19,6 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_contents release];
-    [super dealloc];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -33,9 +31,8 @@
 
 - (void)setContents:(id)contents {
     if (contents != _contents) {
-        NSAttributedString *contentsCopy = [[NSAttributedString allocWithZone:[self zone]] initWithAttributedString:_contents];
+        NSAttributedString *contentsCopy = [[NSAttributedString alloc] initWithAttributedString:_contents];
         [[[self undoManager] prepareWithInvocationTarget:self] setContents:contentsCopy];
-        [contentsCopy release];
         // We are willing to accept either a string or an attributed string.
         if ([contents isKindOfClass:[NSAttributedString class]]) {
             [_contents replaceCharactersInRange:NSMakeRange(0, [_contents length]) withAttributedString:contents];
@@ -86,7 +83,6 @@ static NSLayoutManager *sharedDrawingLayoutManager() {
         [tc setWidthTracksTextView:NO];
         [tc setHeightTracksTextView:NO];
         [sharedLM addTextContainer:tc];
-        [tc release];
     }
     return sharedLM;
 }
@@ -233,13 +229,11 @@ static NSTextView *newEditor() {
     NSTextView *tv = [[NSTextView allocWithZone:NULL] initWithFrame:NSMakeRect(0.0, 0.0, 100.0, 100.0) textContainer:nil];
 
     [lm addTextContainer:tc];
-    [tc release];
 
     [tv setTextContainerInset:NSMakeSize(0.0, 0.0)];
     [tv setDrawsBackground:NO];
     [tv setAllowsUndo:YES];
     [tc setTextView:tv];
-    [tv release];
 
     return tv;
 }
@@ -302,7 +296,7 @@ static BOOL sharedEditorInUse = NO;
         if (editor == sharedEditor) {
             sharedEditorInUse = NO;
         } else {
-            [[editor layoutManager] release];
+            [editor layoutManager];
         }
         [view setEditingGraphic:nil editorView:nil];
     }

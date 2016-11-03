@@ -26,7 +26,6 @@ NSString *SKTDrawDocumentType = @"Apple Sketch Graphic Format";
     if (link) {
         [link setRepresentedObject: nil] ;
         [link closeLink] ;
-        [link release] ;
         link = nil ;
     }
 }
@@ -34,7 +33,7 @@ NSString *SKTDrawDocumentType = @"Apple Sketch Graphic Format";
 - (id)initWithLinkBack:(LinkBack*)aLink 
 {
     if (self = [self init]) {
-        link = [aLink retain] ;
+        link = aLink ;
         [link setRepresentedObject: self] ;
         
         // get graphics from link
@@ -105,7 +104,7 @@ NSString *SKTDrawDocumentType = @"Apple Sketch Graphic Format";
 - (id)init {
     self = [super init];
     if (self) {
-        _graphics = [[NSMutableArray allocWithZone:[self zone]] init];
+        _graphics = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -113,15 +112,12 @@ NSString *SKTDrawDocumentType = @"Apple Sketch Graphic Format";
 - (void)dealloc {
     [self closeLinkIfNeeded] ;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_graphics release];
     
-    [super dealloc];
 }
 
 - (void)makeWindowControllers {
-    SKTDrawWindowController *myController = [[SKTDrawWindowController allocWithZone:[self zone]] init];
+    SKTDrawWindowController *myController = [[SKTDrawWindowController alloc] init];
     [self addWindowController:myController];
-    [myController release];
 }
 
 static NSString *SKTGraphicsListKey = @"GraphicsList";
@@ -152,10 +148,8 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
 }
 
 - (NSDictionary *)drawDocumentDictionaryFromData:(NSData *)data {
-    NSString *string = [[NSString allocWithZone:[self zone]] initWithData:data encoding:NSASCIIStringEncoding];
+    NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
     NSDictionary *doc = [string propertyList];
-    
-    [string release];
 
     return doc;
 }
@@ -210,7 +204,7 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
     if (NSIsEmptyRect(bounds)) {
         return nil;
     }
-    image = [[NSImage allocWithZone:[self zone]] initWithSize:bounds.size];
+    image = [[NSImage alloc] initWithSize:bounds.size];
     [image setFlipped:YES];
     [image lockFocus];
     // Get the context AFTER we lock focus
@@ -229,30 +223,26 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
     }
     [image unlockFocus];
     tiffData = [image TIFFRepresentation];
-    [image release];
     return tiffData;
 }
 
 - (NSData *)PDFRepresentationForGraphics:(NSArray *)graphics {
     NSRect bounds = [self drawingBoundsForGraphics:graphics];
-    SKTRenderingView *view = [[SKTRenderingView allocWithZone:[self zone]] initWithFrame:NSMakeRect(0.0, 0.0, NSMaxX(bounds), NSMaxY(bounds)) graphics:graphics];
-    NSWindow *window = [[NSWindow allocWithZone:[self zone]] initWithContentRect:NSMakeRect(0.0, 0.0, NSMaxX(bounds), NSMaxY(bounds)) styleMask:NSBorderlessWindowMask backing:NSBackingStoreNonretained defer:NO];
+    SKTRenderingView *view = [[SKTRenderingView alloc] initWithFrame:NSMakeRect(0.0, 0.0, NSMaxX(bounds), NSMaxY(bounds)) graphics:graphics];
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0.0, 0.0, NSMaxX(bounds), NSMaxY(bounds)) styleMask:NSBorderlessWindowMask backing:NSBackingStoreNonretained defer:NO];
     NSPrintInfo *printInfo = [self printInfo];
-    NSMutableData *pdfData = [[NSMutableData allocWithZone:[self zone]] init];
+    NSMutableData *pdfData = [[NSMutableData alloc] init];
     NSPrintOperation *printOp;
 
     [[window contentView] addSubview:view];
-    [view release];
     printOp = [NSPrintOperation PDFOperationWithView:view insideRect:bounds toData:pdfData printInfo:printInfo];
     [printOp setShowPanels:NO];
 
     if ([printOp runOperation]) {
-        [pdfData autorelease];
+        //[pdfData autorelease];
     } else {
-        [pdfData release];
         pdfData = nil;
     }
-    [window release];
 
     return pdfData;
 }
@@ -322,14 +312,13 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
 
 - (void)printShowingPrintPanel:(BOOL)flag {
     NSSize paperSize = [self documentSize];
-    SKTRenderingView *view = [[SKTRenderingView allocWithZone:[self zone]] initWithFrame:NSMakeRect(0.0, 0.0, paperSize.width, paperSize.height) graphics:[self graphics]];
-    NSWindow *window = [[NSWindow allocWithZone:[self zone]] initWithContentRect:NSMakeRect(0.0, 0.0, paperSize.width, paperSize.height) styleMask:NSBorderlessWindowMask backing:NSBackingStoreNonretained defer:NO];
+    SKTRenderingView *view = [[SKTRenderingView alloc] initWithFrame:NSMakeRect(0.0, 0.0, paperSize.width, paperSize.height) graphics:[self graphics]];
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0.0, 0.0, paperSize.width, paperSize.height) styleMask:NSBorderlessWindowMask backing:NSBackingStoreNonretained defer:NO];
     NSPrintInfo *printInfo = [self printInfo];
     NSPrintOperation *printOp;
     NSWindow *docWindow = [self appropriateWindowForDocModalOperations];;
 
     [[window contentView] addSubview:view];
-    [view release];
     printOp = [NSPrintOperation printOperationWithView:view printInfo:printInfo];
     [printOp setShowPanels:flag];
     [printOp setCanSpawnSeparateThread:YES];
@@ -339,8 +328,6 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
     } else {
         (void)[printOp runOperation];
     }
-    
-    [window release];
 }
 
 - (void)setPrintInfo:(NSPrintInfo *)printInfo {
@@ -379,11 +366,10 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
 }
 
 - (void)removeGraphicAtIndex:(NSUInteger)index {
-    id graphic = [[_graphics objectAtIndex:index] retain];
+    id graphic = [_graphics objectAtIndex:index];
     [_graphics removeObjectAtIndex:index];
     [self invalidateGraphic:graphic];
     [[[self undoManager] prepareWithInvocationTarget:self] insertGraphic:graphic atIndex:index];
-    [graphic release];
 }
 
 - (void)removeGraphic:(SKTGraphic *)graphic {
@@ -400,10 +386,8 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
         if (curIndex < newIndex) {
             newIndex--;
         }
-        [graphic retain];
         [_graphics removeObjectAtIndex:curIndex];
         [_graphics insertObject:graphic atIndex:newIndex];
-        [graphic release];
         [self invalidateGraphic:graphic];
     }
 }
