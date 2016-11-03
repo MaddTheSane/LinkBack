@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="Preferences">
+            <connections>
+                <outlet property="addExtensionToNewPlainTextFilesButton" destination="220" id="223"/>
+                <outlet property="checkSpellingAsYouTypeButton" destination="224" id="227"/>
+                <outlet property="deleteBackupButton" destination="200" id="206"/>
+                <outlet property="ignoreHTMLButton" destination="180" id="188"/>
+                <outlet property="ignoreRichTextButton" destination="171" id="189"/>
+                <outlet property="overwriteReadOnlyFilesButton" destination="187" id="190"/>
+                <outlet property="plainTextEncodingForReadPopup" destination="181" id="191"/>
+                <outlet property="plainTextEncodingForWritePopup" destination="177" id="192"/>
+                <outlet property="plainTextFontNameField" destination="14" id="120"/>
+                <outlet property="richTextFontNameField" destination="2" id="119"/>
+                <outlet property="richTextMatrix" destination="21" id="116"/>
+                <outlet property="saveFilesWritableButton" destination="53" id="117"/>
+                <outlet property="showPageBreaksButton" destination="52" id="118"/>
+                <outlet property="showRulerButton" destination="262" id="265"/>
+                <outlet property="windowHeightField" destination="38" id="122"/>
+                <outlet property="windowWidthField" destination="37" id="121"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="9" userLabel="Panel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="199" y="293" width="696" height="399"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="832"/>
+            <view key="contentView" id="19">
+                <rect key="frame" x="0.0" y="0.0" width="696" height="399"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box title="New Document Attributes" id="163">
+                        <rect key="frame" x="19" y="249" width="302" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="or9-SD-S0E">
+                            <rect key="frame" x="2" y="2" width="298" height="123"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button id="52">
+                                    <rect key="frame" x="11" y="74" width="105" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="check" title="Wrap to Page" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="319">
+                                        <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="131"/>
+                                        <outlet property="nextKeyView" destination="37" id="268"/>
+                                    </connections>
+                                </button>
+                                <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autosizesCells="NO" id="21">
+                                    <rect key="frame" x="11" y="95" width="161" height="19"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="cellSize" width="80" height="19"/>
+                                    <buttonCell key="prototype" type="bevel" title="Radio" image="BEA786F1-6242-4CBB-B5BF-B3BD78A538BF" imagePosition="leading" alignment="left" alternateImage="C5C77DF1-596F-4F1E-895B-32FDD30E40E7" inset="2" id="338">
+                                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <cells>
+                                        <column>
+                                            <buttonCell type="radio" title="Rich text" imagePosition="leading" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="257">
+                                                <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                        </column>
+                                        <column>
+                                            <buttonCell type="radio" title="Plain text" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="259">
+                                                <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                        </column>
+                                    </cells>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="130"/>
+                                        <outlet property="nextKeyView" destination="52" id="267"/>
+                                    </connections>
+                                </matrix>
+                                <textField verticalHuggingPriority="750" id="35">
+                                    <rect key="frame" x="9" y="52" width="92" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Window width:" id="320">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="37">
+                                    <rect key="frame" x="105" y="52" width="39" height="19"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="321">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="124"/>
+                                        <outlet property="nextKeyView" destination="38" id="269"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="40">
+                                    <rect key="frame" x="149" y="52" width="75" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="characters" id="322">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="38">
+                                    <rect key="frame" x="105" y="30" width="39" height="19"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="323">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="125"/>
+                                        <outlet property="nextKeyView" destination="3" id="289"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="41">
+                                    <rect key="frame" x="149" y="30" width="74" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="lines" id="324">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="36">
+                                    <rect key="frame" x="9" y="25" width="92" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" id="325">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <string key="title">Window height:
+</string>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="261">
+                                    <rect key="frame" x="12" y="3" width="226" height="17"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="These settings apply to new documents." id="326">
+                                        <font key="font" metaFont="label"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <box title="Default Fonts" id="159">
+                        <rect key="frame" x="19" y="164" width="302" height="78"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="Vww-nj-jMu">
+                            <rect key="frame" x="2" y="2" width="298" height="58"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" id="3">
+                                    <rect key="frame" x="93" y="28" width="72" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="Set..." bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="313">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="changeRichTextFont:" target="-2" id="126"/>
+                                        <outlet property="nextKeyView" destination="13" id="278"/>
+                                    </connections>
+                                </button>
+                                <button verticalHuggingPriority="750" id="13">
+                                    <rect key="frame" x="93" y="4" width="72" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="Set..." bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="314">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="changePlainTextFont:" target="-2" id="127"/>
+                                        <outlet property="nextKeyView" destination="180" id="290"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" id="14">
+                                    <rect key="frame" x="163" y="9" width="138" height="17"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" alignment="left" title="Font name" id="315">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="2">
+                                    <rect key="frame" x="163" y="33" width="138" height="17"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" alignment="left" title="Font name" id="316">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="69">
+                                    <rect key="frame" x="9" y="34" width="89" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Rich text font:" id="317">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="70">
+                                    <rect key="frame" x="9" y="10" width="89" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Plain text font:" id="318">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <button verticalHuggingPriority="750" id="54">
+                        <rect key="frame" x="478" y="7" width="204" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="push" title="Revert to Default Settings" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="308">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="revertToDefault:" target="-2" id="132"/>
+                            <outlet property="nextKeyView" destination="21" id="284"/>
+                        </connections>
+                    </button>
+                    <box title="Saving" id="156">
+                        <rect key="frame" x="336" y="48" width="340" height="109"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="zUv-xb-nNI">
+                            <rect key="frame" x="2" y="2" width="336" height="89"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button toolTip="If selected, read-only files will be marked as read/write when saved" id="53">
+                                    <rect key="frame" x="11" y="46" width="168" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="check" title="Save files writable" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="309">
+                                        <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="129"/>
+                                        <outlet property="nextKeyView" destination="187" id="281"/>
+                                    </connections>
+                                </button>
+                                <button toolTip="If selected, automatically attempt to overwrite read-only files" id="187">
+                                    <rect key="frame" x="11" y="26" width="174" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="check" title="Overwrite read-only files" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="310">
+                                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="197"/>
+                                        <outlet property="nextKeyView" destination="220" id="282"/>
+                                    </connections>
+                                </button>
+                                <button toolTip="If selected, no backup files are kept" id="200">
+                                    <rect key="frame" x="11" y="66" width="168" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="check" title="Delete backup file" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="311">
+                                        <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="201"/>
+                                        <outlet property="nextKeyView" destination="53" id="280"/>
+                                    </connections>
+                                </button>
+                                <button id="220">
+                                    <rect key="frame" x="11" y="6" width="259" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <string key="toolTip">If selected, will use ".txt" as extension on plain text files,
+unless another extension is supplied</string>
+                                    <buttonCell key="cell" type="check" title="Append &quot;.txt&quot; extension to plain text files" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="312">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="222"/>
+                                        <outlet property="nextKeyView" destination="54" id="293"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <box title="Default Plain Text Encoding" id="170">
+                        <rect key="frame" x="336" y="279" width="340" height="113"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="GQ0-8U-rNV">
+                            <rect key="frame" x="2" y="2" width="336" height="93"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <popUpButton verticalHuggingPriority="750" id="181" customClass="EncodingPopUpButton">
+                                    <rect key="frame" x="54" y="63" width="264" height="22"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <string key="toolTip">Default setting for the encoding
+to be used when opening a plain text file</string>
+                                    <popUpButtonCell key="cell" type="push" title=" " bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="184" id="327">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <menu key="menu" title="OtherViews" id="173">
+                                            <items>
+                                                <menuItem title=" " state="on" id="184"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="196"/>
+                                        <outlet property="nextKeyView" destination="177" id="275"/>
+                                    </connections>
+                                </popUpButton>
+                                <textField verticalHuggingPriority="750" id="176">
+                                    <rect key="frame" x="12" y="8" width="314" height="26"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="&quot;Automatic&quot; causes TextEdit to use either the default plain text encoding of the system or Unicode, based on the file contents." id="328">
+                                        <font key="font" metaFont="label"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" id="177" customClass="EncodingPopUpButton">
+                                    <rect key="frame" x="54" y="38" width="264" height="22"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <string key="toolTip">Default setting for the encoding
+to be used when saving a plain text file</string>
+                                    <popUpButtonCell key="cell" type="push" title=" " bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="179" id="329">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <menu key="menu" title="OtherViews" id="174">
+                                            <items>
+                                                <menuItem title=" " state="on" id="179"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="195"/>
+                                        <outlet property="nextKeyView" destination="224" id="291"/>
+                                    </connections>
+                                </popUpButton>
+                                <textField verticalHuggingPriority="750" id="172">
+                                    <rect key="frame" x="9" y="66" width="45" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Open:" id="330">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="175">
+                                    <rect key="frame" x="9" y="41" width="45" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Save:" id="331">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <box title="Rich text processing" id="178">
+                        <rect key="frame" x="19" y="48" width="302" height="109"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="q5Z-t8-EXM">
+                            <rect key="frame" x="2" y="2" width="298" height="89"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button id="171">
+                                    <rect key="frame" x="11" y="42" width="285" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <string key="toolTip">If selected, RTF files will be loaded as plain text,
+allowing you to see and edit the RTF directives</string>
+                                    <buttonCell key="cell" type="check" title="Ignore rich text commands in RTF files" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="332">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="194"/>
+                                        <outlet property="nextKeyView" destination="181" id="274"/>
+                                    </connections>
+                                </button>
+                                <button id="180">
+                                    <rect key="frame" x="11" y="63" width="285" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <string key="toolTip">If selected, HTML files will be loaded as plain text,
+allowing you to see and edit the HTML directives</string>
+                                    <buttonCell key="cell" type="check" title="Ignore rich text commands in HTML files" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="333">
+                                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="193"/>
+                                        <outlet property="nextKeyView" destination="171" id="273"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" id="230">
+                                    <rect key="frame" x="12" y="1" width="264" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="334">
+                                        <font key="font" metaFont="label"/>
+                                        <string key="title">These apply to newly opened documents. This 
+setting can also be specified in the Open dialog.</string>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <box title="Editing" id="225">
+                        <rect key="frame" x="336" y="164" width="340" height="109"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="Ll4-0l-1SN">
+                            <rect key="frame" x="2" y="2" width="336" height="89"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button id="224">
+                                    <rect key="frame" x="11" y="63" width="195" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="check" title="Check spelling as you type " bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="335">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="228"/>
+                                        <outlet property="nextKeyView" destination="262" id="271"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" id="229">
+                                    <rect key="frame" x="12" y="4" width="321" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="These apply to newly opened documents. They can also be specified per-document (see the Edit and Format menus)." id="336">
+                                        <font key="font" metaFont="label"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button id="262">
+                                    <rect key="frame" x="11" y="42" width="111" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="check" title="Show ruler" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="337">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="miscChanged:" target="-2" id="266"/>
+                                        <outlet property="nextKeyView" destination="200" id="292"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="138"/>
+                <outlet property="initialFirstResponder" destination="37" id="285"/>
+            </connections>
+        </window>
+    </objects>
+    <resources>
+        <image name="BEA786F1-6242-4CBB-B5BF-B3BD78A538BF" width="21" height="21">
+            <mutableData key="keyedArchiveRepresentation">
+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
+ARbMWFlaIAAAAAAAAAAAAAAAAAAAAABYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UA
+ABjaWFlaIAAAAAAAACSgAAAPhAAAts9kZXNjAAAAAAAAABZJRUMgaHR0cDovL3d3dy5pZWMuY2gAAAAA
+AAAAAAAAABZJRUMgaHR0cDovL3d3dy5pZWMuY2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAZGVzYwAAAAAAAAAuSUVDIDYxOTY2LTIuMSBEZWZhdWx0IFJHQiBjb2xvdXIg
+c3BhY2UgLSBzUkdCAAAAAAAAAAAAAAAuSUVDIDYxOTY2LTIuMSBEZWZhdWx0IFJHQiBjb2xvdXIgc3Bh
+Y2UgLSBzUkdCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGRlc2MAAAAAAAAALFJlZmVyZW5jZSBWaWV3aW5n
+IENvbmRpdGlvbiBpbiBJRUM2MTk2Ni0yLjEAAAAAAAAAAAAAACxSZWZlcmVuY2UgVmlld2luZyBDb25k
+aXRpb24gaW4gSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB2aWV3AAAAAAATpP4A
+FF8uABDPFAAD7cwABBMLAANcngAAAAFYWVogAAAAAABMCVYAUAAAAFcf521lYXMAAAAAAAAAAQAAAAAA
+AAAAAAAAAAAAAAAAAAKPAAAAAnNpZyAAAAAAQ1JUIGN1cnYAAAAAAAAEAAAAAAUACgAPABQAGQAeACMA
+KAAtADIANwA7AEAARQBKAE8AVABZAF4AYwBoAG0AcgB3AHwAgQCGAIsAkACVAJoAnwCkAKkArgCyALcA
+vADBAMYAywDQANUA2wDgAOUA6wDwAPYA+wEBAQcBDQETARkBHwElASsBMgE4AT4BRQFMAVIBWQFgAWcB
+bgF1AXwBgwGLAZIBmgGhAakBsQG5AcEByQHRAdkB4QHpAfIB+gIDAgwCFAIdAiYCLwI4AkECSwJUAl0C
+ZwJxAnoChAKOApgCogKsArYCwQLLAtUC4ALrAvUDAAMLAxYDIQMtAzgDQwNPA1oDZgNyA34DigOWA6ID
+rgO6A8cD0wPgA+wD+QQGBBMEIAQtBDsESARVBGMEcQR+BIwEmgSoBLYExATTBOEE8AT+BQ0FHAUrBToF
+SQVYBWcFdwWGBZYFpgW1BcUF1QXlBfYGBgYWBicGNwZIBlkGagZ7BowGnQavBsAG0QbjBvUHBwcZBysH
+PQdPB2EHdAeGB5kHrAe/B9IH5Qf4CAsIHwgyCEYIWghuCIIIlgiqCL4I0gjnCPsJEAklCToJTwlkCXkJ
+jwmkCboJzwnlCfsKEQonCj0KVApqCoEKmAquCsUK3ArzCwsLIgs5C1ELaQuAC5gLsAvIC+EL+QwSDCoM
+QwxcDHUMjgynDMAM2QzzDQ0NJg1ADVoNdA2ODakNww3eDfgOEw4uDkkOZA5/DpsOtg7SDu4PCQ8lD0EP
+Xg96D5YPsw/PD+wQCRAmEEMQYRB+EJsQuRDXEPURExExEU8RbRGMEaoRyRHoEgcSJhJFEmQShBKjEsMS
+4xMDEyMTQxNjE4MTpBPFE+UUBhQnFEkUahSLFK0UzhTwFRIVNBVWFXgVmxW9FeAWAxYmFkkWbBaPFrIW
+1hb6Fx0XQRdlF4kXrhfSF/cYGxhAGGUYihivGNUY+hkgGUUZaxmRGbcZ3RoEGioaURp3Gp4axRrsGxQb
+OxtjG4obshvaHAIcKhxSHHscoxzMHPUdHh1HHXAdmR3DHeweFh5AHmoelB6+HukfEx8+H2kflB+/H+og
+FSBBIGwgmCDEIPAhHCFIIXUhoSHOIfsiJyJVIoIiryLdIwojOCNmI5QjwiPwJB8kTSR8JKsk2iUJJTgl
+aCWXJccl9yYnJlcmhya3JugnGCdJJ3onqyfcKA0oPyhxKKIo1CkGKTgpaymdKdAqAio1KmgqmyrPKwIr
+NitpK50r0SwFLDksbiyiLNctDC1BLXYtqy3hLhYuTC6CLrcu7i8kL1ovkS/HL/4wNTBsMKQw2zESMUox
+gjG6MfIyKjJjMpsy1DMNM0YzfzO4M/E0KzRlNJ402DUTNU01hzXCNf02NzZyNq426TckN2A3nDfXOBQ4
+UDiMOMg5BTlCOX85vDn5OjY6dDqyOu87LTtrO6o76DwnPGU8pDzjPSI9YT2hPeA+ID5gPqA+4D8hP2E/
+oj/iQCNAZECmQOdBKUFqQaxB7kIwQnJCtUL3QzpDfUPARANER0SKRM5FEkVVRZpF3kYiRmdGq0bwRzVH
+e0fASAVIS0iRSNdJHUljSalJ8Eo3Sn1KxEsMS1NLmkviTCpMcky6TQJNSk2TTdxOJU5uTrdPAE9JT5NP
+3VAnUHFQu1EGUVBRm1HmUjFSfFLHUxNTX1OqU/ZUQlSPVNtVKFV1VcJWD1ZcVqlW91dEV5JX4FgvWH1Y
+y1kaWWlZuFoHWlZaplr1W0VblVvlXDVchlzWXSddeF3JXhpebF69Xw9fYV+zYAVgV2CqYPxhT2GiYfVi
+SWKcYvBjQ2OXY+tkQGSUZOllPWWSZedmPWaSZuhnPWeTZ+loP2iWaOxpQ2maafFqSGqfavdrT2una/9s
+V2yvbQhtYG25bhJua27Ebx5veG/RcCtwhnDgcTpxlXHwcktypnMBc11zuHQUdHB0zHUodYV14XY+dpt2
++HdWd7N4EXhueMx5KnmJeed6RnqlewR7Y3vCfCF8gXzhfUF9oX4BfmJ+wn8jf4R/5YBHgKiBCoFrgc2C
+MIKSgvSDV4O6hB2EgITjhUeFq4YOhnKG14c7h5+IBIhpiM6JM4mZif6KZIrKizCLlov8jGOMyo0xjZiN
+/45mjs6PNo+ekAaQbpDWkT+RqJIRknqS45NNk7aUIJSKlPSVX5XJljSWn5cKl3WX4JhMmLiZJJmQmfya
+aJrVm0Kbr5wcnImc951kndKeQJ6unx2fi5/6oGmg2KFHobaiJqKWowajdqPmpFakx6U4pammGqaLpv2n
+bqfgqFKoxKk3qamqHKqPqwKrdavprFys0K1ErbiuLa6hrxavi7AAsHWw6rFgsdayS7LCszizrrQltJy1
+E7WKtgG2ebbwt2i34LhZuNG5SrnCuju6tbsuu6e8IbybvRW9j74KvoS+/796v/XAcMDswWfB48JfwtvD
+WMPUxFHEzsVLxcjGRsbDx0HHv8g9yLzJOsm5yjjKt8s2y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7S
+P9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp22vvbgNwF3IrdEN2W3hzeot8p36/gNuC94UTh
+zOJT4tvjY+Pr5HPk/OWE5g3mlucf56noMui86Ubp0Opb6uXrcOv77IbtEe2c7ijutO9A78zwWPDl8XLx
+//KM8xnzp/Q09ML1UPXe9m32+/eK+Bn4qPk4+cf6V/rn+3f8B/yY/Sn9uv5L/tz/bf//0iUmJyhaJGNs
+YXNzbmFtZVgkY2xhc3Nlc18QEE5TQml0bWFwSW1hZ2VSZXCjJykqWk5TSW1hZ2VSZXBYTlNPYmplY3TS
+JSYsLVdOU0FycmF5oiwq0iUmLzBeTlNNdXRhYmxlQXJyYXmjLywq0zIzCjQ1NldOU1doaXRlXE5TQ29s
+b3JTcGFjZUQwIDAAEAOADNIlJjg5V05TQ29sb3KiOCrSJSY7PFdOU0ltYWdlojsqXxAPTlNLZXllZEFy
+Y2hpdmVy0T9AVHJvb3SAAQAIABEAGgAjAC0AMgA3AEYATABXAF4AZQByAHkAgQCDAIUAigCMAI4AlwCc
+AKcAqQCrAK0AsgC1ALcAuQC7AL0AwgDZANsA3RTTFNgU4xTsFP8VAxUOFRcVHBUkFScVLBU7FT8VRhVO
+FVsVYBViFWQVaRVxFXQVeRWBFYQVlhWZFZ4AAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAAAVoA
+</mutableData>
+        </image>
+        <image name="C5C77DF1-596F-4F1E-895B-32FDD30E40E7" width="21" height="21">
+            <mutableData key="keyedArchiveRepresentation">
+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
+ARbMWFlaIAAAAAAAAAAAAAAAAAAAAABYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UA
+ABjaWFlaIAAAAAAAACSgAAAPhAAAts9kZXNjAAAAAAAAABZJRUMgaHR0cDovL3d3dy5pZWMuY2gAAAAA
+AAAAAAAAABZJRUMgaHR0cDovL3d3dy5pZWMuY2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAZGVzYwAAAAAAAAAuSUVDIDYxOTY2LTIuMSBEZWZhdWx0IFJHQiBjb2xvdXIg
+c3BhY2UgLSBzUkdCAAAAAAAAAAAAAAAuSUVDIDYxOTY2LTIuMSBEZWZhdWx0IFJHQiBjb2xvdXIgc3Bh
+Y2UgLSBzUkdCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGRlc2MAAAAAAAAALFJlZmVyZW5jZSBWaWV3aW5n
+IENvbmRpdGlvbiBpbiBJRUM2MTk2Ni0yLjEAAAAAAAAAAAAAACxSZWZlcmVuY2UgVmlld2luZyBDb25k
+aXRpb24gaW4gSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB2aWV3AAAAAAATpP4A
+FF8uABDPFAAD7cwABBMLAANcngAAAAFYWVogAAAAAABMCVYAUAAAAFcf521lYXMAAAAAAAAAAQAAAAAA
+AAAAAAAAAAAAAAAAAAKPAAAAAnNpZyAAAAAAQ1JUIGN1cnYAAAAAAAAEAAAAAAUACgAPABQAGQAeACMA
+KAAtADIANwA7AEAARQBKAE8AVABZAF4AYwBoAG0AcgB3AHwAgQCGAIsAkACVAJoAnwCkAKkArgCyALcA
+vADBAMYAywDQANUA2wDgAOUA6wDwAPYA+wEBAQcBDQETARkBHwElASsBMgE4AT4BRQFMAVIBWQFgAWcB
+bgF1AXwBgwGLAZIBmgGhAakBsQG5AcEByQHRAdkB4QHpAfIB+gIDAgwCFAIdAiYCLwI4AkECSwJUAl0C
+ZwJxAnoChAKOApgCogKsArYCwQLLAtUC4ALrAvUDAAMLAxYDIQMtAzgDQwNPA1oDZgNyA34DigOWA6ID
+rgO6A8cD0wPgA+wD+QQGBBMEIAQtBDsESARVBGMEcQR+BIwEmgSoBLYExATTBOEE8AT+BQ0FHAUrBToF
+SQVYBWcFdwWGBZYFpgW1BcUF1QXlBfYGBgYWBicGNwZIBlkGagZ7BowGnQavBsAG0QbjBvUHBwcZBysH
+PQdPB2EHdAeGB5kHrAe/B9IH5Qf4CAsIHwgyCEYIWghuCIIIlgiqCL4I0gjnCPsJEAklCToJTwlkCXkJ
+jwmkCboJzwnlCfsKEQonCj0KVApqCoEKmAquCsUK3ArzCwsLIgs5C1ELaQuAC5gLsAvIC+EL+QwSDCoM
+QwxcDHUMjgynDMAM2QzzDQ0NJg1ADVoNdA2ODakNww3eDfgOEw4uDkkOZA5/DpsOtg7SDu4PCQ8lD0EP
+Xg96D5YPsw/PD+wQCRAmEEMQYRB+EJsQuRDXEPURExExEU8RbRGMEaoRyRHoEgcSJhJFEmQShBKjEsMS
+4xMDEyMTQxNjE4MTpBPFE+UUBhQnFEkUahSLFK0UzhTwFRIVNBVWFXgVmxW9FeAWAxYmFkkWbBaPFrIW
+1hb6Fx0XQRdlF4kXrhfSF/cYGxhAGGUYihivGNUY+hkgGUUZaxmRGbcZ3RoEGioaURp3Gp4axRrsGxQb
+OxtjG4obshvaHAIcKhxSHHscoxzMHPUdHh1HHXAdmR3DHeweFh5AHmoelB6+HukfEx8+H2kflB+/H+og
+FSBBIGwgmCDEIPAhHCFIIXUhoSHOIfsiJyJVIoIiryLdIwojOCNmI5QjwiPwJB8kTSR8JKsk2iUJJTgl
+aCWXJccl9yYnJlcmhya3JugnGCdJJ3onqyfcKA0oPyhxKKIo1CkGKTgpaymdKdAqAio1KmgqmyrPKwIr
+NitpK50r0SwFLDksbiyiLNctDC1BLXYtqy3hLhYuTC6CLrcu7i8kL1ovkS/HL/4wNTBsMKQw2zESMUox
+gjG6MfIyKjJjMpsy1DMNM0YzfzO4M/E0KzRlNJ402DUTNU01hzXCNf02NzZyNq426TckN2A3nDfXOBQ4
+UDiMOMg5BTlCOX85vDn5OjY6dDqyOu87LTtrO6o76DwnPGU8pDzjPSI9YT2hPeA+ID5gPqA+4D8hP2E/
+oj/iQCNAZECmQOdBKUFqQaxB7kIwQnJCtUL3QzpDfUPARANER0SKRM5FEkVVRZpF3kYiRmdGq0bwRzVH
+e0fASAVIS0iRSNdJHUljSalJ8Eo3Sn1KxEsMS1NLmkviTCpMcky6TQJNSk2TTdxOJU5uTrdPAE9JT5NP
+3VAnUHFQu1EGUVBRm1HmUjFSfFLHUxNTX1OqU/ZUQlSPVNtVKFV1VcJWD1ZcVqlW91dEV5JX4FgvWH1Y
+y1kaWWlZuFoHWlZaplr1W0VblVvlXDVchlzWXSddeF3JXhpebF69Xw9fYV+zYAVgV2CqYPxhT2GiYfVi
+SWKcYvBjQ2OXY+tkQGSUZOllPWWSZedmPWaSZuhnPWeTZ+loP2iWaOxpQ2maafFqSGqfavdrT2una/9s
+V2yvbQhtYG25bhJua27Ebx5veG/RcCtwhnDgcTpxlXHwcktypnMBc11zuHQUdHB0zHUodYV14XY+dpt2
++HdWd7N4EXhueMx5KnmJeed6RnqlewR7Y3vCfCF8gXzhfUF9oX4BfmJ+wn8jf4R/5YBHgKiBCoFrgc2C
+MIKSgvSDV4O6hB2EgITjhUeFq4YOhnKG14c7h5+IBIhpiM6JM4mZif6KZIrKizCLlov8jGOMyo0xjZiN
+/45mjs6PNo+ekAaQbpDWkT+RqJIRknqS45NNk7aUIJSKlPSVX5XJljSWn5cKl3WX4JhMmLiZJJmQmfya
+aJrVm0Kbr5wcnImc951kndKeQJ6unx2fi5/6oGmg2KFHobaiJqKWowajdqPmpFakx6U4pammGqaLpv2n
+bqfgqFKoxKk3qamqHKqPqwKrdavprFys0K1ErbiuLa6hrxavi7AAsHWw6rFgsdayS7LCszizrrQltJy1
+E7WKtgG2ebbwt2i34LhZuNG5SrnCuju6tbsuu6e8IbybvRW9j74KvoS+/796v/XAcMDswWfB48JfwtvD
+WMPUxFHEzsVLxcjGRsbDx0HHv8g9yLzJOsm5yjjKt8s2y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7S
+P9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp22vvbgNwF3IrdEN2W3hzeot8p36/gNuC94UTh
+zOJT4tvjY+Pr5HPk/OWE5g3mlucf56noMui86Ubp0Opb6uXrcOv77IbtEe2c7ijutO9A78zwWPDl8XLx
+//KM8xnzp/Q09ML1UPXe9m32+/eK+Bn4qPk4+cf6V/rn+3f8B/yY/Sn9uv5L/tz/bf//0iUmJyhaJGNs
+YXNzbmFtZVgkY2xhc3Nlc18QEE5TQml0bWFwSW1hZ2VSZXCjJykqWk5TSW1hZ2VSZXBYTlNPYmplY3TS
+JSYsLVdOU0FycmF5oiwq0iUmLzBeTlNNdXRhYmxlQXJyYXmjLywq0zIzCjQ1NldOU1doaXRlXE5TQ29s
+b3JTcGFjZUQwIDAAEAOADNIlJjg5V05TQ29sb3KiOCrSJSY7PFdOU0ltYWdlojsqXxAPTlNLZXllZEFy
+Y2hpdmVy0T9AVHJvb3SAAQAIABEAGgAjAC0AMgA3AEYATABXAF4AZQByAHkAgQCDAIUAigCMAI4AlwCc
+AKcAqQCrAK0AsgC1ALcAuQC7AL0AwgDZANsA3RTTFNgU4xTsFP8VAxUOFRcVHBUkFScVLBU7FT8VRhVO
+FVsVYBViFWQVaRVxFXQVeRWBFYQVlhWZFZ4AAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAAAVoA
+</mutableData>
+        </image>
+    </resources>
+</document>

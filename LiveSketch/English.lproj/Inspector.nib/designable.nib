@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SKTInspectorController">
+            <connections>
+                <outlet property="fillCheckbox" destination="38" id="40"/>
+                <outlet property="fillColorWell" destination="12" id="41"/>
+                <outlet property="heightTextField" destination="31" id="49"/>
+                <outlet property="lineCheckbox" destination="39" id="42"/>
+                <outlet property="lineColorWell" destination="13" id="43"/>
+                <outlet property="lineWidthSlider" destination="8" id="44"/>
+                <outlet property="lineWidthTextField" destination="37" id="45"/>
+                <outlet property="widthTextField" destination="28" id="48"/>
+                <outlet property="window" destination="5" id="50"/>
+                <outlet property="xTextField" destination="33" id="46"/>
+                <outlet property="yTextField" destination="35" id="47"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Inspector" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="42" y="378" width="277" height="245"/>
+            <rect key="screenRect" x="0.0" y="69" width="1280" height="933"/>
+            <view key="contentView" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="277" height="245"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box title="Dimensions" id="11">
+                        <rect key="frame" x="12" y="12" width="253" height="103"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="icA-ie-uXP">
+                            <rect key="frame" x="2" y="2" width="249" height="83"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" id="28">
+                                    <rect key="frame" x="167" y="50" width="70" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="81">
+                                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="0.00" negativeFormat="-0.00" localizesFormat="NO" hasThousandSeparators="NO" thousandSeparator="," id="75">
+                                            <attributedString key="attributedStringForNil"/>
+                                            <attributedString key="attributedStringForNotANumber">
+                                                <fragment content="NaN"/>
+                                            </attributedString>
+                                            <attributedString key="attributedStringForZero">
+                                                <fragment content="0.00"/>
+                                            </attributedString>
+                                            <decimal key="minimum" value="0"/>
+                                            <decimal key="maximum" value="NaN"/>
+                                        </numberFormatter>
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="dimensionTextFieldAction:" target="-2" id="69"/>
+                                        <outlet property="nextKeyView" destination="31" id="70"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="29">
+                                    <rect key="frame" x="115" y="53" width="49" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="right" title="Width:" id="82">
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="31">
+                                    <rect key="frame" x="167" y="14" width="70" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="83">
+                                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="0.00" negativeFormat="-0.00" localizesFormat="NO" hasThousandSeparators="NO" thousandSeparator="," id="77">
+                                            <attributedString key="attributedStringForNil"/>
+                                            <attributedString key="attributedStringForNotANumber">
+                                                <fragment content="NaN"/>
+                                            </attributedString>
+                                            <attributedString key="attributedStringForZero">
+                                                <fragment content="0.00"/>
+                                            </attributedString>
+                                            <decimal key="minimum" value="0"/>
+                                            <decimal key="maximum" value="NaN"/>
+                                        </numberFormatter>
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="dimensionTextFieldAction:" target="-2" id="71"/>
+                                        <outlet property="nextKeyView" destination="38" id="72"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="32">
+                                    <rect key="frame" x="109" y="17" width="54" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="right" title="Height:" id="84">
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="33">
+                                    <rect key="frame" x="31" y="50" width="74" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="85">
+                                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="0.00" negativeFormat="-0.00" localizesFormat="NO" hasThousandSeparators="NO" thousandSeparator="," id="74">
+                                            <attributedString key="attributedStringForNil"/>
+                                            <attributedString key="attributedStringForNotANumber">
+                                                <fragment content="NaN"/>
+                                            </attributedString>
+                                            <attributedString key="attributedStringForZero">
+                                                <fragment content="0.00"/>
+                                            </attributedString>
+                                            <decimal key="minimum" value="0"/>
+                                            <decimal key="maximum" value="NaN"/>
+                                        </numberFormatter>
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="dimensionTextFieldAction:" target="-2" id="65"/>
+                                        <outlet property="nextKeyView" destination="35" id="66"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="34">
+                                    <rect key="frame" x="6" y="53" width="22" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="right" title="X:" id="86">
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="35">
+                                    <rect key="frame" x="33" y="14" width="70" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="87">
+                                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="0.00" negativeFormat="-0.00" localizesFormat="NO" hasThousandSeparators="NO" thousandSeparator="," id="76">
+                                            <attributedString key="attributedStringForNil"/>
+                                            <attributedString key="attributedStringForNotANumber">
+                                                <fragment content="NaN"/>
+                                            </attributedString>
+                                            <attributedString key="attributedStringForZero">
+                                                <fragment content="0.00"/>
+                                            </attributedString>
+                                            <decimal key="minimum" value="0"/>
+                                            <decimal key="maximum" value="NaN"/>
+                                        </numberFormatter>
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="dimensionTextFieldAction:" target="-2" id="67"/>
+                                        <outlet property="nextKeyView" destination="28" id="68"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="36">
+                                    <rect key="frame" x="7" y="17" width="22" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="right" title="Y:" id="88">
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" metaFont="message"/>
+                    </box>
+                    <colorWell id="12">
+                        <rect key="frame" x="59" y="196" width="52" height="39"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="fillColorWellAction:" target="-2" id="55"/>
+                            <outlet property="nextKeyView" destination="39" id="56"/>
+                        </connections>
+                    </colorWell>
+                    <colorWell id="13">
+                        <rect key="frame" x="213" y="196" width="52" height="39"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="lineColorWellAction:" target="-2" id="59"/>
+                            <outlet property="nextKeyView" destination="8" id="60"/>
+                        </connections>
+                    </colorWell>
+                    <box title="Line Width" id="15">
+                        <rect key="frame" x="12" y="116" width="253" height="63"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="onR-Ew-9WR">
+                            <rect key="frame" x="2" y="2" width="249" height="43"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <slider verticalHuggingPriority="750" id="8">
+                                    <rect key="frame" x="8" y="13" width="150" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="10" tickMarkPosition="below" sliderType="linear" id="89">
+                                        <font key="font" metaFont="message"/>
+                                    </sliderCell>
+                                    <connections>
+                                        <action selector="lineWidthSliderAction:" target="-2" id="61"/>
+                                        <outlet property="nextKeyView" destination="37" id="62"/>
+                                    </connections>
+                                </slider>
+                                <textField verticalHuggingPriority="750" id="37">
+                                    <rect key="frame" x="168" y="12" width="70" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="90">
+                                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="0.0" negativeFormat="-0.0" localizesFormat="NO" hasThousandSeparators="NO" thousandSeparator="," id="73">
+                                            <attributedString key="attributedStringForNil"/>
+                                            <attributedString key="attributedStringForNotANumber">
+                                                <fragment content="NaN"/>
+                                            </attributedString>
+                                            <attributedString key="attributedStringForZero">
+                                                <fragment content="0.00"/>
+                                            </attributedString>
+                                            <decimal key="minimum" value="NaN"/>
+                                            <decimal key="maximum" value="NaN"/>
+                                        </numberFormatter>
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="lineWidthTextFieldAction:" target="-2" id="63"/>
+                                        <outlet property="nextKeyView" destination="33" id="64"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <font key="titleFont" metaFont="message"/>
+                    </box>
+                    <button id="38">
+                        <rect key="frame" x="12" y="206" width="41" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="Fill" imagePosition="leading" alignment="left" inset="2" id="79">
+                            <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="message"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="fillCheckboxAction:" target="-2" id="53"/>
+                            <outlet property="nextKeyView" destination="12" id="54"/>
+                        </connections>
+                    </button>
+                    <button id="39">
+                        <rect key="frame" x="159" y="206" width="48" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="Line" imagePosition="leading" alignment="left" inset="2" id="80">
+                            <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="message"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="lineCheckboxAction:" target="-2" id="57"/>
+                            <outlet property="nextKeyView" destination="13" id="58"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="51"/>
+                <outlet property="initialFirstResponder" destination="37" id="52"/>
+            </connections>
+        </window>
+    </objects>
+</document>

@@ -131,7 +131,7 @@
 		0A3ECF0FFE888A39C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = English; path = English.lproj/Sketch.scriptTerminology; sourceTree = "<group>"; };
 		0A3ECF11FE888A39C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		0A3ECF12FE888A39C02AAC07 /* Sketch.scriptSuite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sketch.scriptSuite; sourceTree = "<group>"; };
-		0A3ECF14FE888A39C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0A3ECF14FE888A39C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A3ECF18FE888A39C02AAC07 /* SKTDrawDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTDrawDocument.m; sourceTree = "<group>"; };
 		0A3ECF19FE888A39C02AAC07 /* SKTGraphic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTGraphic.m; sourceTree = "<group>"; };
 		0A3ECF1AFE888A39C02AAC07 /* SKTRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTRectangle.m; sourceTree = "<group>"; };
