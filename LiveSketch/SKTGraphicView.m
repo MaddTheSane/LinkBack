@@ -79,7 +79,7 @@ static float SKTDefaultPasteCascadeDelta = 10.0;
 }
 
 - (void)invalidateGraphics:(NSArray *)graphics {
-    unsigned i, c = [graphics count];
+    NSUInteger i, c = [graphics count];
     for (i=0; i<c; i++) {
         [self invalidateGraphic:[graphics objectAtIndex:i]];
     }
@@ -90,9 +90,9 @@ static float SKTDefaultPasteCascadeDelta = 10.0;
     return _selectedGraphics;
 }
 
-static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) {
+static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) {
     NSArray *graphics = (NSArray *)gArray;
-    unsigned index1, index2;
+    NSUInteger index1, index2;
 
     index1 = [graphics indexOfObjectIdenticalTo:graphic1];
     index2 = [graphics indexOfObjectIdenticalTo:graphic2];
@@ -114,7 +114,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 }
 
 - (void)selectGraphic:(SKTGraphic *)graphic {
-    unsigned curIndex = [_selectedGraphics indexOfObjectIdenticalTo:graphic];
+    NSUInteger curIndex = [_selectedGraphics indexOfObjectIdenticalTo:graphic];
     if (curIndex == NSNotFound) {
         [[[self undoManager] prepareWithInvocationTarget:self] deselectGraphic:graphic];
         [[[self drawDocument] undoManager] setActionName:NSLocalizedStringFromTable(@"Selection Change", @"UndoStrings", @"Action name for selection changes.")];
@@ -127,7 +127,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 }
 
 - (void)deselectGraphic:(SKTGraphic *)graphic {
-    unsigned curIndex = [_selectedGraphics indexOfObjectIdenticalTo:graphic];
+    NSUInteger curIndex = [_selectedGraphics indexOfObjectIdenticalTo:graphic];
     if (curIndex != NSNotFound) {
         [[[self undoManager] prepareWithInvocationTarget:self] selectGraphic:graphic];
         [[[self drawDocument] undoManager] setActionName:NSLocalizedStringFromTable(@"Selection Change", @"UndoStrings", @"Action name for selection changes.")];
@@ -140,7 +140,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 }
 
 - (void)clearSelection {
-    int i, c = [_selectedGraphics count];
+    NSInteger i, c = [_selectedGraphics count];
     id curGraphic;
     
     if (c > 0) {
@@ -188,7 +188,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 - (SKTGraphic *)graphicUnderPoint:(NSPoint)point {
     SKTDrawDocument *document = [self drawDocument];
     NSArray *graphics = [document graphics];
-    unsigned i, c = [graphics count];
+    NSUInteger i, c = [graphics count];
     SKTGraphic *curGraphic = nil;
 
     for (i=0; i<c; i++) {
@@ -206,7 +206,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (NSSet *)graphicsIntersectingRect:(NSRect)rect {
     NSArray *graphics = [self graphics];
-    unsigned i, c = [graphics count];
+    NSUInteger i, c = [graphics count];
     NSMutableSet *result = [NSMutableSet set];
     SKTGraphic *curGraphic;
 
@@ -240,7 +240,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 - (void)drawRect:(NSRect)rect {
     SKTDrawWindowController *drawWindowController = [self drawWindowController];
     NSArray *graphics;
-    unsigned i;
+    NSUInteger i;
     SKTGraphic *curGraphic;
     BOOL isSelected;
     NSRect drawingBounds;
@@ -453,7 +453,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 - (void)moveSelectedGraphicsWithEvent:(NSEvent *)theEvent {
     NSPoint lastPoint, curPoint;
     NSArray *selGraphics = [self selectedGraphics];
-    unsigned i, c;
+    NSUInteger i, c;
     SKTGraphic *graphic;
     BOOL didMove = NO, isMoving = NO;
     NSPoint selOriginOffset = NSZeroPoint;
@@ -771,7 +771,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 // Action methods and other UI entry points
 - (void)changeColor:(id)sender {
     NSArray *selGraphics = [self selectedGraphics];
-    unsigned i, c = [selGraphics count];
+    NSUInteger i, c = [selGraphics count];
     if (c > 0) {
         SKTGraphic *curGraphic;
         NSColor *color = [sender color];
@@ -805,7 +805,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)bringToFront:(id)sender {
     NSArray *orderedSelection = [self orderedSelectedGraphics];
-    unsigned c = [orderedSelection count];
+    NSUInteger c = [orderedSelection count];
     if (c > 0) {
         SKTDrawDocument *document = [self drawDocument];
         while (c-- > 0) {
@@ -817,10 +817,10 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)sendToBack:(id)sender {
     NSArray *orderedSelection = [self orderedSelectedGraphics];
-    unsigned i, c = [orderedSelection count];
+    NSUInteger i, c = [orderedSelection count];
     if (c > 0) {
         SKTDrawDocument *document = [self drawDocument];
-        unsigned lastIndex = [[self graphics] count];
+        NSUInteger lastIndex = [[self graphics] count];
         for (i=0; i<c; i++) {
             [document moveGraphic:[orderedSelection objectAtIndex:i] toIndex:lastIndex];
         }
@@ -830,7 +830,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)alignLeftEdges:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 1) {
         NSRect firstBounds = [[selection objectAtIndex:0] bounds];
         SKTGraphic *curGraphic;
@@ -849,7 +849,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)alignRightEdges:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 1) {
         NSRect firstBounds = [[selection objectAtIndex:0] bounds];
         SKTGraphic *curGraphic;
@@ -868,7 +868,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)alignTopEdges:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 1) {
         NSRect firstBounds = [[selection objectAtIndex:0] bounds];
         SKTGraphic *curGraphic;
@@ -887,7 +887,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)alignBottomEdges:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 1) {
         NSRect firstBounds = [[selection objectAtIndex:0] bounds];
         SKTGraphic *curGraphic;
@@ -906,7 +906,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)alignHorizontalCenters:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 1) {
         NSRect firstBounds = [[selection objectAtIndex:0] bounds];
         SKTGraphic *curGraphic;
@@ -925,7 +925,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)alignVerticalCenters:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 1) {
         NSRect firstBounds = [[selection objectAtIndex:0] bounds];
         SKTGraphic *curGraphic;
@@ -944,7 +944,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)makeSameWidth:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 1) {
         NSRect firstBounds = [[selection objectAtIndex:0] bounds];
         SKTGraphic *curGraphic;
@@ -963,7 +963,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)makeSameHeight:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 1) {
         NSRect firstBounds = [[selection objectAtIndex:0] bounds];
         SKTGraphic *curGraphic;
@@ -1002,7 +1002,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (IBAction)gridSelectedGraphicsAction:(id)sender {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 0) {
         SKTGraphic *curGraphic;
         NSRect curBounds;
@@ -1037,7 +1037,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
     } else if (action == @selector(makeNaturalSize:)) {
         // Return YES if we have at least one selected graphic that has a natural size.
         NSArray *selectedGraphics = [self selectedGraphics];
-        unsigned i, c = [selectedGraphics count];
+        NSUInteger i, c = [selectedGraphics count];
         if (c > 0) {
             for (i=0; i<c; i++) {
                 if ([[selectedGraphics objectAtIndex:i] hasNaturalSize]) {
@@ -1095,8 +1095,8 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
             SKTDrawDocument *document = [self drawDocument];
             NSDictionary *docDict = [document drawDocumentDictionaryFromData:[pboard dataForType:type]];
             NSArray *array = [document graphicsFromDrawDocumentDictionary:docDict];
-            int i = [array count];
-            int currentChangeCount = [pboard changeCount];
+            NSInteger i = [array count];
+            NSInteger currentChangeCount = [pboard changeCount];
 
             if (_pasteboardChangeCount != currentChangeCount) {
                 _pasteboardChangeCount = currentChangeCount;
@@ -1167,7 +1167,7 @@ static int SKT_orderGraphicsFrontToBack(id graphic1, id graphic2, void *gArray) 
 
 - (void)moveSelectedGraphicsByPoint:(NSPoint)delta {
     NSArray *selection = [self selectedGraphics];
-    unsigned i, c = [selection count];
+    NSUInteger i, c = [selection count];
     if (c > 0) {
         [self hideKnobsMomentarily];
         for (i=0; i<c; i++) {

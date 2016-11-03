@@ -630,7 +630,7 @@ NSString *SKTStrokeLineWidthKey = @"StrokeLineWidth";
 
 - (NSScriptObjectSpecifier *)objectSpecifier {
     NSArray *graphics = [[self document] graphics];
-    unsigned index = [graphics indexOfObjectIdenticalTo:self];
+    NSUInteger index = [graphics indexOfObjectIdenticalTo:self];
     if (index != NSNotFound) {
         NSScriptObjectSpecifier *containerRef = [[self document] objectSpecifier];
         return [[[NSIndexSpecifier allocWithZone:[self zone]] initWithContainerClassDescription:[containerRef keyClassDescription] containerSpecifier:containerRef key:@"graphics" index:index] autorelease];

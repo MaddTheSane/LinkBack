@@ -42,10 +42,10 @@
 
 - (void)invalidateGraphic:(SKTGraphic *)graphic;
 
-- (void)insertGraphic:(SKTGraphic *)graphic atIndex:(unsigned)index;
-- (void)removeGraphicAtIndex:(unsigned)index;
+- (void)insertGraphic:(SKTGraphic *)graphic atIndex:(NSUInteger)index;
+- (void)removeGraphicAtIndex:(NSUInteger)index;
 - (void)removeGraphic:(SKTGraphic *)graphic;
-- (void)moveGraphic:(SKTGraphic *)graphic toIndex:(unsigned)newIndex;
+- (void)moveGraphic:(SKTGraphic *)graphic toIndex:(NSUInteger)newIndex;
 
 - (NSSize)documentSize;
     // Returns usable document size based on print info paper size and margins.

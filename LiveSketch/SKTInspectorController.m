@@ -77,7 +77,7 @@
 - (void)windowDidUpdate:(NSNotification *)notification {
     if (needsUpdate) {
         NSArray *selectedGraphics = [_inspectingGraphicView selectedGraphics];
-        unsigned c = (selectedGraphics ? [selectedGraphics count] : 0);
+        NSUInteger c = (selectedGraphics ? [selectedGraphics count] : 0);
         SKTGraphic *graphic;
 
         needsUpdate = NO;
@@ -159,7 +159,7 @@
 
 - (IBAction)fillCheckboxAction:(id)sender {
     NSArray *selectedGraphics = [_inspectingGraphicView selectedGraphics];
-    unsigned i, c = [selectedGraphics count];
+    NSUInteger i, c = [selectedGraphics count];
     if (c > 0) {
         int state = [sender state];
 
@@ -175,7 +175,7 @@
 
 - (IBAction)fillColorWellAction:(id)sender {
     NSArray *selectedGraphics = [_inspectingGraphicView selectedGraphics];
-    unsigned i, c = [selectedGraphics count];
+    NSUInteger i, c = [selectedGraphics count];
     if (c > 0) {
         NSColor *color = [sender color];
 
@@ -188,7 +188,7 @@
 
 - (IBAction)lineCheckboxAction:(id)sender {
     NSArray *selectedGraphics = [_inspectingGraphicView selectedGraphics];
-    unsigned i, c = [selectedGraphics count];
+    NSUInteger i, c = [selectedGraphics count];
     if (c > 0) {
         int state = [sender state];
 
@@ -204,7 +204,7 @@
 
 - (IBAction)lineColorWellAction:(id)sender {
     NSArray *selectedGraphics = [_inspectingGraphicView selectedGraphics];
-    unsigned i, c = [selectedGraphics count];
+    NSUInteger i, c = [selectedGraphics count];
     if (c > 0) {
         NSColor *color = [sender color];
 
@@ -217,7 +217,7 @@
 
 - (IBAction)lineWidthSliderAction:(id)sender {
     NSArray *selectedGraphics = [_inspectingGraphicView selectedGraphics];
-    unsigned i, c = [selectedGraphics count];
+    NSUInteger i, c = [selectedGraphics count];
     if (c > 0) {
         float lineWidth = [sender floatValue];
 
@@ -231,7 +231,7 @@
 
 - (IBAction)lineWidthTextFieldAction:(id)sender {
     NSArray *selectedGraphics = [_inspectingGraphicView selectedGraphics];
-    unsigned i, c = [selectedGraphics count];
+    NSUInteger i, c = [selectedGraphics count];
     if (c > 0) {
         float lineWidth = [sender floatValue];
 
@@ -244,7 +244,7 @@
 
 - (IBAction)dimensionTextFieldAction:(id)sender {
     NSArray *selectedGraphics = [_inspectingGraphicView selectedGraphics];
-    unsigned i, c = [selectedGraphics count];
+    NSUInteger i, c = [selectedGraphics count];
     if (c > 0) {
         NSRect bounds = NSMakeRect([xTextField floatValue], [yTextField floatValue], [widthTextField floatValue], [heightTextField floatValue]);
 

@@ -21,7 +21,7 @@
     NSSet *_rubberbandGraphics;
     SKTGraphic *_editingGraphic;
     NSView *_editorView;
-    int _pasteboardChangeCount;
+    NSInteger _pasteboardChangeCount;
     int _pasteCascadeNumber;
     NSPoint _pasteCascadeDelta;
     float _gridSpacing;

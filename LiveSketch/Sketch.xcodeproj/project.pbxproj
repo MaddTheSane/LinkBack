@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		554461671DCACD8100D638C2 /* LinkBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55877E9D1DCAC9EC00052688 /* LinkBack.framework */; };
 		55877E471DCAC97300052688 /* SKTDrawAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE3FE888A39C02AAC07 /* SKTDrawAppDelegate.h */; };
 		55877E481DCAC97300052688 /* SKTDrawWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE4FE888A39C02AAC07 /* SKTDrawWindowController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		55877E491DCAC97300052688 /* SKTGraphicView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE5FE888A39C02AAC07 /* SKTGraphicView.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -162,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554461671DCACD8100D638C2 /* LinkBack.framework in Frameworks */,
 				55877E841DCAC97300052688 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

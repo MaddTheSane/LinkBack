@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		554461691DCACD8F00D638C2 /* LinkBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55877EA91DCACA3400052688 /* LinkBack.framework */; };
 		55877DF71DCAC93F00052688 /* Document.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE20903FE93D5F211CA2CEA /* Document.h */; };
 		55877DF81DCAC93F00052688 /* Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE20904FE93D5F211CA2CEA /* Controller.h */; };
 		55877DF91DCAC93F00052688 /* MultiplePageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE20905FE93D5F211CA2CEA /* MultiplePageView.h */; };
@@ -122,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554461691DCACD8F00D638C2 /* LinkBack.framework in Frameworks */,
 				55877E201DCAC93F00052688 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
