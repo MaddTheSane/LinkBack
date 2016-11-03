@@ -38,19 +38,19 @@
 @class LinkBack ;
 @protocol LinkBackServerDelegate, LinkBackClientDelegate ;
 
-@protocol LinkBackServer
+@protocol LinkBackServer <NSObject>
 - (LinkBack*)initiateLinkBackFromClient:(LinkBack*)clientLinkBack ;
 @end
 
-// This method is used as the standard way of constructing the actual server name a live link connection is posted under.  It is constructed from the name and identifier.
+/// This method is used as the standard way of constructing the actual server name a live link connection is posted under.  It is constructed from the name and identifier.
 NSString* MakeLinkBackServerName(NSString* bundleIdentifier, NSString* name) ;
 
-// a LinkBack server is created for each published server.  This simply responds to connection requests to create new live links.
+/// a LinkBack server is created for each published server.  This simply responds to connection requests to create new live links.
 @interface LinkBackServer : NSObject <LinkBackServer> {
     NSString *bundleIdentifier;
     NSConnection* listener ;
     NSString* name ;
-    id<LinkBackServerDelegate> delegate ;
+    __unsafe_unretained id<LinkBackServerDelegate> delegate ;
 }
 
 + (LinkBackServer*)LinkBackServerWithName:(NSString*)name;
@@ -65,7 +65,7 @@ NSString* MakeLinkBackServerName(NSString* bundleIdentifier, NSString* name) ;
 
 - (id)initWithName:(NSString*)name bundleIdentifier:(NSString *)bundleID delegate:(id<LinkBackServerDelegate>)aDel;
 
-- (BOOL)publish ; // creates the connection and adds to the list.
+- (BOOL)publish ; ///< creates the connection and adds to the list.
 - (void)retract ;
 
 @end

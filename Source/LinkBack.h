@@ -93,27 +93,27 @@ BOOL LinkBackDataBelongsToActiveApplication(id data) ;
 
 @class LinkBack ;
 
-@protocol LinkBackServerDelegate
+@protocol LinkBackServerDelegate <NSObject>
 - (void)linkBackDidClose:(LinkBack*)link ;
 - (void)linkBackClientDidRequestEdit:(LinkBack*)link ;
 @end
 
-@protocol LinkBackClientDelegate
+@protocol LinkBackClientDelegate <NSObject>
 - (void)linkBackDidClose:(LinkBack*)link ;
 - (void)linkBackServerDidSendEdit:(LinkBack*)link ;
 @end
 
 // used for cross app communications
-@protocol LinkBack
+@protocol LinkBack <NSObject>
 - (oneway void)remoteCloseLink ;
-- (void)requestEditWithPasteboardName:(bycopy NSString*)pboardName ; // from client
-- (void)refreshEditWithPasteboardName:(bycopy NSString*)pboardName ; // from server
+- (void)requestEditWithPasteboardName:(bycopy NSString*)pboardName ; ///< from client
+- (void)refreshEditWithPasteboardName:(bycopy NSString*)pboardName ; ///< from server
 @end
 
 @interface LinkBack : NSObject <LinkBack> {
-    LinkBack* peer ; // the client or server on the other side.
+    LinkBack* peer ; ///< the client or server on the other side.
     BOOL isServer ; 
-    id delegate ;
+    __unsafe_unretained id delegate ;
     NSPasteboard* pboard ;
     id repobj ; 
     NSString* sourceName ;
@@ -121,22 +121,21 @@ BOOL LinkBackDataBelongsToActiveApplication(id data) ;
     NSString* key ;
 }
 
+/// works for both the client and server side.  Valid only while a link is connected.
 + (LinkBack*)activeLinkBackForItemKey:(id)key ;
-// works for both the client and server side.  Valid only while a link is connected.
 
 // ...........................................................................
 // General Use methods
 //
-- (NSPasteboard*)pasteboard ;
+@property (readonly, retain) NSPasteboard *pasteboard ;
 - (void)closeLink ;
 
-- (id)representedObject ;
-- (void)setRepresentedObject:(id)obj ;
-// Applications can use this represented object to attach some meaning to the live link.  For example, a client application may set this to the object to be modified when the edit is refreshed.  This retains its value.
+/// Applications can use this represented object to attach some meaning to the live link.  For example, a client application may set this to the object to be modified when the edit is refreshed.  This retains its value.
+@property (readwrite, retain) id representedObject ;
 
-- (NSString*)sourceName ;
-- (NSString*)sourceApplicationName ;
-- (NSString*)itemKey ; // maybe this matters only on the client side.
+@property (readonly, copy) NSString *sourceName ;
+@property (readonly, copy) NSString *sourceApplicationName ;
+@property (readonly, copy) NSString *itemKey ; // maybe this matters only on the client side.
 
 // ...........................................................................
 // Server-side methods

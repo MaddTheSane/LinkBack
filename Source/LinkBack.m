@@ -273,22 +273,8 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 // ...........................................................................
 // General Use methods
 
-- (NSPasteboard*)pasteboard 
-{
-    return pboard ;
-}
-
-- (id)representedObject 
-{
-    return repobj ;
-}
-
-- (void)setRepresentedObject:(id)obj 
-{
-    [obj retain] ;
-    [repobj release] ;
-    repobj = obj ;
-}
+@synthesize pasteboard = pboard;
+@synthesize representedObject = repobj;
 
 - (NSString*)sourceName
 {

@@ -12,3 +12,5 @@ CVS
 # osx noise
 .DS_Store
 profile
+xcuserdata/
+project.xcworkspace/
