@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class NSPasteboard;
 
-// Use this pasteboard type to put LinkBack data to the pasteboard.  Use MakeLinkBackData() to create the data.
+// Use this pasteboard type to put LinkBack data to the pasteboard.  Use +[NSDictionary linkBackDataWithServerName:appData:] to create the data.
 extern NSString*const LinkBackPboardType ;
 
 // Default Action Names.  These will be localized for you automatically.

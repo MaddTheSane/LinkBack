@@ -5,7 +5,7 @@
 @class ScalingScrollView;
 
 /* These get added to the string encodings so we have a common language to refer to file types */
-enum {
+NS_ENUM(NSUInteger) {
     UnknownStringEncoding = NoStringEncoding,
     RichTextStringEncoding = 0xFFFFFFFE,
     RichTextWithGraphicsStringEncoding = 0xFFFFFFFD,
@@ -15,32 +15,32 @@ enum {
     SmallestCustomStringEncoding = 0xFFFFFFF0
 };
 
-typedef enum {
+typedef NS_ENUM(int, SaveStatus) {
     SaveStatusOK = 1,
-    SaveStatusFileNotWritable,    	// File is not writable
-    SaveStatusEncodingNotApplicable,	// File can't be converted to specified encoding
-    SaveStatusDestinationNotWritable,  	// Destination is not writable
-    SaveStatusFileEditedExternally,	// File was edited externally (by another application)
-    SaveStatusNotOK = 1000        	// Some other error
-} SaveStatus;
+    SaveStatusFileNotWritable,    	///< File is not writable
+    SaveStatusEncodingNotApplicable,	///< File can't be converted to specified encoding
+    SaveStatusDestinationNotWritable,  	///< Destination is not writable
+    SaveStatusFileEditedExternally,	///< File was edited externally (by another application)
+    SaveStatusNotOK = 1000        	///< Some other error
+};
 
-typedef enum {
+typedef NS_ENUM(int, FileExtensionStatus) {
     FileExtensionHidden = 1,
     FileExtensionShown,
     FileExtensionPreviousState
-} FileExtensionStatus;
+};
 
 
-/* Returns the default padding on the left/right edges of text views */
-float defaultTextPadding(void);
+/** Returns the default padding on the left/right edges of text views */
+CGFloat defaultTextPadding(void);
 
-/* Return a non-blank display name. If the display name is blank, currently returns last path component; should probably do better. */
+/** Return a non-blank display name. If the display name is blank, currently returns last path component; should probably do better. */
 NSString *displayName(NSString *path);
 
-/* Struct for carrying info for saving between the various routines...
+/** Struct for carrying info for saving between the various routines...
 */
 typedef struct _DocumentSaveInfo {
-    NSString *nameForSaving;	// This is retained by this structure
+    NSString *nameForSaving;	///< This is retained by this structure
     NSStringEncoding encodingForSaving;
     BOOL haveToChangeType;
     BOOL showEncodingAccessory;
@@ -57,38 +57,38 @@ typedef struct _DocumentSaveInfo {
 
 @interface Document : NSObject <NSTextViewDelegate, NSLayoutManagerDelegate, NSOpenSavePanelDelegate, NSWindowDelegate> {
     NSTextStorage *textStorage;
-    NSString *documentName;		/* If nil, never saved */
-    NSString *revertDocumentName;	/* For reverting purposes, if the document is made untitled at some point */
-    ScalingScrollView *scrollView;	/* ScrollView containing document */
-    NSPrintInfo *printInfo;		/* PrintInfo, used when hasMultiplePages is true */
+    NSString *documentName;		/**< If nil, never saved */
+    NSString *revertDocumentName;	/**< For reverting purposes, if the document is made untitled at some point */
+    ScalingScrollView *scrollView;	/**< ScrollView containing document */
+    NSPrintInfo *printInfo;		/**< PrintInfo, used when hasMultiplePages is true */
     BOOL isDocumentEdited;
     BOOL hasMultiplePages;
     BOOL isRichText;
     BOOL isReadOnly;
-    BOOL uniqueZone;			/* YES if the zone was created specially for this document */
-    BOOL openedIgnoringRTF;		/* Setting at the the time the doc was open (so revert does the same thing) */
-    BOOL openedIgnoringHTML;		/* Setting at the the time the doc was open (so revert does the same thing) */
-    NSStringEncoding documentEncoding;		/* NSStringEncoding or one of the above values */
-    unsigned untitledDocNumber;		/* If not 0, the untitled sequence number this document has been assigned */
+    BOOL uniqueZone;			/**< \c YES if the zone was created specially for this document */
+    BOOL openedIgnoringRTF;		/**< Setting at the the time the doc was open (so revert does the same thing) */
+    BOOL openedIgnoringHTML;		/**< Setting at the the time the doc was open (so revert does the same thing) */
+    NSStringEncoding documentEncoding;		/**< \c NSStringEncoding or one of the above values */
+    unsigned untitledDocNumber;		/**< If not 0, the untitled sequence number this document has been assigned */
     int changeCount;
-    BOOL convertedDocument;		/* Converted (or filtered) from some other format (and hence not writable) */
-    BOOL lossyDocument;			/* Loaded lossily, so might not be a good idea to overwrite */
-    NSDate *fileModDate;		/* File modification date from the last open or save */
+    BOOL convertedDocument;		/**< Converted (or filtered) from some other format (and hence not writable) */
+    BOOL lossyDocument;			/**< Loaded lossily, so might not be a good idea to overwrite */
+    NSDate *fileModDate;		/**< File modification date from the last open or save */
     
-    IBOutlet NSView *richTextDocumentFormatAccessory;		/* Set when the rich text popup is loaded */
-    IBOutlet NSPopUpButton *richTextDocumentFormatPopUp;	/* Set when the rich text popup is loaded */
+    IBOutlet NSView *richTextDocumentFormatAccessory;		/**< Set when the rich text popup is loaded */
+    IBOutlet NSPopUpButton *richTextDocumentFormatPopUp;	/**< Set when the rich text popup is loaded */
     
     // LINKBACK SUPPORT
-    NSMutableArray* activeLinks ; // currently active live links.
+    NSMutableArray* activeLinks ; //!< currently active live links.
 }
 
 /* Don't call -(id)init; call one of these methods... */
 - (id)initWithPath:(NSString *)filename encoding:(NSStringEncoding)encoding uniqueZone:(BOOL)flag;
 - (id)initWithPath:(NSString *)filename encoding:(NSStringEncoding)encoding ignoreRTF:(BOOL)ignoreRTF ignoreHTML:(BOOL)ignoreHTML uniqueZone:(BOOL)flag;	/* Should be an absolute path here; nil for untitled. uniqueZone = YES indicates the zone should be recycled when the doc is dealloced. */
-+ (id)openDocumentWithPath:(NSString *)filename encoding:(NSStringEncoding)encoding;	/* Brings window front. Checks to see if document already open. */
-+ (id)openUntitled:(BOOL)isOpenedAutomatically;	/* Brings window front */
++ (id)openDocumentWithPath:(NSString *)filename encoding:(NSStringEncoding)encoding;	/**< Brings window front. Checks to see if document already open. */
++ (id)openUntitled:(BOOL)isOpenedAutomatically;	/**< Brings window front */
 
-/* Put up panels indicating failure to open one or more files. Pass someSucceeded == YES if not known.
+/** Put up panels indicating failure to open one or more files. Pass someSucceeded == YES if not known.
 */
 + (void)displayOpenFailureForFiles:(NSArray *)failedFiles someSucceeded:(BOOL)someFilesOpened title:(NSString *)alertTitle;
 
@@ -100,6 +100,7 @@ typedef struct _DocumentSaveInfo {
 @property (nonatomic, getter=isDocumentEdited) BOOL documentEdited;
 
 /* Is the document rich? */
+@property (nonatomic, getter=isRichText) BOOL richText;
 - (BOOL)isRichText;
 - (void)setRichText:(BOOL)flag;
 - (void)setRichText:(BOOL)flag dealWithAttachments:(BOOL)attachmentFlag;
@@ -107,9 +108,8 @@ typedef struct _DocumentSaveInfo {
 /*! Is the document read-only? */
 @property (nonatomic, getter=isReadOnly) BOOL readOnly;
 
-/* Document background color */
-- (NSColor *)backgroundColor;
-- (void)setBackgroundColor:(NSColor *)color;
+/*! Document background color */
+@property (nonatomic, retain) NSColor *backgroundColor;
 
 /* Determining whether file has been edited externally */
 - (void)setFileModDate:(NSDate *)date;
@@ -117,19 +117,16 @@ typedef struct _DocumentSaveInfo {
 - (BOOL)isEditedExternally:(NSDate *)newModDateIfKnown;
 
 /*! The encoding of the document... */
-@property (nonatomic) NSStringEncoding encoding;
+@property NSStringEncoding encoding;
 
-/* Whether document was converted from some other format (filter services) */
-- (BOOL)converted;
-- (void)setConverted:(BOOL)flag;
+/*! Whether document was converted from some other format (filter services) */
+@property BOOL converted;
 
-/* Whether document was loaded lossily */
-- (BOOL)lossy;
-- (void)setLossy:(BOOL)flag;
+/*! Whether document was loaded lossily */
+@property BOOL lossy;
 
-/* Hyphenation factor (0.0-1.0, 0.0 == disabled) */
-- (float)hyphenationFactor;
-- (void)setHyphenationFactor:(float)factor;
+/*! Hyphenation factor (0.0-1.0, 0.0 == disabled) */
+@property (atomic) float hyphenationFactor;
 
 /*! View size (as it should be saved in a RTF file) */
 @property (nonatomic) NSSize viewSize;
@@ -162,22 +159,20 @@ typedef struct _DocumentSaveInfo {
 @property (nonatomic, retain) NSPrintInfo *printInfo;
 - (void)setPrintInfo:(NSPrintInfo *)anObject;
 - (NSPrintInfo *)printInfo;
-- (void)printInfoUpdated;	// To let the document know that printInfo has been changed
+- (void)printInfoUpdated;	///< To let the document know that printInfo has been changed
 @property (nonatomic) NSSize paperSize;
-- (void)setPaperSize:(NSSize)size;
-- (NSSize)paperSize;
 
-/* Printing a document */
+/*! Printing a document */
 - (void)printDocumentUsingPrintPanel:(BOOL)uiFlag;
 
 /* Saving helpers. */
-- (void)saveDocument:(BOOL)showSavePanel rememberName:(BOOL)rememberNewNameAndSuch shouldClose:(BOOL)shouldClose;  /* Entry point for saving w/UI; will show panels and such as necessary */
-- (void)saveDocument:(BOOL)showSavePanel rememberName:(BOOL)rememberNewNameAndSuch shouldClose:(BOOL)shouldClose whenDone:(SEL)callback;	/* Entry point for saving w/UI; will show panels and such as necessary */
+- (void)saveDocument:(BOOL)showSavePanel rememberName:(BOOL)rememberNewNameAndSuch shouldClose:(BOOL)shouldClose;  /*!< Entry point for saving w/UI; will show panels and such as necessary */
+- (void)saveDocument:(BOOL)showSavePanel rememberName:(BOOL)rememberNewNameAndSuch shouldClose:(BOOL)shouldClose whenDone:(SEL)callback;	/*!< Entry point for saving w/UI; will show panels and such as necessary */
 - (void)getDocumentNameAndSave:(DocumentSaveInfo *)docInfo;
 - (void)doSaveWithName:(DocumentSaveInfo *)docInfo overwriteOK:(BOOL)overwrite;
 
 - (void)askToSave:(SEL)callback;
-- (BOOL)canCloseDocument;	/* Assures document is saved or user doesn't care about the changes; returns NO if user cancels */
+- (BOOL)canCloseDocument;	/*!< Assures document is saved or user doesn't care about the changes; returns NO if user cancels */
 + (void)openWithEncodingAccessory:(BOOL)flag;
 
 /* Enumerations for saving all edited documents. */
@@ -195,10 +190,10 @@ typedef struct _DocumentSaveInfo {
 - (void)toggleRich:(id)sender;
 - (void)toggleReadOnly:(id)sender;
 - (void)togglePageBreaks:(id)sender;
-- (void)printDocument:(id)sender;  /* action cover for [self printDocumentUsingPrintPanel:YES] */
+- (void)printDocument:(id)sender;  /**< action cover for [self printDocumentUsingPrintPanel:YES] */
 - (void)richTextDocumentFormatChanged:(id)sender;
 
-/* When the preference "OpenPanelFollowsMainWindow" is set to YES, this is used to get the directory of document in the main window.
+/*! When the preference "OpenPanelFollowsMainWindow" is set to YES, this is used to get the directory of document in the main window.
 */
 + (NSString *)directoryOfMainWindow;
 
@@ -227,7 +222,7 @@ typedef struct _DocumentSaveInfo {
 
 @interface Document (ReadWrite)
 
-/* File loading. Returns NO if not successful. Doesn't set documentName. */
+/*! File loading. Returns NO if not successful. Doesn't set documentName. */
 - (BOOL)loadFromPath:(NSString *)fileName encoding:(NSStringEncoding)encoding ignoreRTF:(BOOL)ignoreRTF ignoreHTML:(BOOL)ignoreHTML;	/* If encoding is Unknown, tries to guess */
 - (SaveStatus)saveToPath:(NSString *)fileName encoding:(NSStringEncoding)encoding updateFilenames:(BOOL)updateFileNamesFlag overwriteOK:(BOOL)overwrite hideExtension:(FileExtensionStatus)extensionStatus;
 

@@ -108,9 +108,7 @@ static NSZone *zoneForNewDocument(void) {
 {
 	NSLog(@"edit linkback items") ;
 	NSArray* attachments = [self selectedLinkBackTextAttachments] ;
-	NSInteger idx = [attachments count] ;
-	while(--idx >= 0) {
-		LinkBackTextAttachment* attachment = [attachments objectAtIndex: idx];
+	for(LinkBackTextAttachment* attachment in attachments.reverseObjectEnumerator) {
 		[self editLinkBackInTextAttachment: attachment] ;
 	}
 }
@@ -798,29 +796,9 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
 /* Encoding...
 */
-- (NSStringEncoding)encoding {
-    return documentEncoding;
-}
-
-- (void)setEncoding:(NSStringEncoding)encoding {
-    documentEncoding = encoding;
-}
-
-- (BOOL)converted {
-    return convertedDocument;
-}
-
-- (void)setConverted:(BOOL)flag {
-    convertedDocument = flag;
-}
-
-- (BOOL)lossy {
-    return lossyDocument;
-}
-
-- (void)setLossy:(BOOL)flag {
-    lossyDocument = flag;
-}
+@synthesize encoding = documentEncoding;
+@synthesize converted = convertedDocument;
+@synthesize lossy = lossyDocument;
 
 
 
@@ -855,9 +833,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
     [self setRichText:flag dealWithAttachments:YES];
 }
 
-- (BOOL)isRichText {
-    return isRichText;
-}
+@synthesize richText = isRichText;
 
 
 /* Outlet methods */
@@ -1891,8 +1867,8 @@ static int nextAvailableUntitledDocNumber(void) {
 
 /* Returns the default padding on the left/right edges of text views
 */
-float defaultTextPadding(void) {
-    static float padding = -1;
+CGFloat defaultTextPadding(void) {
+    static CGFloat padding = -1;
     if (padding < 0.0) {
         NSTextContainer *container = [[NSTextContainer alloc] init];
         padding = [container lineFragmentPadding];
