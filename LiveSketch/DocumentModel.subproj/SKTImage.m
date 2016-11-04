@@ -5,6 +5,9 @@
 #import "SKTImage.h"
 
 @implementation SKTImage
+@synthesize image = _image;
+@synthesize flippedHorizontally = _flippedHorizontally;
+@synthesize flippedVertically = _flippedVertically;
 
 - (id)init {
     self = [super init];
@@ -36,10 +39,6 @@
         [self SKT_clearCachedImage];
         [self didChange];
     }
-}
-
-- (NSImage *)image {
-    return _image;
 }
 
 - (NSImage *)transformedImage {
@@ -84,10 +83,6 @@
     }
 }
 
-- (BOOL)flippedHorizontally {
-    return _flippedHorizontally;
-}
-
 - (void)setFlippedVertically:(BOOL)flag {
     if (_flippedVertically != flag) {
         [[[self undoManager] prepareWithInvocationTarget:self] setFlippedVertically:_flippedVertically];
@@ -95,10 +90,6 @@
         [self SKT_clearCachedImage];
         [self didChange];
     }
-}
-
-- (BOOL)flippedVertically {
-    return _flippedVertically;
 }
 
 - (void)flipHorizontally {
@@ -136,6 +127,7 @@
     }
     image = [self transformedImage];
     if (image) {
+		//[image drawAtPoint:NSMakePoint(NSMinX(bounds), NSMaxY(bounds)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
         [image compositeToPoint:NSMakePoint(NSMinX(bounds), NSMaxY(bounds)) operation:NSCompositeSourceOver];
     }
     [super drawInView:view isSelected:flag];

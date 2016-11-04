@@ -7,7 +7,7 @@
 @class SKTGraphicView;
 @class SKTDrawDocument;
 
-enum {
+typedef NS_ENUM(int, SKTKnobs) {
     NoKnob = 0,
     UpperLeftKnob,
     UpperMiddleKnob,
@@ -19,7 +19,7 @@ enum {
     LowerRightKnob,
 };
 
-enum {
+typedef NS_OPTIONS(unsigned int, SKTKnobMasks) {
     NoKnobsMask = 0,
     UpperLeftKnobMask = 1 << UpperLeftKnob,
     UpperMiddleKnobMask = 1 << UpperMiddleKnob,
@@ -36,10 +36,10 @@ extern NSString *SKTGraphicDidChangeNotification;
 
 @interface SKTGraphic : NSObject <NSCopying> {
     @private
-    SKTDrawDocument *_document;
+    __weak SKTDrawDocument *_document;
     NSRect _bounds;
     NSRect _origBounds;
-    float _lineWidth;
+    CGFloat _lineWidth;
     NSColor *_fillColor;
     NSColor *_strokeColor;
     struct __gFlags {
@@ -53,26 +53,18 @@ extern NSString *SKTGraphicDidChangeNotification;
 - (id)init;
 
 // ========================= Document accessors and conveniences =========================
-- (void)setDocument:(SKTDrawDocument *)document;
-- (SKTDrawDocument *)document;
+@property (weak) SKTDrawDocument *document;
 - (NSUndoManager *)undoManager;
 
 // =================================== Primitives ===================================
-- (void)didChange;
-    // This sends the did change notification.  All change primitives should call it.
+- (void)didChange; ///< This sends the did change notification.  All change primitives should call it.
 
-- (void)setBounds:(NSRect)bounds;
-- (NSRect)bounds;
-- (void)setDrawsFill:(BOOL)flag;
-- (BOOL)drawsFill;
-- (void)setFillColor:(NSColor *)fillColor;
-- (NSColor *)fillColor;
-- (void)setDrawsStroke:(BOOL)flag;
-- (BOOL)drawsStroke;
-- (void)setStrokeColor:(NSColor *)strokeColor;
-- (NSColor *)strokeColor;
-- (void)setStrokeLineWidth:(float)width;
-- (float)strokeLineWidth;
+@property (nonatomic) NSRect bounds;
+@property (nonatomic) BOOL drawsFill;
+@property (nonatomic, strong) NSColor *fillColor;
+@property (nonatomic) BOOL drawsStroke;
+@property (nonatomic, strong) NSColor *strokeColor;
+@property (nonatomic) CGFloat strokeLineWidth;
 
 // =================================== Extended mutation ===================================
 - (void)startBoundsManipulation;
@@ -80,13 +72,13 @@ extern NSString *SKTGraphicDidChangeNotification;
 - (void)moveBy:(NSPoint)vector;
 - (void)flipHorizontally;
 - (void)flipVertically;
-- (int)resizeByMovingKnob:(int)knob toPoint:(NSPoint)point;
+- (SKTKnobs)resizeByMovingKnob:(SKTKnobs)knob toPoint:(NSPoint)point;
 - (void)makeNaturalSize;
 
 // =================================== Subclass capabilities ===================================
-- (BOOL)canDrawStroke;
-- (BOOL)canDrawFill;
-- (BOOL)hasNaturalSize;
+@property (readonly) BOOL canDrawStroke;
+@property (readonly) BOOL canDrawFill;
+@property (readonly) BOOL hasNaturalSize;
 
 // =================================== Persistence ===================================
 - (NSMutableDictionary *)propertyListRepresentation;
@@ -100,8 +92,8 @@ extern NSString *SKTGraphicDidChangeNotification;
 - (NSRect)drawingBounds;
 - (NSBezierPath *)bezierPath;
 - (void)drawInView:(SKTGraphicView *)view isSelected:(BOOL)flag;
-- (unsigned)knobMask;
-- (int)knobUnderPoint:(NSPoint)point;
+@property (readonly) SKTKnobMasks knobMask;
+- (SKTKnobs)knobUnderPoint:(NSPoint)point;
 - (void)drawHandleAtPoint:(NSPoint)point inView:(SKTGraphicView *)view;
 - (void)drawHandlesInView:(SKTGraphicView *)view;
 
@@ -113,6 +105,7 @@ extern NSString *SKTGraphicDidChangeNotification;
 
 - (BOOL)createWithEvent:(NSEvent *)theEvent inView:(SKTGraphicView *)view;
 
+@property (readonly, getter=isEditable) BOOL editable;
 - (BOOL)isEditable;
 - (void)startEditingWithEvent:(NSEvent *)event inView:(SKTGraphicView *)view;
 - (void)endEditingInView:(SKTGraphicView *)view;

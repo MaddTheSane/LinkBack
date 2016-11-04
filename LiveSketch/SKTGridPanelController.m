@@ -2,6 +2,7 @@
 // Sketch Example
 //
 
+#include <tgmath.h>
 #import "SKTGridPanelController.h"
 #import "SKTGridView.h"
 #import "SKTGraphicView.h"
@@ -82,7 +83,7 @@
     return (_inspectingGraphicView ? [_inspectingGraphicView showsGrid] : NO);
 }
 
-- (float)gridSpacing {
+- (CGFloat)gridSpacing {
     return (_inspectingGraphicView ? [_inspectingGraphicView gridSpacing] : 8);
 }
 
@@ -118,7 +119,7 @@
 
 @end
 
-void SKTDrawGridWithSettingsInRect(float spacing, NSColor *color, NSRect rect, NSPoint gridOrigin) {
+void SKTDrawGridWithSettingsInRect(CGFloat spacing, NSColor *color, NSRect rect, NSPoint gridOrigin) {
     int curLine, endLine;
     NSBezierPath *gridPath = [NSBezierPath bezierPath];
 

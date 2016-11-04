@@ -23,7 +23,7 @@
     BOOL needsUpdate;
 }
 
-+ (id)sharedInspectorController;
++ (SKTInspectorController*)sharedInspectorController;
 
 - (IBAction)fillCheckboxAction:(id)sender;
 - (IBAction)fillColorWellAction:(id)sender;

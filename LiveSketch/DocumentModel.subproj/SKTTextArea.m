@@ -123,7 +123,7 @@ static NSLayoutManager *sharedDrawingLayoutManager() {
     return NSMakeSize(10.0, 15.0);
 }
 
-static const float SKTRightMargin = 36.0;
+static const CGFloat SKTRightMargin = 36.0;
 
 - (NSSize)maxSize {
     NSRect bounds = [self bounds];
@@ -187,7 +187,7 @@ static const float SKTRightMargin = 36.0;
     [super setBounds:rect];
 }
 
-- (int)resizeByMovingKnob:(int)knob toPoint:(NSPoint)point {
+- (SKTKnobs)resizeByMovingKnob:(SKTKnobs)knob toPoint:(NSPoint)point {
     NSSize minSize = [self minSize];
     NSRect bounds = [self bounds];
 

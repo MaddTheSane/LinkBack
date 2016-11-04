@@ -12,14 +12,11 @@
     BOOL _flippedVertically;
 }
 
-- (void)setImage:(NSImage *)image;
-- (NSImage *)image;
+@property (nonatomic, strong) NSImage *image;
 - (NSImage *)transformedImage;
 
-- (void)setFlippedHorizontally:(BOOL)flag;
-- (BOOL)flippedHorizontally;
-- (void)setFlippedVertically:(BOOL)flag;
-- (BOOL)flippedVertically;
+@property (nonatomic) BOOL flippedHorizontally;
+@property (nonatomic) BOOL flippedVertically;
 
 @end
 

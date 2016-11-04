@@ -16,17 +16,13 @@
 }
 
 - (void)drawRect:(NSRect)rect {
-    NSUInteger i;
-    SKTGraphic *curGraphic;
     NSRect drawingBounds;
     NSGraphicsContext *currentContext = [NSGraphicsContext currentContext];
 
     [[NSColor whiteColor] set];
     NSRectFill(rect);
 
-    i = [_graphics count];
-    while (i-- > 0) {
-        curGraphic = [_graphics objectAtIndex:i];
+    for (SKTGraphic *curGraphic in _graphics.reverseObjectEnumerator) {
         drawingBounds = [curGraphic drawingBounds];
         if (NSIntersectsRect(rect, drawingBounds)) {
             [currentContext saveGraphicsState];

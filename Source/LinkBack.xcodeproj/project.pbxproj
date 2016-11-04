@@ -187,7 +187,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0810;
 			};
 			buildConfigurationList = 4A8BBBD608AB123000C5998B /* Build configuration list for PBXProject "LinkBack" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -258,6 +258,7 @@
 			baseConfigurationReference = 4A8BBBEB08AB131E00C5998B /* Omni-Framework-Debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = org.linkbackproject.LinkBack;
 				PRODUCT_NAME = LinkBack;
 			};
 			name = Debug;
@@ -267,6 +268,7 @@
 			baseConfigurationReference = 4A8BBBEC08AB131E00C5998B /* Omni-Framework-Release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = org.linkbackproject.LinkBack;
 				PRODUCT_NAME = LinkBack;
 			};
 			name = Release;
@@ -275,10 +277,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4ADFF51008AB31B200281C2B /* Omni-Global-Debug.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -287,6 +291,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4ADFF51108AB31B200281C2B /* Omni-Global-Release.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;

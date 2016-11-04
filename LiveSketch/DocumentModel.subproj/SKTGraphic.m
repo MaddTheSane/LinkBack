@@ -10,6 +10,11 @@
 NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
 
 @implementation SKTGraphic
+@synthesize bounds = _bounds;
+@synthesize fillColor = _fillColor;
+@synthesize strokeColor = _strokeColor;
+@synthesize strokeLineWidth = _lineWidth;
+@synthesize document = _document;
 
 // =================================== Initialization ===================================
 - (id)init {
@@ -43,13 +48,6 @@ NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
 }
 
 // ========================= Document accessors and conveniences =========================
-- (void)setDocument:(SKTDrawDocument *)document {
-    _document = document;
-}
-
-- (SKTDrawDocument *)document {
-    return _document;
-}
 
 - (NSUndoManager *)undoManager {
     return [[self document] undoManager];
@@ -64,7 +62,7 @@ NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
     [_document invalidateGraphic:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:SKTGraphicDidChangeNotification object:self];
 }
-    
+
 - (void)setBounds:(NSRect)bounds {
     if (!NSEqualRects(bounds, _bounds)) {
         if (!_gFlags.manipulatingBounds) {
@@ -77,10 +75,6 @@ NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
             [self didChange];
         }
     }
-}
-
-- (NSRect)bounds {
-    return _bounds;
 }
 
 - (void)setDrawsFill:(BOOL)flag {
@@ -108,10 +102,6 @@ NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
     }
 }
 
-- (NSColor *)fillColor {
-    return _fillColor;
-}
-
 - (void)setDrawsStroke:(BOOL)flag {
     if (_gFlags.drawsStroke != flag) {
         [[[self undoManager] prepareWithInvocationTarget:self] setDrawsStroke:_gFlags.drawsStroke];
@@ -137,11 +127,7 @@ NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
     }
 }
 
-- (NSColor *)strokeColor {
-    return _strokeColor;
-}
-
-- (void)setStrokeLineWidth:(float)width {
+- (void)setStrokeLineWidth:(CGFloat)width {
     if (_lineWidth != width) {
         [[[self undoManager] prepareWithInvocationTarget:self] setStrokeLineWidth:_lineWidth];
         if (width >= 0.0) {
@@ -153,10 +139,6 @@ NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
         }
         [self didChange];
     }
-}
-
-- (float)strokeLineWidth {
-    return _lineWidth;
 }
 
 // =================================== Extended mutation ===================================
@@ -196,10 +178,10 @@ NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
     return;
 }
 
-+ (int)flipKnob:(int)knob horizontal:(BOOL)horizFlag {
++ (SKTKnobs)flipKnob:(SKTKnobs)knob horizontal:(BOOL)horizFlag {
     static BOOL initedFlips = NO;
-    static int horizFlips[9];
-    static int vertFlips[9];
+    static SKTKnobs horizFlips[9];
+    static SKTKnobs vertFlips[9];
 
     if (!initedFlips) {
         horizFlips[UpperLeftKnob] = UpperRightKnob;
@@ -228,7 +210,7 @@ NSString *SKTGraphicDidChangeNotification = @"SKTGraphicDidChange";
     }
 }
 
-- (int)resizeByMovingKnob:(int)knob toPoint:(NSPoint)point {
+- (SKTKnobs)resizeByMovingKnob:(SKTKnobs)knob toPoint:(NSPoint)point {
     NSRect bounds = [self bounds];
 
     if ((knob == UpperLeftKnob) || (knob == MiddleLeftKnob) || (knob == LowerLeftKnob)) {
@@ -399,13 +381,13 @@ NSString *SKTStrokeLineWidthKey = @"StrokeLineWidth";
     }
 }
 
-- (unsigned)knobMask {
+- (SKTKnobMasks)knobMask {
     return AllKnobsMask;
 }
 
-- (int)knobUnderPoint:(NSPoint)point {
+- (SKTKnobs)knobUnderPoint:(NSPoint)point {
     NSRect bounds = [self bounds];
-    unsigned knobMask = [self knobMask];
+    SKTKnobMasks knobMask = [self knobMask];
     NSRect handleRect;
 
     handleRect.size.width = SKT_HANDLE_WIDTH;
@@ -533,10 +515,10 @@ NSString *SKTStrokeLineWidthKey = @"StrokeLineWidth";
 - (BOOL)createWithEvent:(NSEvent *)theEvent inView:(SKTGraphicView *)view {
     // default implementation tracks until mouseUp: just setting the bounds of the new graphic.
     NSPoint point = [view convertPoint:[theEvent locationInWindow] fromView:nil];
-    int knob = LowerRightKnob;
+    SKTKnobs knob = LowerRightKnob;
     NSRect bounds;
     BOOL snapsToGrid = [view snapsToGrid];
-    float spacing = [view gridSpacing];
+    CGFloat spacing = [view gridSpacing];
     BOOL echoToRulers = [[view enclosingScrollView] rulersVisible];
 
     [self startBoundsManipulation];
@@ -631,41 +613,41 @@ NSString *SKTStrokeLineWidthKey = @"StrokeLineWidth";
     }
 }
 
-- (float)xPosition {
+- (CGFloat)xPosition {
     return [self bounds].origin.x;
 }
 
-- (void)setXPosition:(float)newVal {
+- (void)setXPosition:(CGFloat)newVal {
     NSRect bounds = [self bounds];
     bounds.origin.x = newVal;
     [self setBounds:bounds];
 }
 
-- (float)yPosition {
+- (CGFloat)yPosition {
     return [self bounds].origin.y;
 }
 
-- (void)setYPosition:(float)newVal {
+- (void)setYPosition:(CGFloat)newVal {
     NSRect bounds = [self bounds];
     bounds.origin.y = newVal;
     [self setBounds:bounds];
 }
 
-- (float)width {
+- (CGFloat)width {
     return [self bounds].size.width;
 }
 
-- (void)setWidth:(float)newVal {
+- (void)setWidth:(CGFloat)newVal {
     NSRect bounds = [self bounds];
     bounds.size.width = newVal;
     [self setBounds:bounds];
 }
 
-- (float)height {
+- (CGFloat)height {
     return [self bounds].size.height;
 }
 
-- (void)setHeight:(float)newVal {
+- (void)setHeight:(CGFloat)newVal {
     NSRect bounds = [self bounds];
     bounds.size.height = newVal;
     [self setBounds:bounds];

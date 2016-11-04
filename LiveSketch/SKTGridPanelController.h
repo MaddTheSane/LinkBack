@@ -18,13 +18,13 @@
     SKTGraphicView *_inspectingGraphicView;
 }
 
-+ (id)sharedGridPanelController;
++ (SKTGridPanelController*)sharedGridPanelController;
 
 - (void)updatePanel;
 
 - (BOOL)snapsToGrid;
 - (BOOL)showsGrid;
-- (float)gridSpacing;
+- (CGFloat)gridSpacing;
 - (NSColor *)gridColor;
 
 - (IBAction)snapsToGridCheckboxAction:(id)sender;
@@ -34,7 +34,7 @@
 
 @end
 
-extern void SKTDrawGridWithSettingsInRect(float spacing, NSColor *color, NSRect rect, NSPoint gridOrigin);
+extern void SKTDrawGridWithSettingsInRect(CGFloat spacing, NSColor *color, NSRect rect, NSPoint gridOrigin);
 
 /*
  IMPORTANT:  This Apple software is supplied to you by Apple Computer, Inc. ("Apple") in

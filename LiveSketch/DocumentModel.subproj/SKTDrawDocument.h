@@ -14,31 +14,30 @@
     LinkBack* link ;
 }
 
-- (id)init;
+- (instancetype)init;
 
 // support for live link
 - (void)closeLinkIfNeeded; 
-- (id)initWithLinkBack:(LinkBack*)aLink ; // initing with this causes saving to pass edits through link.  link will also be closed when document is closed.
+- (instancetype)initWithLinkBack:(LinkBack*)aLink ; ///< initing with this causes saving to pass edits through link.  link will also be closed when document is closed.
 
 - (void)makeWindowControllers;
 
-- (NSDictionary *)drawDocumentDictionaryForGraphics:(NSArray *)graphics;
-- (NSData *)drawDocumentDataForGraphics:(NSArray *)graphics;
+- (NSDictionary *)drawDocumentDictionaryForGraphics:(NSArray<SKTGraphic*> *)graphics;
+- (NSData *)drawDocumentDataForGraphics:(NSArray<SKTGraphic*> *)graphics;
 - (NSDictionary *)drawDocumentDictionaryFromData:(NSData *)data;
-- (NSArray *)graphicsFromDrawDocumentDictionary:(NSDictionary *)doc;
+- (NSArray<SKTGraphic*> *)graphicsFromDrawDocumentDictionary:(NSDictionary *)doc;
 
-- (NSRect)boundsForGraphics:(NSArray *)graphics;
-- (NSRect)drawingBoundsForGraphics:(NSArray *)graphics;
-- (NSData *)TIFFRepresentationForGraphics:(NSArray *)graphics;
-- (NSData *)PDFRepresentationForGraphics:(NSArray *)graphics;
+- (NSRect)boundsForGraphics:(NSArray<SKTGraphic*> *)graphics;
+- (NSRect)drawingBoundsForGraphics:(NSArray<SKTGraphic*> *)graphics;
+- (NSData *)TIFFRepresentationForGraphics:(NSArray<SKTGraphic*> *)graphics;
+- (NSData *)PDFRepresentationForGraphics:(NSArray<SKTGraphic*> *)graphics;
 
 - (NSData *)dataRepresentationOfType:(NSString *)type;
 - (BOOL)loadDataRepresentation:(NSData *)data ofType:(NSString *)type;
 
 - (void)printShowingPrintPanel:(BOOL)flag;
 
-- (NSArray *)graphics;
-- (void)setGraphics:(NSArray *)graphics;
+@property (copy) NSArray<SKTGraphic*> *graphics;
 
 - (void)invalidateGraphic:(SKTGraphic *)graphic;
 
@@ -47,8 +46,7 @@
 - (void)removeGraphic:(SKTGraphic *)graphic;
 - (void)moveGraphic:(SKTGraphic *)graphic toIndex:(NSUInteger)newIndex;
 
-- (NSSize)documentSize;
-    // Returns usable document size based on print info paper size and margins.
+@property (readonly) NSSize documentSize; ///< Returns usable document size based on print info paper size and margins.
 
 @end
 

@@ -10,6 +10,8 @@
 #import <LinkBack/LinkBack.h> 
 
 @implementation LinkBackTextAttachment
+@synthesize linkBackData = _linkBackData;
+@synthesize linkBackItemKey = _linkBackItemKey;
 
 - (void)dealloc
 {
@@ -18,27 +20,10 @@
     [super dealloc] ;
 }
 
-- (id)linkBackData 
-{
-    return _linkBackData ;
-}
-
-- (void)setLinkBackData:(id)dta 
-{
-    _linkBackData = [dta copy] ;
-}
-
 - (id)linkBackItemKey 
 {
     if (!_linkBackItemKey) [self setLinkBackItemKey: LinkBackUniqueItemKey()] ;
     return _linkBackItemKey ;
-}
-
-- (void)setLinkBackItemKey:(id)key 
-{
-    key = [key copy] ;
-    [_linkBackItemKey release] ;
-    _linkBackItemKey = key;
 }
 
 @end

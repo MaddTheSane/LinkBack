@@ -41,7 +41,7 @@ NSString *SKTSelectedToolDidChangeNotification = @"SKTSelectedToolDidChange";
 
 - (void)windowDidLoad {
     NSArray *cells = [toolButtons cells];
-    unsigned i, c = [cells count];
+    NSUInteger i, c = [cells count];
     
     [super windowDidLoad];
 
@@ -62,7 +62,7 @@ NSString *SKTSelectedToolDidChangeNotification = @"SKTSelectedToolDidChange";
 }
 
 - (Class)currentGraphicClass {
-    int row = [toolButtons selectedRow];
+    NSInteger row = [toolButtons selectedRow];
     Class theClass = nil;
     if (row == SKTRectToolRow) {
         theClass = [SKTRectangle class];

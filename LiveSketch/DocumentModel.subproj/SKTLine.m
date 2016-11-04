@@ -2,6 +2,7 @@
 // Sketch Example
 //
 
+#include <tgmath.h>
 #import "SKTLine.h"
 #import "SKTGraphicView.h"
 
@@ -69,7 +70,7 @@
     return path;
 }
 
-- (unsigned)knobMask {
+- (SKTKnobMasks)knobMask {
     if ([self startsAtLowerLeft]) {
         return (LowerLeftKnobMask | UpperRightKnobMask);
     } else {
@@ -82,7 +83,7 @@
         return YES;
     } else {
         NSRect bounds = [self bounds];
-        float halfWidth = [self strokeLineWidth] / 2.0;
+        CGFloat halfWidth = [self strokeLineWidth] / 2.0;
         halfWidth += 2.0;  // Fudge
         if (bounds.size.width == 0.0) {
             if (fabs(point.x - bounds.origin.x) <= halfWidth) {

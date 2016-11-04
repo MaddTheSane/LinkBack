@@ -14,10 +14,7 @@
     id _linkBackItemKey ;
 }
 
-- (id)linkBackData ;
-- (void)setLinkBackData:(id)dta ;
-
-- (id)linkBackItemKey ;
-- (void)setLinkBackItemKey:(id)key ;
+@property (copy) id linkBackData ;
+@property (nonatomic, copy) id linkBackItemKey ;
 
 @end

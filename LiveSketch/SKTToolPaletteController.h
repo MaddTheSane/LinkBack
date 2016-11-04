@@ -8,10 +8,10 @@
     IBOutlet NSMatrix *toolButtons;
 }
 
-+ (id)sharedToolPaletteController;
++ (SKTToolPaletteController*)sharedToolPaletteController;
 
 - (IBAction)selectToolAction:(id)sender;
-- (Class)currentGraphicClass;
+@property (readonly) Class currentGraphicClass;
 
 - (void)selectArrowTool;
 

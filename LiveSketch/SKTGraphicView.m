@@ -2,6 +2,7 @@
 // Sketch Example
 //
 
+#include <tgmath.h>
 #import "SKTGraphicView.h"
 #import "SKTDrawWindowController.h"
 #import "SKTDrawDocument.h"
@@ -16,7 +17,7 @@ NSString *SKTGraphicViewSelectionDidChangeNotification = @"SKTGraphicViewSelecti
 
 @implementation SKTGraphicView
 
-static float SKTDefaultPasteCascadeDelta = 10.0;
+static CGFloat SKTDefaultPasteCascadeDelta = 10.0;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -50,13 +51,7 @@ static float SKTDefaultPasteCascadeDelta = 10.0;
 }
 
 // SKTDrawWindowController accessors and convenience methods
-- (void)setDrawWindowController:(SKTDrawWindowController *)theController {
-    controller = theController;
-}
-
-- (SKTDrawWindowController *)drawWindowController {
-    return controller;
-}
+@synthesize drawWindowController = controller;
 
 - (SKTDrawDocument *)drawDocument {
     return [[self drawWindowController] document];
@@ -74,11 +69,10 @@ static float SKTDefaultPasteCascadeDelta = 10.0;
     }
 }
 
-- (void)invalidateGraphics:(NSArray *)graphics {
-    NSUInteger i, c = [graphics count];
-    for (i=0; i<c; i++) {
-        [self invalidateGraphic:[graphics objectAtIndex:i]];
-    }
+- (void)invalidateGraphics:(NSArray<SKTGraphic*> *)graphics {
+	for (SKTGraphic *graph in graphics) {
+		[self invalidateGraphic:graph];
+	}
 }
 
 // Selection primitives
@@ -202,12 +196,9 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
 
 - (NSSet *)graphicsIntersectingRect:(NSRect)rect {
     NSArray *graphics = [self graphics];
-    NSUInteger i, c = [graphics count];
     NSMutableSet *result = [NSMutableSet set];
-    SKTGraphic *curGraphic;
 
-    for (i=0; i<c; i++) {
-        curGraphic = [graphics objectAtIndex:i];
+    for (SKTGraphic *curGraphic in graphics) {
         if (NSIntersectsRect(rect, [curGraphic drawingBounds])) {
             [result addObject:curGraphic];
         }
@@ -355,10 +346,10 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
     return _creatingGraphic;
 }
 
-- (void)trackKnob:(int)knob ofGraphic:(SKTGraphic *)graphic withEvent:(NSEvent *)theEvent {
+- (void)trackKnob:(SKTKnobs)knob ofGraphic:(SKTGraphic *)graphic withEvent:(NSEvent *)theEvent {
     NSPoint point;
     BOOL snapsToGrid = [self snapsToGrid];
-    float spacing = [self gridSpacing];
+    CGFloat spacing = [self gridSpacing];
     BOOL echoToRulers = [[self enclosingScrollView] rulersVisible];
 
     [graphic startBoundsManipulation];
@@ -451,7 +442,7 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
     NSPoint selOriginOffset = NSZeroPoint;
     NSPoint boundsOrigin;
     BOOL snapsToGrid = [self snapsToGrid];
-    float spacing = [self gridSpacing];
+    CGFloat spacing = [self gridSpacing];
     BOOL echoToRulers = [[self enclosingScrollView] rulersVisible];
     NSRect selBounds = [[self drawDocument] boundsForGraphics:selGraphics];
 
@@ -633,7 +624,7 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
 }
 
 // Dragging
-- (unsigned int)dragOperationForDraggingInfo:(id <NSDraggingInfo>)sender {
+- (NSDragOperation)dragOperationForDraggingInfo:(id <NSDraggingInfo>)sender {
     NSPasteboard *pboard = [sender draggingPasteboard];
     NSString *type = [pboard availableTypeFromArray:[NSArray arrayWithObjects:NSColorPboardType, NSFilenamesPboardType, nil]];
     
@@ -657,11 +648,11 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
     return NSDragOperationNone;
 }
 
-- (unsigned int)draggingEntered:(id <NSDraggingInfo>)sender {
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
     return [self dragOperationForDraggingInfo:sender];
 }
 
-- (unsigned int)draggingUpdated:(id <NSDraggingInfo>)sender {
+- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender {
     return [self dragOperationForDraggingInfo:sender];
 }
 
@@ -720,7 +711,7 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
     return YES;
 }
 
-- (float)rulerView:(NSRulerView *)ruler willMoveMarker:(NSRulerMarker *)marker toLocation:(float)location {
+- (CGFloat)rulerView:(NSRulerView *)ruler willMoveMarker:(NSRulerMarker *)marker toLocation:(CGFloat)location {
     return location;
 }
 
@@ -994,7 +985,7 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
         SKTGraphic *curGraphic;
         NSRect curBounds;
         NSPoint curMaxPoint;
-        float spacing = [self gridSpacing];
+        CGFloat spacing = [self gridSpacing];
         
         for (i=0; i<c; i++) {
             curGraphic = [selection objectAtIndex:i];
@@ -1228,11 +1219,9 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
     }
 }
 
-- (float)gridSpacing {
-    return _gridSpacing;
-}
+@synthesize gridSpacing = _gridSpacing;
 
-- (void)setGridSpacing:(float)spacing {
+- (void)setGridSpacing:(CGFloat)spacing {
     if (_gridSpacing != spacing) {
         _gridSpacing = spacing;
         [self setNeedsDisplay:YES];

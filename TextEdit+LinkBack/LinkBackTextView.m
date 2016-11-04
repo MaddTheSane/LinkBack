@@ -18,9 +18,7 @@
     BOOL hasPDF = NO;
     BOOL hasTIFF = NO;
     BOOL hasLinkBack = NO;
-    NSEnumerator* e  = [[pboard types] objectEnumerator] ;
-    id type ;
-    while(type = [e nextObject]) {
+    for (id type in pboard.types) {
         if ([type isEqual: NSTIFFPboardType]) hasTIFF = YES ;
         if ([type isEqual: NSPDFPboardType]) hasPDF = YES ;
         if ([type isEqual: LinkBackPboardType]) hasLinkBack = YES ;

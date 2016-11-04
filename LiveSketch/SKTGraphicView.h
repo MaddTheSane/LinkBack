@@ -3,6 +3,7 @@
 //
 
 #import <AppKit/AppKit.h>
+#import "SKTGraphic.h"
 
 @class SKTDrawWindowController;
 @class SKTDrawDocument;
@@ -14,7 +15,7 @@
 
 @interface SKTGraphicView : NSView {
     @private
-    IBOutlet SKTDrawWindowController *controller;
+    __weak SKTDrawWindowController *controller;
     NSMutableArray *_selectedGraphics;
     SKTGraphic *_creatingGraphic;
     NSRect _rubberbandRect;
@@ -22,9 +23,9 @@
     SKTGraphic *_editingGraphic;
     NSView *_editorView;
     NSInteger _pasteboardChangeCount;
-    int _pasteCascadeNumber;
+    NSInteger _pasteCascadeNumber;
     NSPoint _pasteCascadeDelta;
-    float _gridSpacing;
+    CGFloat _gridSpacing;
     NSColor *_gridColor;
     NSTimer *_unhideKnobsTimer;
     struct __gvFlags {
@@ -40,17 +41,16 @@
 }
 
 // SKTDrawWindowController accessors and convenience methods
-- (void)setDrawWindowController:(SKTDrawWindowController *)theController;
-- (SKTDrawWindowController *)drawWindowController;
+@property (weak) IBOutlet SKTDrawWindowController *drawWindowController;
 - (SKTDrawDocument *)drawDocument;
-- (NSArray *)graphics;
+@property (readonly, copy) NSArray<SKTGraphic*> *graphics;
 
 // Display invalidation
 - (void)invalidateGraphic:(SKTGraphic *)graphic;
 
 // Selection primitives
-- (NSArray *)selectedGraphics;
-- (NSArray *)orderedSelectedGraphics;
+@property (readonly, copy) NSArray<SKTGraphic*> *selectedGraphics;
+@property (readonly, copy) NSArray<SKTGraphic*> *orderedSelectedGraphics;
 - (BOOL)graphicIsSelected:(SKTGraphic *)graphic;
 - (void)selectGraphic:(SKTGraphic *)graphic;
 - (void)deselectGraphic:(SKTGraphic *)graphic;
@@ -65,7 +65,7 @@
 
 // Geometry calculations
 - (SKTGraphic *)graphicUnderPoint:(NSPoint)point;
-- (NSSet *)graphicsIntersectingRect:(NSRect)rect;
+- (NSSet<SKTGraphic *> *)graphicsIntersectingRect:(NSRect)rect;
 
 // Drawing and mouse tracking
 - (void)drawRect:(NSRect)rect;
@@ -76,16 +76,16 @@
 
 - (void)createGraphicOfClass:(Class)theClass withEvent:(NSEvent *)theEvent;
 - (SKTGraphic *)creatingGraphic;
-- (void)trackKnob:(int)knob ofGraphic:(SKTGraphic *)graphic withEvent:(NSEvent *)theEvent;
+- (void)trackKnob:(SKTKnobs)knob ofGraphic:(SKTGraphic *)graphic withEvent:(NSEvent *)theEvent;
 - (void)rubberbandSelectWithEvent:(NSEvent *)theEvent;
 - (void)moveSelectedGraphicsWithEvent:(NSEvent *)theEvent;
 - (void)selectAndTrackMouseWithEvent:(NSEvent *)theEvent;
 - (void)mouseDown:(NSEvent *)theEvent;
 
 // Dragging
-- (unsigned int)dragOperationForDraggingInfo:(id <NSDraggingInfo>)sender;
-- (unsigned int)draggingEntered:(id <NSDraggingInfo>)sender;
-- (unsigned int)draggingUpdated:(id <NSDraggingInfo>)sender;
+- (NSDragOperation)dragOperationForDraggingInfo:(id <NSDraggingInfo>)sender;
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender;
+- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender;
 - (void)draggingExited:(id <NSDraggingInfo>)sender;
 - (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender;
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender;
@@ -94,7 +94,7 @@
 // Ruler support
 - (void)updateRulers;
 - (BOOL)rulerView:(NSRulerView *)ruler shouldMoveMarker:(NSRulerMarker *)marker;
-- (float)rulerView:(NSRulerView *)ruler willMoveMarker:(NSRulerMarker *)marker toLocation:(float)location;
+- (CGFloat)rulerView:(NSRulerView *)ruler willMoveMarker:(NSRulerMarker *)marker toLocation:(CGFloat)location;
 - (void)rulerView:(NSRulerView *)ruler didMoveMarker:(NSRulerMarker *)marker;
 - (BOOL)rulerView:(NSRulerView *)ruler shouldRemoveMarker:(NSRulerMarker *)marker;
 
@@ -121,14 +121,10 @@
 - (IBAction)gridSelectedGraphicsAction:(id)sender;
 
 // Grid settings
-- (BOOL)snapsToGrid;
-- (void)setSnapsToGrid:(BOOL)flag;
-- (BOOL)showsGrid;
-- (void)setShowsGrid:(BOOL)flag;
-- (float)gridSpacing;
-- (void)setGridSpacing:(float)spacing;
-- (NSColor *)gridColor;
-- (void)setGridColor:(NSColor *)color;
+@property (nonatomic) BOOL snapsToGrid;
+@property (nonatomic) BOOL showsGrid;
+@property (nonatomic) CGFloat gridSpacing;
+@property (atomic, strong) NSColor *gridColor;
 
 @end
 
