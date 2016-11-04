@@ -183,7 +183,7 @@ NSString* LinkBackEditNoneMenuTitle(void)
 - (NSTimeInterval)linkBackSuggestedRefreshRate 
 {
 	id obj = [self objectForKey: LinkBackSuggestedRefreshKey] ;
-	return (obj) ? [obj floatValue] : 0 ;
+	return (obj) ? [obj doubleValue] : 0 ;
 }
 
 - (NSURL*)linkBackApplicationURL 
@@ -228,7 +228,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 
     peer = [aLinkBack retain] ;
     sourceName = [[peer sourceName] copy] ;
-            sourceApplicationName = [[peer sourceApplicationName] copy] ;
+    sourceApplicationName = [[peer sourceApplicationName] copy] ;
     key = [[peer itemKey] copy] ;
     isServer = YES ;
     delegate = aDel ;
@@ -247,7 +247,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
     isServer = NO ;
     delegate = aDel ;
     sourceName = [aName copy] ;
-            sourceApplicationName = [[NSProcessInfo processInfo] processName] ;
+    sourceApplicationName = [[[NSProcessInfo processInfo] processName] copy] ;
     pboard = [[NSPasteboard pasteboardWithUniqueName] retain] ;
     key = [aKey copy] ;
     
@@ -260,6 +260,8 @@ NSMutableDictionary* keyedLinkBacks = nil ;
     
     [repobj release] ;
     [sourceName release] ;
+    [sourceApplicationName release];
+    [key release];
     
     if (peer) [self closeLink] ;
     [peer release] ;
@@ -275,21 +277,9 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 
 @synthesize pasteboard = pboard;
 @synthesize representedObject = repobj;
-
-- (NSString*)sourceName
-{
-    return sourceName ;
-}
-
-- (NSString*)sourceApplicationName 
-{
-	return sourceApplicationName ;
-}
-
-- (NSString*)itemKey
-{
-    return key ;
-}
+@synthesize sourceName;
+@synthesize sourceApplicationName;
+@synthesize itemKey = key;
 
 // this method is called to initial a link closure from this side.
 - (void)closeLink 

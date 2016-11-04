@@ -35,6 +35,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class LinkBack ;
 @protocol LinkBackServerDelegate, LinkBackClientDelegate ;
 
@@ -59,7 +61,7 @@ NSString* MakeLinkBackServerName(NSString* bundleIdentifier, NSString* name) ;
 + (BOOL)publishServerWithName:(NSString*)name delegate:(id<LinkBackServerDelegate>)del ;
 + (BOOL)publishServerWithName:(NSString*)name bundleIdentifier:(NSString *)bundleID delegate:(id<LinkBackServerDelegate>)del ;
 
-+ (LinkBackServer*)LinkBackServerWithName:(NSString*)name inApplication:(NSString*)bundleIdentifier launchIfNeeded:(BOOL)flag fallbackURL:(NSURL*)url appName:(NSString*)appName ;
++ (nullable LinkBackServer*)LinkBackServerWithName:(NSString*)name inApplication:(NSString*)bundleIdentifier launchIfNeeded:(BOOL)flag fallbackURL:(NSURL*)url appName:(NSString*)appName ;
 
 // This method is used by clients to connect 
 
@@ -69,3 +71,5 @@ NSString* MakeLinkBackServerName(NSString* bundleIdentifier, NSString* name) ;
 - (void)retract ;
 
 @end
+
+NS_ASSUME_NONNULL_END
