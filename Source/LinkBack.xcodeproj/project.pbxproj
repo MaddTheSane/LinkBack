@@ -21,10 +21,10 @@
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		203AFD770687DA7000B08189 /* LinkBack.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LinkBack.h; sourceTree = "<group>"; };
-		203AFD780687DA7000B08189 /* LinkBack.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = LinkBack.m; sourceTree = "<group>"; };
-		203AFD790687DA7000B08189 /* LinkBackServer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LinkBackServer.h; sourceTree = "<group>"; };
-		203AFD7A0687DA7000B08189 /* LinkBackServer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = LinkBackServer.m; sourceTree = "<group>"; };
+		203AFD770687DA7000B08189 /* LinkBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkBack.h; sourceTree = "<group>"; };
+		203AFD780687DA7000B08189 /* LinkBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkBack.m; sourceTree = "<group>"; };
+		203AFD790687DA7000B08189 /* LinkBackServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkBackServer.h; sourceTree = "<group>"; };
+		203AFD7A0687DA7000B08189 /* LinkBackServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkBackServer.m; sourceTree = "<group>"; };
 		20E80E6407F2116B0060ED13 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localized.strings; sourceTree = "<group>"; };
 		32DBCF5E0370ADEE00C91783 /* LinkBack_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkBack_Prefix.pch; sourceTree = "<group>"; };
 		4A8BBBE808AB131E00C5998B /* Omni-Application-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Omni-Application-Debug.xcconfig"; sourceTree = "<group>"; };

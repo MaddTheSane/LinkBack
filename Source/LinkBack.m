@@ -36,20 +36,20 @@
 #import "LinkBack.h"
 #import "LinkBackServer.h"
 
-NSString* LinkBackPboardType = @"LinkBackData" ;
+NSString*const LinkBackPboardType = @"LinkBackData" ;
 
 // LinkBack data keys.  These are used in a LinkBack object, which is currently a dictionary.  Do not depend on these values.  They are public for testing purposes only.
-NSString* LinkBackServerActionKey = @"serverActionKey" ;
-NSString* LinkBackServerApplicationNameKey = @"serverAppName" ;
-NSString* LinkBackServerNameKey = @"serverName" ;
-NSString* LinkBackServerBundleIdentifierKey = @"bundleId" ;
-NSString* LinkBackVersionKey = @"version" ;
-NSString* LinkBackApplicationDataKey = @"appData" ;
-NSString* LinkBackSuggestedRefreshKey = @"refresh" ;
-NSString* LinkBackApplicationURLKey = @"ApplicationURL" ;
+NSString*const LinkBackServerActionKey = @"serverActionKey" ;
+NSString*const LinkBackServerApplicationNameKey = @"serverAppName" ;
+NSString*const LinkBackServerNameKey = @"serverName" ;
+NSString*const LinkBackServerBundleIdentifierKey = @"bundleId" ;
+NSString*const LinkBackVersionKey = @"version" ;
+NSString*const LinkBackApplicationDataKey = @"appData" ;
+NSString*const LinkBackSuggestedRefreshKey = @"refresh" ;
+NSString*const LinkBackApplicationURLKey = @"ApplicationURL" ;
 
-NSString* LinkBackEditActionName = @"_Edit" ;
-NSString* LinkBackRefreshActionName = @"_Refresh" ;
+NSString*const LinkBackEditActionName = @"_Edit" ;
+NSString*const LinkBackRefreshActionName = @"_Refresh" ;
 
 // ...........................................................................
 // Support Functions

@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol LinkBackServerDelegate, LinkBackClientDelegate ;
 
 @protocol LinkBackServer <NSObject>
-- (LinkBack*)initiateLinkBackFromClient:(LinkBack*)clientLinkBack ;
+- (nullable LinkBack*)initiateLinkBackFromClient:(LinkBack*)clientLinkBack ;
 @end
 
 /// This method is used as the standard way of constructing the actual server name a live link connection is posted under.  It is constructed from the name and identifier.
@@ -55,17 +55,16 @@ NSString* MakeLinkBackServerName(NSString* bundleIdentifier, NSString* name) ;
     __unsafe_unretained id<LinkBackServerDelegate> delegate ;
 }
 
-+ (LinkBackServer*)LinkBackServerWithName:(NSString*)name;
-+ (LinkBackServer*)LinkBackServerWithName:(NSString*)aName bundleIdentifier:(NSString *)bundleID;
++ (nullable LinkBackServer*)LinkBackServerWithName:(NSString*)name;
++ (nullable LinkBackServer*)LinkBackServerWithName:(NSString*)aName bundleIdentifier:(NSString *)bundleID;
 
 + (BOOL)publishServerWithName:(NSString*)name delegate:(id<LinkBackServerDelegate>)del ;
 + (BOOL)publishServerWithName:(NSString*)name bundleIdentifier:(NSString *)bundleID delegate:(id<LinkBackServerDelegate>)del ;
 
 + (nullable LinkBackServer*)LinkBackServerWithName:(NSString*)name inApplication:(NSString*)bundleIdentifier launchIfNeeded:(BOOL)flag fallbackURL:(NSURL*)url appName:(NSString*)appName ;
 
-// This method is used by clients to connect 
-
-- (id)initWithName:(NSString*)name bundleIdentifier:(NSString *)bundleID delegate:(id<LinkBackServerDelegate>)aDel;
+/// This method is used by clients to connect
+- (instancetype)initWithName:(NSString*)name bundleIdentifier:(NSString *)bundleID delegate:(id<LinkBackServerDelegate>)aDel;
 
 - (BOOL)publish ; ///< creates the connection and adds to the list.
 - (void)retract ;
