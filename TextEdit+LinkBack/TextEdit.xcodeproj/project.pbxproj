@@ -46,6 +46,7 @@
 		55877E1C1DCAC93F00052688 /* LinkBackTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D86796067FAD24001F0052 /* LinkBackTextView.m */; };
 		55877E1D1DCAC93F00052688 /* LinkBackTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D867A0067FC607001F0052 /* LinkBackTextAttachment.m */; };
 		55877E201DCAC93F00052688 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0230D2BAFF2F83FC11CA0C5D /* Cocoa.framework */; };
+		55AAD71C1E127E8B00027287 /* LinkBack.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55877EA91DCACA3400052688 /* LinkBack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				55AAD71C1E127E8B00027287 /* LinkBack.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,8 +286,6 @@
 				55877DFF1DCAC93F00052688 /* Resources */,
 				55877E131DCAC93F00052688 /* Sources */,
 				55877E1E1DCAC93F00052688 /* Frameworks */,
-				55877E211DCAC93F00052688 /* Rez */,
-				55877E221DCAC93F00052688 /* ShellScript */,
 				55877E231DCAC93F00052688 /* CopyFiles */,
 			);
 			buildRules = (
@@ -365,28 +365,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXRezBuildPhase section */
-		55877E211DCAC93F00052688 /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXRezBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		55877E221DCAC93F00052688 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# This shell-script build phase happens only when installing and causes the \n# project sources (which are shipped as an example) to be installed along \n# with the application.\n\nEXAMPLESDIR=${SYSTEM_DEVELOPER_DIR}/Examples/AppKit\n\n# install the source\npbxbuild installsrc \"SYMROOT=${SYMROOT}\" \"OBJROOT=${OBJROOT}\" \"DSTROOT=${DSTROOT}\" \"SRCROOT=${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME}\"\n\n# strip out garbage\nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \"*~\" -exec rm -rf {} \\; -prune ; \nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \"*~.*\" -exec rm -rf {} \\; -prune ; \nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -type d -name \"CVS\" -exec rm -rf {} \\; -prune ;\nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \"*.pbxuser\" -exec rm -rf {} \\; ;\nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \".nfs*\" -exec rm -rf {} \\; ;\nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \".gdb*\" -exec rm -rf {} \\; ;\nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \".#*\" -exec rm -rf {} \\; ;\nfind ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME} -name \".DS_Store\" -exec rm -rf {} \\; ;rm -rf ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME}/build\n\n# set permissions\t\nchmod -R u+rwX,go+rX,go-w ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME}\n\nif [ z\"WINDOWS\" != z\"${OS}\" ] ; then\n    chown -R ${INSTALL_OWNER}.${INSTALL_GROUP} ${DSTROOT}${EXAMPLESDIR}/${PRODUCT_NAME}\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55877E131DCAC93F00052688 /* Sources */ = {
