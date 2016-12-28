@@ -16,9 +16,9 @@
 		55877DFC1DCAC93F00052688 /* EncodingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 92A68B0A02972957007F9DE6 /* EncodingManager.h */; };
 		55877DFD1DCAC93F00052688 /* LinkBackTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D86795067FAD24001F0052 /* LinkBackTextView.h */; };
 		55877DFE1DCAC93F00052688 /* LinkBackTextAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D8679F067FC607001F0052 /* LinkBackTextAttachment.h */; };
-		55877E001DCAC93F00052688 /* EncodingAccessory.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE2090CFE93D5F211CA2CEA /* EncodingAccessory.nib */; };
-		55877E011DCAC93F00052688 /* Preferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE20910FE93D5F211CA2CEA /* Preferences.nib */; };
-		55877E021DCAC93F00052688 /* Edit.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE20912FE93D5F211CA2CEA /* Edit.nib */; };
+		55877E001DCAC93F00052688 /* EncodingAccessory.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE2090CFE93D5F211CA2CEA /* EncodingAccessory.xib */; };
+		55877E011DCAC93F00052688 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE20910FE93D5F211CA2CEA /* Preferences.xib */; };
+		55877E021DCAC93F00052688 /* Edit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE20912FE93D5F211CA2CEA /* Edit.xib */; };
 		55877E031DCAC93F00052688 /* txt.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6FE2091CFE93D5F211CA2CEA /* txt.icns */; };
 		55877E041DCAC93F00052688 /* ZoomValues.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FE2091DFE93D5F211CA2CEA /* ZoomValues.strings */; };
 		55877E051DCAC93F00052688 /* Edit.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6FE2091FFE93D5F211CA2CEA /* Edit.icns */; };
@@ -31,10 +31,10 @@
 		55877E0C1DCAC93F00052688 /* LaunchTime.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AFBD2A3FEF07EFB11CA0C5D /* LaunchTime.strings */; };
 		55877E0D1DCAC93F00052688 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01AA5997FF66FE3311CA0C5D /* InfoPlist.strings */; };
 		55877E0E1DCAC93F00052688 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0145EA020017ED0A11CA0C5D /* Credits.rtf */; };
-		55877E0F1DCAC93F00052688 /* DocumentWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = F549503200E2A3BB01CA0CA4 /* DocumentWindow.nib */; };
-		55877E101DCAC93F00052688 /* SelectEncodingsPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 92A68B1702972AB9007F9DE6 /* SelectEncodingsPanel.nib */; };
+		55877E0F1DCAC93F00052688 /* DocumentWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F549503200E2A3BB01CA0CA4 /* DocumentWindow.xib */; };
+		55877E101DCAC93F00052688 /* SelectEncodingsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92A68B1702972AB9007F9DE6 /* SelectEncodingsPanel.xib */; };
 		55877E111DCAC93F00052688 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41249AD503895A6700F1DAE5 /* ServicesMenu.strings */; };
-		55877E121DCAC93F00052688 /* RichTextDocumentFormatAccessory.nib in Resources */ = {isa = PBXBuildFile; fileRef = 41D4821C041D087C00CA0C9F /* RichTextDocumentFormatAccessory.nib */; };
+		55877E121DCAC93F00052688 /* RichTextDocumentFormatAccessory.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D4821C041D087C00CA0C9F /* RichTextDocumentFormatAccessory.xib */; };
 		55877E141DCAC93F00052688 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE208FBFE93D5F211CA2CEA /* Document.m */; settings = {ATTRIBUTES = (); }; };
 		55877E151DCAC93F00052688 /* DocumentReadWrite.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE208FCFE93D5F211CA2CEA /* DocumentReadWrite.m */; settings = {ATTRIBUTES = (); }; };
 		55877E161DCAC93F00052688 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE208FDFE93D5F211CA2CEA /* Controller.m */; settings = {ATTRIBUTES = (); }; };
@@ -85,7 +85,7 @@
 		20D8679F067FC607001F0052 /* LinkBackTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkBackTextAttachment.h; sourceTree = "<group>"; };
 		20D867A0067FC607001F0052 /* LinkBackTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkBackTextAttachment.m; sourceTree = "<group>"; };
 		41249AD603895A6700F1DAE5 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
-		41D4821D041D087C00CA0C9F /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/RichTextDocumentFormatAccessory.nib; sourceTree = "<group>"; };
+		41D4821D041D087C00CA0C9F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/RichTextDocumentFormatAccessory.xib; sourceTree = "<group>"; };
 		55877E291DCAC93F00052688 /* Info-TextEdit__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-TextEdit__Upgraded_.plist"; sourceTree = "<group>"; };
 		55877E2A1DCAC93F00052688 /* TextEdit+LiveLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TextEdit+LiveLink.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FE208FBFE93D5F211CA2CEA /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; usesTabs = 0; };
@@ -100,9 +100,9 @@
 		6FE20907FE93D5F211CA2CEA /* ScalingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalingScrollView.h; sourceTree = "<group>"; };
 		6FE20908FE93D5F211CA2CEA /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		6FE2090AFE93D5F211CA2CEA /* Edit_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edit_main.m; sourceTree = "<group>"; };
-		6FE2090DFE93D5F211CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/EncodingAccessory.nib; sourceTree = "<group>"; };
-		6FE20911FE93D5F211CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Preferences.nib; sourceTree = "<group>"; };
-		6FE20914FE93D5F211CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Edit.nib; sourceTree = "<group>"; };
+		6FE2090DFE93D5F211CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/EncodingAccessory.xib; sourceTree = "<group>"; };
+		6FE20911FE93D5F211CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
+		6FE20914FE93D5F211CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Edit.xib; sourceTree = "<group>"; };
 		6FE2091CFE93D5F211CA2CEA /* txt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = txt.icns; sourceTree = "<group>"; };
 		6FE2091EFE93D5F211CA2CEA /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ZoomValues.strings; sourceTree = "<group>"; };
 		6FE2091FFE93D5F211CA2CEA /* Edit.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Edit.icns; sourceTree = "<group>"; };
@@ -116,8 +116,8 @@
 		6FE20938FE93D5F211CA2CEA /* TextEdit.scatterload */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TextEdit.scatterload; sourceTree = "<group>"; };
 		92A68B0A02972957007F9DE6 /* EncodingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodingManager.h; sourceTree = "<group>"; };
 		92A68B0B02972957007F9DE6 /* EncodingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingManager.m; sourceTree = "<group>"; };
-		92A68B1802972AB9007F9DE6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/SelectEncodingsPanel.nib; sourceTree = "<group>"; };
-		F549503200E2A3BB01CA0CA4 /* DocumentWindow.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = DocumentWindow.nib; sourceTree = "<group>"; };
+		92A68B1802972AB9007F9DE6 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/SelectEncodingsPanel.xib; sourceTree = "<group>"; };
+		F549503200E2A3BB01CA0CA4 /* DocumentWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,12 +202,12 @@
 		6FE2090BFE93D5F211CA2CEA /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				F549503200E2A3BB01CA0CA4 /* DocumentWindow.nib */,
-				6FE20912FE93D5F211CA2CEA /* Edit.nib */,
-				6FE20910FE93D5F211CA2CEA /* Preferences.nib */,
-				6FE2090CFE93D5F211CA2CEA /* EncodingAccessory.nib */,
-				92A68B1702972AB9007F9DE6 /* SelectEncodingsPanel.nib */,
-				41D4821C041D087C00CA0C9F /* RichTextDocumentFormatAccessory.nib */,
+				F549503200E2A3BB01CA0CA4 /* DocumentWindow.xib */,
+				6FE20912FE93D5F211CA2CEA /* Edit.xib */,
+				6FE20910FE93D5F211CA2CEA /* Preferences.xib */,
+				6FE2090CFE93D5F211CA2CEA /* EncodingAccessory.xib */,
+				92A68B1702972AB9007F9DE6 /* SelectEncodingsPanel.xib */,
+				41D4821C041D087C00CA0C9F /* RichTextDocumentFormatAccessory.xib */,
 			);
 			name = Interfaces;
 			sourceTree = "<group>";
@@ -342,9 +342,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55877E001DCAC93F00052688 /* EncodingAccessory.nib in Resources */,
-				55877E011DCAC93F00052688 /* Preferences.nib in Resources */,
-				55877E021DCAC93F00052688 /* Edit.nib in Resources */,
+				55877E001DCAC93F00052688 /* EncodingAccessory.xib in Resources */,
+				55877E011DCAC93F00052688 /* Preferences.xib in Resources */,
+				55877E021DCAC93F00052688 /* Edit.xib in Resources */,
 				55877E031DCAC93F00052688 /* txt.icns in Resources */,
 				55877E041DCAC93F00052688 /* ZoomValues.strings in Resources */,
 				55877E051DCAC93F00052688 /* Edit.icns in Resources */,
@@ -357,10 +357,10 @@
 				55877E0C1DCAC93F00052688 /* LaunchTime.strings in Resources */,
 				55877E0D1DCAC93F00052688 /* InfoPlist.strings in Resources */,
 				55877E0E1DCAC93F00052688 /* Credits.rtf in Resources */,
-				55877E0F1DCAC93F00052688 /* DocumentWindow.nib in Resources */,
-				55877E101DCAC93F00052688 /* SelectEncodingsPanel.nib in Resources */,
+				55877E0F1DCAC93F00052688 /* DocumentWindow.xib in Resources */,
+				55877E101DCAC93F00052688 /* SelectEncodingsPanel.xib in Resources */,
 				55877E111DCAC93F00052688 /* ServicesMenu.strings in Resources */,
-				55877E121DCAC93F00052688 /* RichTextDocumentFormatAccessory.nib in Resources */,
+				55877E121DCAC93F00052688 /* RichTextDocumentFormatAccessory.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,36 +419,36 @@
 			name = ServicesMenu.strings;
 			sourceTree = "<group>";
 		};
-		41D4821C041D087C00CA0C9F /* RichTextDocumentFormatAccessory.nib */ = {
+		41D4821C041D087C00CA0C9F /* RichTextDocumentFormatAccessory.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				41D4821D041D087C00CA0C9F /* English */,
 			);
-			name = RichTextDocumentFormatAccessory.nib;
+			name = RichTextDocumentFormatAccessory.xib;
 			sourceTree = "<group>";
 		};
-		6FE2090CFE93D5F211CA2CEA /* EncodingAccessory.nib */ = {
+		6FE2090CFE93D5F211CA2CEA /* EncodingAccessory.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6FE2090DFE93D5F211CA2CEA /* English */,
 			);
-			name = EncodingAccessory.nib;
+			name = EncodingAccessory.xib;
 			sourceTree = "<group>";
 		};
-		6FE20910FE93D5F211CA2CEA /* Preferences.nib */ = {
+		6FE20910FE93D5F211CA2CEA /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6FE20911FE93D5F211CA2CEA /* English */,
 			);
-			name = Preferences.nib;
+			name = Preferences.xib;
 			sourceTree = "<group>";
 		};
-		6FE20912FE93D5F211CA2CEA /* Edit.nib */ = {
+		6FE20912FE93D5F211CA2CEA /* Edit.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6FE20914FE93D5F211CA2CEA /* English */,
 			);
-			name = Edit.nib;
+			name = Edit.xib;
 			sourceTree = "<group>";
 		};
 		6FE2091DFE93D5F211CA2CEA /* ZoomValues.strings */ = {
@@ -467,12 +467,12 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		92A68B1702972AB9007F9DE6 /* SelectEncodingsPanel.nib */ = {
+		92A68B1702972AB9007F9DE6 /* SelectEncodingsPanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				92A68B1802972AB9007F9DE6 /* English */,
 			);
-			name = SelectEncodingsPanel.nib;
+			name = SelectEncodingsPanel.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
