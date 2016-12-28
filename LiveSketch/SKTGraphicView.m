@@ -23,7 +23,7 @@ static CGFloat SKTDefaultPasteCascadeDelta = 10.0;
     self = [super initWithFrame:frame];
     if (self) {
         NSMutableArray *dragTypes = [NSMutableArray arrayWithObjects:NSColorPboardType, NSFilenamesPboardType, nil];
-        [dragTypes addObjectsFromArray:[NSImage imagePasteboardTypes]];
+        [dragTypes addObjectsFromArray:[NSImage imageTypes]];
         [self registerForDraggedTypes:dragTypes];
         _selectedGraphics = [[NSMutableArray alloc] init];
         _creatingGraphic = nil;
@@ -590,7 +590,7 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
 
 // SKTImage graphic creation
 - (BOOL)makeNewImageFromPasteboard:(NSPasteboard *)pboard atPoint:(NSPoint)point {
-    NSString *type = [pboard availableTypeFromArray:[NSImage imagePasteboardTypes]];
+    NSString *type = [pboard availableTypeFromArray:[NSImage imageTypes]];
     if (type) {
         NSImage *contents = [[NSImage alloc] initWithPasteboard:pboard];
         if (contents) {
@@ -640,7 +640,7 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
         }
     }
 
-    type = [pboard availableTypeFromArray:[NSImage imagePasteboardTypes]];
+    type = [pboard availableTypeFromArray:[NSImage imageTypes]];
     if (type) {
         return NSDragOperationCopy;
     }
@@ -1050,7 +1050,7 @@ static NSComparisonResult SKT_orderGraphicsFrontToBack(id graphic1, id graphic2,
         [pboard setData:[document PDFRepresentationForGraphics:orderedSelection] forType:NSPDFPboardType];
         
         // save the pboard data for LinkBack.
-        [pboard setPropertyList: MakeLinkBackData(@"sketch", dta) forType: LinkBackPboardType] ;
+		[pboard setPropertyList: [NSDictionary linkBackDataWithServerName: @"sketch" appData: dta] forType: LinkBackPboardType] ;
             
         _pasteboardChangeCount = [pboard changeCount];
         _pasteCascadeNumber = 1;

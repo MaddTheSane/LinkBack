@@ -38,7 +38,7 @@ NSString *SKTDrawDocumentType = @"Apple Sketch Graphic Format";
         
         // get graphics from link
         id linkBackData = [[link pasteboard] propertyListForType: LinkBackPboardType] ;
-        id graphics = LinkBackGetAppData(linkBackData) ;
+        id graphics = [linkBackData linkBackAppData] ;
         graphics = [self drawDocumentDictionaryFromData: graphics] ;
         graphics = [self graphicsFromDrawDocumentDictionary: graphics] ;
         [self setGraphics: graphics] ;
@@ -84,7 +84,7 @@ NSString *SKTDrawDocumentType = @"Apple Sketch Graphic Format";
             [pboard setData:[self PDFRepresentationForGraphics: sel] forType:NSPDFPboardType];
             
             // save the pboard data for LinkBack.
-            [pboard setPropertyList: MakeLinkBackData(@"sketch", dta) forType: LinkBackPboardType] ;
+			[pboard setPropertyList: [NSDictionary linkBackDataWithServerName:@"sketch" appData: dta] forType: LinkBackPboardType] ;
             
             [link sendEdit] ;
             
@@ -236,7 +236,7 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
 
     [[window contentView] addSubview:view];
     printOp = [NSPrintOperation PDFOperationWithView:view insideRect:bounds toData:pdfData printInfo:printInfo];
-    [printOp setShowPanels:NO];
+    [printOp setShowsProgressPanel:NO];
 
     if ([printOp runOperation]) {
         //[pdfData autorelease];
@@ -320,7 +320,7 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
 
     [[window contentView] addSubview:view];
     printOp = [NSPrintOperation printOperationWithView:view printInfo:printInfo];
-    [printOp setShowPanels:flag];
+    [printOp setShowsPrintPanel:flag];
     [printOp setCanSpawnSeparateThread:YES];
 
     if (docWindow) {

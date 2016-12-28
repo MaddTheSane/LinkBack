@@ -88,7 +88,7 @@
 		41D4821D041D087C00CA0C9F /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/RichTextDocumentFormatAccessory.nib; sourceTree = "<group>"; };
 		55877E291DCAC93F00052688 /* Info-TextEdit__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-TextEdit__Upgraded_.plist"; sourceTree = "<group>"; };
 		55877E2A1DCAC93F00052688 /* TextEdit+LiveLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TextEdit+LiveLink.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FE208FBFE93D5F211CA2CEA /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		6FE208FBFE93D5F211CA2CEA /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; usesTabs = 0; };
 		6FE208FCFE93D5F211CA2CEA /* DocumentReadWrite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentReadWrite.m; sourceTree = "<group>"; };
 		6FE208FDFE93D5F211CA2CEA /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		6FE208FEFE93D5F211CA2CEA /* ScalingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalingScrollView.m; sourceTree = "<group>"; };

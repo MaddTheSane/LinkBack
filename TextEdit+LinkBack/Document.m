@@ -414,7 +414,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 /* We take "viewSize" to mean the pure size of the text area, so margins or line fragment paddings don't count. The ruler ends up being included though.
 */
 - (NSSize)viewSize {
-    NSSize size = [NSScrollView contentSizeForFrameSize:[scrollView frame].size hasHorizontalScroller:[scrollView hasHorizontalScroller] hasVerticalScroller:[scrollView hasVerticalScroller] borderType:[scrollView borderType]];
+    NSSize size = [NSScrollView frameSizeForContentSize:[scrollView frame].size horizontalScrollerClass:[[scrollView horizontalScroller] class] verticalScrollerClass:[[scrollView verticalScroller] class] borderType:[scrollView borderType] controlSize:[[scrollView verticalScroller] controlSize] scrollerStyle:[scrollView scrollerStyle]];
     if (![self hasMultiplePages]) {
         size.width -= (defaultTextPadding() * 2.0);
     } 
@@ -428,7 +428,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
     if (![self hasMultiplePages]) {
         size.width += (defaultTextPadding() * 2.0);
     }
-    scrollViewSize = [NSScrollView frameSizeForContentSize:size hasHorizontalScroller:[scrollView hasHorizontalScroller] hasVerticalScroller:[scrollView hasVerticalScroller] borderType:[scrollView borderType]];
+    scrollViewSize = [NSScrollView frameSizeForContentSize:size horizontalScrollerClass:[[scrollView horizontalScroller] class] verticalScrollerClass:[[scrollView verticalScroller] class] borderType:[scrollView borderType] controlSize:[[scrollView verticalScroller] controlSize] scrollerStyle:[scrollView scrollerStyle]];
     [window setContentSize:scrollViewSize];
     [window setFrameTopLeftPoint:NSMakePoint(origWindowFrame.origin.x, NSMaxY(origWindowFrame))];
 }
@@ -854,7 +854,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 
 - (void)printDocumentUsingPrintPanel:(BOOL)uiFlag {
     NSPrintOperation *op = [NSPrintOperation printOperationWithView:[scrollView documentView] printInfo:[self printInfo]];
-    [op setShowPanels:uiFlag];
+    [op setShowsPrintPanel:uiFlag];
     [op runOperationModalForWindow:[self window] delegate:nil didRunSelector:NULL contextInfo:NULL];
 }
 
@@ -890,17 +890,20 @@ activeLinks = [[NSMutableArray alloc] init] ;
     NSDictionary *attrs;
     // If we are rich and any ofthe text attrs have been changed from the default, then put up an alert first...
     if (isRichText && (length > 0) && (attrs = [textStorage attributesAtIndex:0 effectiveRange:&range]) && ((attrs == nil) || (range.length < length) || ![[self defaultTextAttributes:YES] isEqual:attrs])) {
-        NSBeginAlertSheet(NSLocalizedString(@"Convert document to plain text?", @"Title of alert confirming Make Plain Text"),
-                        NSLocalizedString(@"OK", @"OK"), NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel."), nil, [self window], 
-                        self, NULL, @selector(didEndToggleRichSheet:returnCode:contextInfo:), NULL,
-                        NSLocalizedString(@"Converting will lose fonts, colors, and other text styles in the document.", @"Subtitle of alert confirming Make Plain Text"));
+		NSAlert *alert = [NSAlert new];
+		alert.messageText = NSLocalizedString(@"Convert document to plain text?", @"Title of alert confirming Make Plain Text");
+		alert.informativeText = NSLocalizedString(@"Converting will lose fonts, colors, and other text styles in the document.", @"Subtitle of alert confirming Make Plain Text");
+		[alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+		[alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel.")];
+		[alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+			if (returnCode == NSAlertFirstButtonReturn) {
+				[self doToggleRich];
+			}
+		}];
+		[alert autorelease];
     } else {
         [self doToggleRich];
     }
-}
-
-- (void)didEndToggleRichSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-    if (returnCode == NSAlertDefaultReturn) [self doToggleRich];
 }
 
 
@@ -914,7 +917,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
 }
 
 - (void)doPageLayout:(id)sender {
-    NSPrintInfo *tempPrintInfo = [[self printInfo] copy];
+    NSPrintInfo *tempPrintInfo = [self.printInfo copy];
     NSPageLayout *pageLayout = [NSPageLayout pageLayout];
     [pageLayout beginSheetWithPrintInfo:tempPrintInfo modalForWindow:[self window] delegate:self didEndSelector:@selector(didEndPageLayout:returnCode:contextInfo:) contextInfo:(void *)tempPrintInfo];
 }
@@ -932,10 +935,13 @@ activeLinks = [[NSMutableArray alloc] init] ;
     if (![self loadFromPath:revertDocumentName encoding:documentEncoding ignoreRTF:openedIgnoringRTF ignoreHTML:openedIgnoringHTML]) {
         NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Couldn\\U2019t revert to saved version of %@.", @"Title of alert panel indicating file couldn't be reverted."), displayName(revertDocumentName)];
         // No endSheet method required for the alert, as there's only one possible response and nothing to clean up
-        NSBeginAlertSheet(title, 
-            NSLocalizedString(@"OK", @"OK"), nil, nil, [self window],  
-            self, NULL, NULL, NULL, 
-            NSLocalizedString(@"The file has been removed.", @"Subtitle of alert panel indicating file couldn't be reverted."));
+		NSAlert *alert = [NSAlert new];
+		alert.messageText = title;
+		alert.informativeText = NSLocalizedString(@"The file has been removed.", @"Subtitle of alert panel indicating file couldn't be reverted.");
+		[alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+			;//Do nothing
+		}];
+		[alert release];
     } else {
         // Restore selection, if still within bounds
         if (NSMaxRange(prevSelectedRange) <= [textStorage length]) {
@@ -956,17 +962,22 @@ activeLinks = [[NSMutableArray alloc] init] ;
     if (revertDocumentName != nil) {
         if ([self isDocumentEdited]) {
             NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Revert to saved version of %@?", @"Title of alert panel warning user about effects of reverting."), displayName(revertDocumentName)];
-            NSBeginAlertSheet(title, 
-                NSLocalizedString(@"OK", @"OK"), NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel."), nil, [self window], self, NULL, @selector(didEndRevertSheet:returnCode:contextInfo:), NULL,
-                NSLocalizedString(@"Reverting will lose your current changes.", @"Subtitle of alert panel warning user about effects of reverting."));
+			NSAlert *alert = [NSAlert new];
+			alert.messageText = title;
+			alert.informativeText = NSLocalizedString(@"Reverting will lose your current changes.", @"Subtitle of alert panel warning user about effects of reverting.");
+			[alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+			[alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel.")];
+			[alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+				if (returnCode == NSAlertFirstButtonReturn) {
+					[self doRevert];
+				}
+			}];
+			
+			[alert release];
         } else {
             [self doRevert];
         }
     }
-}
-
-- (void)didEndRevertSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-    if (returnCode == NSAlertDefaultReturn) [self doRevert];
 }
 
 - (void)close:(id)sender {
@@ -1049,7 +1060,7 @@ activeLinks = [[NSMutableArray alloc] init] ;
         }
     }
     [panel setAllowsMultipleSelection:YES];
-    if ([[Preferences objectForKey:OpenPanelFollowsMainWindow] boolValue]) [panel setDirectory:[Document directoryOfMainWindow]];
+    if ([[Preferences objectForKey:OpenPanelFollowsMainWindow] boolValue]) [panel setDirectoryURL:[NSURL fileURLWithPath:[Document directoryOfMainWindow]]];
     if ([panel runModal]) {
         NSMutableArray *unopenedFilenames = nil;
         NSArray *filenames = [panel filenames];
@@ -1082,24 +1093,35 @@ activeLinks = [[NSMutableArray alloc] init] ;
 */
 + (void)displayOpenFailureForFiles:(NSArray *)failedFiles someSucceeded:(BOOL)someFilesOpened title:(NSString *)alertTitle {
     NSInteger numFailedFiles = [failedFiles count];
+	NSAlert *alert = nil;
 
     if (numFailedFiles == 1) {	// Just one file failed
-	(void)NSRunAlertPanel(alertTitle, 
-		NSLocalizedString(@"Couldn\\U2019t open file %@.", @"Message indicating file couldn't be opened; %@ is the filename."), 
-		NSLocalizedString(@"OK", @"OK"), nil, nil, 
-		displayName([failedFiles objectAtIndex:0]));
+		alert = [NSAlert new];
+		alert.messageText = alertTitle;
+		alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Couldn\\U2019t open file %@.", @"Message indicating file couldn't be opened; %@ is the filename."), displayName([failedFiles objectAtIndex:0])];
+		[alert runModal];
     } else if (!someFilesOpened) {	// Multiple files requested, none could be opened
-	(void)NSRunAlertPanel(alertTitle, 
-		NSLocalizedString(@"Couldn\\U2019t open the specified files.", @"Message indicating none of the multiple requested files could be opened."), 
-		NSLocalizedString(@"OK", @"OK"), nil, nil);
-    } else {	// Multiple failures but there might have been some successfully opened
-	NSMutableString *string = [NSMutableString stringWithString:NSLocalizedString(@"Couldn\\U2019t open the following files:", @"Message indicating multiple files couldn't be opened, with list of filenames to follow.")];
-	NSInteger cnt, numFiles = [failedFiles count];
-	if (numFiles > 8) numFiles = 5;	// If many, just show a subset
-	for (cnt = 0; cnt < numFiles; cnt++) [string appendFormat:@"\n  %@", displayName([failedFiles objectAtIndex:cnt])];
-	if (numFiles < numFailedFiles) [string appendFormat:@"\n  %@", NSLocalizedString(@"(And others)", @"Shown at the end of the list of filenames when there are too many filenames to show.")];
-	(void)NSRunAlertPanel(alertTitle, @"%@", NSLocalizedString(@"OK", @"OK"), nil, nil, string);
-    }
+		alert = [NSAlert new];
+		alert.messageText = alertTitle;
+		alert.informativeText = NSLocalizedString(@"Couldn\\U2019t open the specified files.", @"Message indicating none of the multiple requested files could be opened.");
+		[alert runModal];
+	} else {	// Multiple failures but there might have been some successfully opened
+		NSMutableString *string = [NSMutableString stringWithString:NSLocalizedString(@"Couldn\\U2019t open the following files:", @"Message indicating multiple files couldn't be opened, with list of filenames to follow.")];
+		NSInteger cnt, numFiles = [failedFiles count];
+		if (numFiles > 8)
+			numFiles = 5;	// If many, just show a subset
+		for (cnt = 0; cnt < numFiles; cnt++) {
+			[string appendFormat:@"\n  %@", displayName([failedFiles objectAtIndex:cnt])];
+		}
+		if (numFiles < numFailedFiles) {
+			[string appendFormat:@"\n  %@", NSLocalizedString(@"(And others)", @"Shown at the end of the list of filenames when there are too many filenames to show.")];
+		}
+		alert = [NSAlert new];
+		alert.messageText = alertTitle;
+		alert.informativeText = string;
+		[alert runModal];
+	}
+	[alert release];
 }
 
 
@@ -1193,8 +1215,9 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
 
 - (void)richTextDocumentFormatChanged:(id)sender {
     NSSavePanel *panel = (NSSavePanel *)[sender window];
-    unsigned documentFormat = chooseableRichTextDocumentFormats[[sender indexOfSelectedItem]];
-    [panel setRequiredFileType:(documentFormat == DocStringEncoding) ? @"doc" : @"rtf"];
+    NSUInteger documentFormat = chooseableRichTextDocumentFormats[[sender indexOfSelectedItem]];
+    
+    panel.allowedFileTypes = @[(documentFormat == DocStringEncoding) ? @"doc" : @"rtf"];
 }
 
 
@@ -1210,7 +1233,8 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
 
 - (void)saveDocument:(BOOL)showSavePanel rememberName:(BOOL)rememberNewNameAndSuch shouldClose:(BOOL)shouldClose whenDone:(SEL)callback {
     DocumentSaveInfo *docInfo;
-
+	NSAlert *alert = [NSAlert new];
+	
     if ([self hasSheet]) return;	// This means we already have a sheet up. This is to prevent "Save All" type enumerations from getting into here.
     
     docInfo = allocateDocumentContext();
@@ -1226,48 +1250,70 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
     docInfo->encodingPopUp = nil;
     docInfo->ignoreRichTextButton = nil;
     docInfo->showRichTextDocumentFormatAccessory = NO;
+	void (^formatWarning)(NSModalResponse returnCode) = ^void(NSModalResponse returnCode) {
+		//DocumentSaveInfo *docInfo = contextInfo;
+		if (returnCode == NSAlertFirstButtonReturn) {		// "Save with new name"
+			[docInfo->nameForSaving release];
+			docInfo->nameForSaving = nil; 	// force user to provide a new name
+			[self getDocumentNameAndSave:docInfo];
+		} else if (returnCode == NSAlertThirdButtonReturn) {	// "Overwrite" (when applicable)
+			[self getDocumentNameAndSave:docInfo];
+		} else {						// "Cancel" --- NSAlertAlternateReturn
+			if (docInfo->whenDoneCallback) ((void (*)(id, SEL, BOOL))objc_msgSend)([self class], docInfo->whenDoneCallback, NO);
+			deallocateDocumentContext(docInfo);
+		}
+		[alert autorelease];
+	};
 
     if ([self isRichText]) {	// Rich document case
         if (docInfo->nameForSaving && [@"rtfd" isEqualToString:[docInfo->nameForSaving pathExtension]]) {
             docInfo->encodingForSaving = RichTextWithGraphicsStringEncoding;
         } else {
             docInfo->encodingForSaving = ([textStorage containsAttachments] ? RichTextWithGraphicsStringEncoding : (documentEncoding == DocStringEncoding ? DocStringEncoding : RichTextStringEncoding));
-	    if ([self converted] || documentEncoding == HTMLStringEncoding || documentEncoding == SimpleTextStringEncoding) {
+            if ([self converted] || documentEncoding == HTMLStringEncoding || documentEncoding == SimpleTextStringEncoding) {
                 NSString *newFormatName = (docInfo->encodingForSaving == RichTextWithGraphicsStringEncoding) ?
-                    NSLocalizedString(@"rich text with graphics (RTFD)", @"Rich text with graphics file format name, displayed in alert") :
-                    NSLocalizedString(@"rich text", @"Rich text file format name, displayed in alert");
-		if ([self converted]) {
-                    NSBeginAlertSheet(NSLocalizedString(@"Please supply a new name.", @"Title of alert panel which brings up a warning while saving, asking for new name"),
-			NSLocalizedString(@"Save with new name", @"Button choice allowing user to choose a new name"), NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel."), nil, 
-			[self window], self, NULL, @selector(didEndFormatWarningSheet:returnCode:contextInfo:), docInfo,
-			NSLocalizedString(@"Document was converted from a format which TextEdit cannot save. It will be saved as %@ instead, with a new name.", @"Contents of alert panel informing user that they need to supply a new file name because the file needs to be saved using a different format than originally read in"),
-			newFormatName);
-		} else {
-                    NSString *oldFormatName = (documentEncoding == HTMLStringEncoding) ? 
-			NSLocalizedString(@"HTML", @"HTML file format name, displayed in alert") : 
-			NSLocalizedString(@"SimpleText", @"SimpleText file format name, displayed in alert");
-                    NSBeginAlertSheet(NSLocalizedString(@"Please supply a new name.", @"Title of alert panel which brings up a warning while saving, asking for new name"),
-			NSLocalizedString(@"Save with new name", @"Button choice allowing user to choose a new name"), NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel."), nil, 
-			[self window], self, NULL, @selector(didEndFormatWarningSheet:returnCode:contextInfo:), docInfo,
-			NSLocalizedString(@"TextEdit does not save %@ format; document will be saved as %@ instead, with a new name.", @"Contents of alert panel informing user that they need to supply a new file name because the file needs to be saved using a different format than originally read in"),
-			oldFormatName, newFormatName);
-		}
+                NSLocalizedString(@"rich text with graphics (RTFD)", @"Rich text with graphics file format name, displayed in alert") :
+                NSLocalizedString(@"rich text", @"Rich text file format name, displayed in alert");
+                if ([self converted]) {
+                    alert.messageText = NSLocalizedString(@"Please supply a new name.", @"Title of alert panel which brings up a warning while saving, asking for new name");
+                    alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Document was converted from a format which TextEdit cannot save. It will be saved as %@ instead, with a new name.", @"Contents of alert panel informing user that they need to supply a new file name because the file needs to be saved using a different format than originally read in"), newFormatName];
+                    [alert addButtonWithTitle:NSLocalizedString(@"Save with new name", @"Button choice allowing user to choose a new name")];
+                    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel.")];
+                    [alert beginSheetModalForWindow:self.window completionHandler:formatWarning];
+                } else {
+                    NSString *oldFormatName = (documentEncoding == HTMLStringEncoding) ?
+                    NSLocalizedString(@"HTML", @"HTML file format name, displayed in alert") :
+                    NSLocalizedString(@"SimpleText", @"SimpleText file format name, displayed in alert");
+                    alert.messageText = NSLocalizedString(@"Please supply a new name.", @"Title of alert panel which brings up a warning while saving, asking for new name");
+                    alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"TextEdit does not save %@ format; document will be saved as %@ instead, with a new name.", @"Contents of alert panel informing user that they need to supply a new file name because the file needs to be saved using a different format than originally read in"),
+                                             oldFormatName, newFormatName];
+                    [alert addButtonWithTitle:NSLocalizedString(@"Save with new name", @"Button choice allowing user to choose a new name")];
+                    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel.")];
+                    [alert beginSheetModalForWindow:self.window completionHandler:formatWarning];
+                }
                 return;
             } else if ((docInfo->encodingForSaving == RichTextWithGraphicsStringEncoding) && docInfo->nameForSaving && ![@"rtfd" isEqualToString:[docInfo->nameForSaving pathExtension]]) {
-                NSBeginAlertSheet(NSLocalizedString(@"Save Warning", @"Title of alert panel which brings up a warning while saving"),
-                    NSLocalizedString(@"OK", @"OK"), NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel."), nil, 
-                    [self window], self, NULL, @selector(didEndFormatWarningSheet:returnCode:contextInfo:), docInfo,
-                    NSLocalizedString(@"Document contains graphics and needs to be saved using RTFD format. Please supply a new name.", @"Contents of alert panel informing user that they need to supply a new file name because the file needs to be saved using a different format than originally read in"));
+                alert.messageText = NSLocalizedString(@"Save Warning", @"Title of alert panel which brings up a warning while saving");
+                alert.informativeText = NSLocalizedString(@"Document contains graphics and needs to be saved using RTFD format. Please supply a new name.", @"Contents of alert panel informing user that they need to supply a new file name because the file needs to be saved using a different format than originally read in");
+                [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
+                [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel.")];
+                [alert beginSheetModalForWindow:self.window completionHandler:formatWarning];
+                
                 return;
             } else if ([self lossy] && !showSavePanel) {
-                NSBeginAlertSheet(NSLocalizedString(@"Are you sure you want to overwrite the document?", @"Title of alert panel which brings up a warning about saving over the same document"),
-                    NSLocalizedString(@"Save with new name", @"Button choice allowing user to choose a new name"), NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel."), NSLocalizedString(@"Overwrite", @"Button choice allowing user to overwrite the document."), 
-                    [self window], self, NULL, @selector(didEndFormatWarningSheet:returnCode:contextInfo:), docInfo,
-                    NSLocalizedString(@"When the document was opened not all attributes in the document were loaded.  Overwriting the document might cause you to lose data.  Would you like to save the document using a new name?", @"Contents of alert panel informing user that they need to supply a new file name because the save might be lossy"));
+                alert.messageText = NSLocalizedString(@"Are you sure you want to overwrite the document?", @"Title of alert panel which brings up a warning about saving over the same document");
+                alert.informativeText = NSLocalizedString(@"When the document was opened not all attributes in the document were loaded.  Overwriting the document might cause you to lose data.  Would you like to save the document using a new name?", @"Contents of alert panel informing user that they need to supply a new file name because the save might be lossy");
+                [alert addButtonWithTitle:NSLocalizedString(@"Save with new name", @"Button choice allowing user to choose a new name")];
+                [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel.")];
+                [alert addButtonWithTitle:NSLocalizedString(@"Overwrite", @"Button choice allowing user to overwrite the document.")];
+                [alert beginSheetModalForWindow:self.window completionHandler:formatWarning];
+                
                 return;
             }
         }
     } else {	// Plain document case
+		[alert release];
+        
         NSString *string = [textStorage string];
         docInfo->showEncodingAccessory = YES;
         docInfo->encodingForSaving = documentEncoding;
@@ -1300,9 +1346,13 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
             if (docInfo->encodingForSaving == UnknownStringEncoding) docInfo->encodingForSaving = NSUnicodeStringEncoding;
             if (docInfo->haveToChangeType) {
                 NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Document can no longer be saved using its original %@ encoding.", @"Title of alert panel informing user that the file's string encoding needs to be changed."), [NSString localizedNameOfStringEncoding:documentEncoding]];
-                NSBeginAlertSheet(title, NSLocalizedString(@"OK", @"OK"), nil, nil, 
-                    [self window], self, NULL, @selector(didEndEncodingSheet:returnCode:contextInfo:), docInfo,
-                    NSLocalizedString(@"Please choose another encoding (such as %@).", @"Subtitle of alert panel informing user that the file's string encoding needs to be changed"), [NSString localizedNameOfStringEncoding:docInfo->encodingForSaving]);
+                alert = [NSAlert new];
+                alert.messageText = title;
+                alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Please choose another encoding (such as %@).", @"Subtitle of alert panel informing user that the file's string encoding needs to be changed"), [NSString localizedNameOfStringEncoding:docInfo->encodingForSaving]];
+                [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                    [self getDocumentNameAndSave:docInfo];
+                    [alert autorelease];
+                }];
                 return;
             }
         }
@@ -1312,22 +1362,6 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
     [self getDocumentNameAndSave:docInfo];
 }
 
-
-/* Called from the alert that asks user whether they're sure they want to save... If yes, we go onto put up a save panel
-*/
-- (void)didEndFormatWarningSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-    DocumentSaveInfo *docInfo = contextInfo;
-    if (returnCode == NSAlertDefaultReturn) {		// "Save with new name"
-        [docInfo->nameForSaving release];
-        docInfo->nameForSaving = nil; 	// force user to provide a new name
-        [self getDocumentNameAndSave:docInfo];
-    } else if (returnCode == NSAlertOtherReturn) {	// "Overwrite" (when applicable)
-        [self getDocumentNameAndSave:docInfo];
-    } else {						// "Cancel" --- NSAlertAlternateReturn
-        if (docInfo->whenDoneCallback) ((void (*)(id, SEL, BOOL))objc_msgSend)([self class], docInfo->whenDoneCallback, NO);
-        deallocateDocumentContext(docInfo);
-    }
-}
 
 /* Called from the alert that lets the user know that the encoding needs to change...
 */
@@ -1354,7 +1388,7 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
                 updateEncoding = NO;
                 break;
             case RichTextWithGraphicsStringEncoding:
-                [panel setRequiredFileType:@"rtfd"];
+				panel.allowedFileTypes = @[@"rtfd"];
                 [panel setTitle:NSLocalizedString(@"Save RTFD", @"Title of save and alert panels when saving RTFD")];
                 updateEncoding = NO;
                 break;
@@ -1398,9 +1432,9 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
     DocumentSaveInfo *docInfo = contextInfo;
     [savePanel orderOut:nil];
     [savePanel setDelegate:nil];
-    if (returnCode == NSOKButton) {
+    if (returnCode == NSFileHandlingPanelOKButton) {
         [docInfo->nameForSaving release];
-        docInfo->nameForSaving = [[savePanel filename] copy];
+        docInfo->nameForSaving = [[[savePanel URL] path] copy];
         docInfo->hideExtension = [savePanel isExtensionHidden] ? FileExtensionHidden : FileExtensionShown;
         if (docInfo->showEncodingAccessory) {
             docInfo->encodingForSaving = [[docInfo->encodingPopUp selectedItem] tag];
@@ -1501,14 +1535,17 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
     extension = [filename pathExtension];
     if ([@"txt" caseInsensitiveCompare:extension] == NSOrderedSame) return filename;
     if (okFlag && ![@"" isEqual:extension]) {
-        BOOL choice = NSRunAlertPanel(NSLocalizedString(@"Save Plain Text", @"Title of save and alert panels when saving plain text"), 
-            NSLocalizedString(@"Document name %@ already seems to have an extension. Append \\U201c.txt\\U201d anyway?", @"Message asking whether to append extension on a filename which already seems to have an extension; %@ is the filename."), // double curly quotes
-            NSLocalizedString(@"Append", @"The default (yes) response to the question asking whether to append '.txt' extension to a filename which already seems to have one"), 
-            NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel."), 
-            NSLocalizedString(@"Don\\U2019t Append", @"Response to the question asking whether to append '.txt' extension to a filename which already seems to have one"), 
-            filename);
-	if (choice == NSCancelButton) return nil;		// User chose "Cancel"
-        if (choice == NSAlertOtherReturn) return filename;	// User chose "Don't append"
+        NSAlert *alert = [NSAlert new];
+        alert.messageText = NSLocalizedString(@"Save Plain Text", @"Title of save and alert panels when saving plain text");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Document name %@ already seems to have an extension. Append \\U201c.txt\\U201d anyway?", @"Message asking whether to append extension on a filename which already seems to have an extension; %@ is the filename."), filename];
+        [alert addButtonWithTitle:NSLocalizedString(@"Append", @"The default (yes) response to the question asking whether to append '.txt' extension to a filename which already seems to have one")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Button choice allowing user to cancel.")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Don\\U2019t Append", @"Response to the question asking whether to append '.txt' extension to a filename which already seems to have one")];
+        //NSInteger choice
+        NSInteger  choice = [alert runModal];
+        [alert release];
+        if (choice == NSAlertSecondButtonReturn) return nil;		// User chose "Cancel"
+        if (choice == NSAlertThirdButtonReturn) return filename;	// User chose "Don't append"
     }
     return [filename stringByAppendingPathExtension:@"txt"];	// User chose "Append" or never supplied an extension in the first place
 }
@@ -1542,7 +1579,7 @@ NSString *chooseableRichTextDocumentFormatNames[NumChooseableRichTextDocumentFor
     paperSize = [[self printInfo] paperSize];
     // Get a frame for the window content, which is a scrollView
     newScrollView.origin = NSZeroPoint;
-    newScrollView.size = [NSScrollView frameSizeForContentSize:paperSize hasHorizontalScroller:[scrollView hasHorizontalScroller] hasVerticalScroller:[scrollView hasVerticalScroller] borderType:[scrollView borderType]];
+    newScrollView.size = [NSScrollView frameSizeForContentSize:paperSize horizontalScrollerClass:[[scrollView horizontalScroller] class] verticalScrollerClass:[[scrollView verticalScroller] class] borderType:[scrollView borderType] controlSize:[[scrollView verticalScroller] controlSize] scrollerStyle:[scrollView scrollerStyle]];
 
     // The standard frame for the window is now the frame that will fit the scrollView content
     standardFrame.size = [[window class] frameRectForContentRect:newScrollView styleMask:[window styleMask]].size;

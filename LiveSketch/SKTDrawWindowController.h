@@ -17,6 +17,7 @@
 
 - (void)invalidateGraphic:(SKTGraphic *)graphic;
 
+- (void)setUpGraphicView;
 @end
 
 /*
