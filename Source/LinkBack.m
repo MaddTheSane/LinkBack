@@ -389,7 +389,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
     if (ret) {
         // if connected to server, publish data and inform server.
         NSPasteboard* my_pboard = [ret pasteboard] ;
-        [my_pboard declareTypes: [NSArray arrayWithObject: LinkBackPboardType] owner: ret] ;
+        [my_pboard declareTypes: @[LinkBackPboardType] owner: ret] ;
         [my_pboard setPropertyList: data forType: LinkBackPboardType] ;
         
         [ret requestEdit] ;

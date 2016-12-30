@@ -49,13 +49,10 @@ NSMutableDictionary* LinkBackServers = nil ;
 
 + (void)initialize
 {
-    static BOOL inited = NO ;
-    if (inited) return ;
-
-    [super initialize] ; 
-    inited = YES ;
-    
-    if (!LinkBackServers) LinkBackServers = [[NSMutableDictionary alloc] init];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (!LinkBackServers) LinkBackServers = [[NSMutableDictionary alloc] init];
+    });
 }
 
 + (LinkBackServer*)LinkBackServerWithName:(NSString*)aName  
