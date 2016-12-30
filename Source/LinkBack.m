@@ -135,7 +135,7 @@ NSString* LinkBackEditNoneMenuTitle(void)
 	if (url) [ret setObject: url forKey: LinkBackApplicationURLKey] ;
 	[ret setObject: [NSNumber numberWithDouble: rate] forKey: LinkBackSuggestedRefreshKey] ;
 	
-    return [ret autorelease] ;
+    return ret ;
 }
 
 - (BOOL)linkBackDataBelongsToActiveApplication 
@@ -226,7 +226,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
     if (!(self = [super init]))
         return nil;
 
-    peer = [aLinkBack retain] ;
+    peer = aLinkBack ;
     sourceName = [[peer sourceName] copy] ;
     sourceApplicationName = [[peer sourceApplicationName] copy] ;
     key = [[peer itemKey] copy] ;
@@ -248,7 +248,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
     delegate = aDel ;
     sourceName = [aName copy] ;
     sourceApplicationName = [[[NSProcessInfo processInfo] processName] copy] ;
-    pboard = [[NSPasteboard pasteboardWithUniqueName] retain] ;
+    pboard = [NSPasteboard pasteboardWithUniqueName] ;
     key = [aKey copy] ;
     
     return self ;
@@ -258,18 +258,10 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSConnectionDidDieNotification object:nil];
     
-    [repobj release] ;
-    [sourceName release] ;
-    [sourceApplicationName release];
-    [key release];
-    
     if (peer) [self closeLink] ;
-    [peer release] ;
+    peer = nil ;
     
     if (!isServer) [pboard releaseGlobally] ; // client owns the pboard.
-    [pboard release] ;
-    
-    [super dealloc] ;
 }
 
 // ...........................................................................
@@ -292,7 +284,6 @@ NSMutableDictionary* keyedLinkBacks = nil ;
         delegate = nil ;
         [keyedLinkBacks removeObjectForKey: [self itemKey]]; 
         [closingPeer remoteCloseLink] ; 
-        [closingPeer release] ;
     }
 }
 
@@ -300,7 +291,6 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 - (oneway void)remoteCloseLink 
 {
     if (peer) {
-        [peer release] ;
         peer = nil ;
         [keyedLinkBacks removeObjectForKey: [self itemKey]];
     }
@@ -342,7 +332,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 - (void)requestEditWithPasteboardName:(bycopy NSString*)pboardName
 {
     // get the new pasteboard, if needed
-    if ((!pboard) || ![pboardName isEqualToString: [pboard name]]) pboard = [[NSPasteboard pasteboardWithName: pboardName] retain] ;
+    if ((!pboard) || ![pboardName isEqualToString: [pboard name]]) pboard = [NSPasteboard pasteboardWithName: pboardName] ;
 
     // pass onto delegate
 	[delegate performSelectorOnMainThread: @selector(linkBackClientDidRequestEdit:) withObject: self waitUntilDone: NO] ;
@@ -379,10 +369,8 @@ NSMutableDictionary* keyedLinkBacks = nil ;
         
         if (![ret connectToServerWithName: serverName inApplication: serverId fallbackURL: url appName: appName]) {
             // if connection to server failed, return nil.
-            [ret release] ;
             ret = nil ;
-        } else
-            [ret autorelease];
+        }
     }
     
     // now with a live link in hand, request an edit
@@ -404,7 +392,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
     LinkBackServer* server = [LinkBackServer LinkBackServerWithName: aName inApplication: bundleIdentifier launchIfNeeded: YES fallbackURL: url appName: appName] ;
     if (!server) return NO ; // failed to get server
     
-    peer = [[server initiateLinkBackFromClient: self] retain] ;
+    peer = [server initiateLinkBackFromClient: self] ;
     if (!peer) return NO ; // failed to initiate session
     
     // if we connected, then add to the list of active keys
@@ -424,8 +412,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 {
     // if pboard has changes, change to new pboard.
     if (![pboardName isEqualToString: [pboard name]]) {
-        [pboard release] ;
-        pboard = [[NSPasteboard pasteboardWithName: pboardName] retain] ;
+        pboard = [NSPasteboard pasteboardWithName: pboardName] ;
     } 
     
     // inform delegate

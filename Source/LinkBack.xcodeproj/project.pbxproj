@@ -10,7 +10,7 @@
 		203AFD7B0687DA7000B08189 /* LinkBack.h in Headers */ = {isa = PBXBuildFile; fileRef = 203AFD770687DA7000B08189 /* LinkBack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		203AFD7C0687DA7000B08189 /* LinkBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 203AFD780687DA7000B08189 /* LinkBack.m */; };
 		203AFD7D0687DA7000B08189 /* LinkBackServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 203AFD790687DA7000B08189 /* LinkBackServer.h */; settings = {ATTRIBUTES = (); }; };
-		203AFD7E0687DA7000B08189 /* LinkBackServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 203AFD7A0687DA7000B08189 /* LinkBackServer.m */; };
+		203AFD7E0687DA7000B08189 /* LinkBackServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 203AFD7A0687DA7000B08189 /* LinkBackServer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		20E80E6507F2116B0060ED13 /* Localized.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20E80E6307F2116B0060ED13 /* Localized.strings */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
@@ -258,6 +258,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4A8BBBEB08AB131E00C5998B /* Omni-Framework-Debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = org.linkbackproject.LinkBack;
 				PRODUCT_NAME = LinkBack;
@@ -268,6 +269,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4A8BBBEC08AB131E00C5998B /* Omni-Framework-Release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = org.linkbackproject.LinkBack;
 				PRODUCT_NAME = LinkBack;

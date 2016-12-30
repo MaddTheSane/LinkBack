@@ -129,11 +129,11 @@ BOOL LinkBackDataBelongsToActiveApplication(id __null_unspecified data) DEPRECAT
 // ...........................................................................
 // General Use methods
 //
-@property (readonly, retain) NSPasteboard *pasteboard ;
+@property (readonly, strong) NSPasteboard *pasteboard ;
 - (void)closeLink ;
 
 /// Applications can use this represented object to attach some meaning to the live link.  For example, a client application may set this to the object to be modified when the edit is refreshed.  This retains its value.
-@property (readwrite, retain, nullable) id representedObject ;
+@property (readwrite, strong, nullable) id representedObject ;
 
 @property (readonly, copy) NSString *sourceName ;
 @property (readonly, copy) NSString *sourceApplicationName ;
