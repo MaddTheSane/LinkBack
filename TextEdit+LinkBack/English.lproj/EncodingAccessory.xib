@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,18 +50,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <string key="toolTip">If selected, HTML and RTF files will be loaded as plain text,
 allowing you to see and edit the HTML or RTF directives</string>
-                                    <buttonCell key="cell" type="check" title="Ignore rich text commands" imagePosition="leading" alignment="left" inset="2" id="72">
+                                    <buttonCell key="cell" type="check" title="Ignore rich text commands" imagePosition="left" alignment="left" inset="2" id="72">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                 </button>
-                                <textField verticalHuggingPriority="750" id="69">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="69">
                                     <rect key="frame" x="11" y="38" width="142" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" id="73">
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Plain Text Encoding:" id="73">
                                         <font key="font" metaFont="system"/>
-                                        <string key="title">Plain Text Encoding:
-</string>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>

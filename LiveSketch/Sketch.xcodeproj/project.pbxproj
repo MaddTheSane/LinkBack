@@ -51,7 +51,7 @@
 		55877E711DCAC97300052688 /* SKTDrawAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDAFE888A39C02AAC07 /* SKTDrawAppDelegate.m */; settings = {ATTRIBUTES = (); }; };
 		55877E721DCAC97300052688 /* SKTDrawWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDBFE888A39C02AAC07 /* SKTDrawWindowController.m */; settings = {ATTRIBUTES = (); }; };
 		55877E731DCAC97300052688 /* SKTGraphicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDCFE888A39C02AAC07 /* SKTGraphicView.m */; settings = {ATTRIBUTES = (); }; };
-		55877E741DCAC97300052688 /* SKTFoundationExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDDFE888A39C02AAC07 /* SKTFoundationExtras.m */; settings = {ATTRIBUTES = (); }; };
+		55877E741DCAC97300052688 /* SKTFoundationExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDDFE888A39C02AAC07 /* SKTFoundationExtras.m */; settings = {ATTRIBUTES = (); COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		55877E751DCAC97300052688 /* SKTInspectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDEFE888A39C02AAC07 /* SKTInspectorController.m */; settings = {ATTRIBUTES = (); }; };
 		55877E761DCAC97300052688 /* SKTToolPaletteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEDFFE888A39C02AAC07 /* SKTToolPaletteController.m */; settings = {ATTRIBUTES = (); }; };
 		55877E771DCAC97300052688 /* SKTGridPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEE0FE888A39C02AAC07 /* SKTGridPanelController.m */; settings = {ATTRIBUTES = (); }; };
@@ -374,7 +374,7 @@
 		0A3ECED7FE888A39C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = 55877E8F1DCAC97300052688 /* Build configuration list for PBXProject "Sketch" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -608,12 +608,20 @@
 		55877E901DCAC97300052688 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -635,12 +643,20 @@
 		55877E911DCAC97300052688 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

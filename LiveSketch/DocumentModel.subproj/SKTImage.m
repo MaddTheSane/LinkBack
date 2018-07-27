@@ -127,8 +127,7 @@
     }
     image = [self transformedImage];
     if (image) {
-		//[image drawAtPoint:NSMakePoint(NSMinX(bounds), NSMaxY(bounds)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
-        [image compositeToPoint:NSMakePoint(NSMinX(bounds), NSMaxY(bounds)) operation:NSCompositeSourceOver];
+		[image drawInRect:NSMakeRect(NSMinX(bounds), NSMaxY(bounds), image.size.width, image.size.width) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1 respectFlipped:YES hints:nil];
     }
     [super drawInView:view isSelected:flag];
 }

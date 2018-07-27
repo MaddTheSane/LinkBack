@@ -205,8 +205,7 @@ static NSString *SKTPrintInfoKey = @"PrintInfo";
         return nil;
     }
     image = [[NSImage alloc] initWithSize:bounds.size];
-    [image setFlipped:YES];
-    [image lockFocus];
+    [image lockFocusFlipped:YES];
     // Get the context AFTER we lock focus
     currentContext = [NSGraphicsContext currentContext];
     transform = [NSAffineTransform transform];

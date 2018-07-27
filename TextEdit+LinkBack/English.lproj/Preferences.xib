@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,7 +48,7 @@
                                 <button id="52">
                                     <rect key="frame" x="11" y="74" width="105" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <buttonCell key="cell" type="check" title="Wrap to Page" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="319">
+                                    <buttonCell key="cell" type="check" title="Wrap to Page" imagePosition="left" alignment="left" controlSize="small" inset="2" id="319">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -62,19 +62,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="cellSize" width="80" height="19"/>
-                                    <buttonCell key="prototype" type="bevel" title="Radio" imagePosition="leading" alignment="left" inset="2" id="338">
+                                    <buttonCell key="prototype" type="bevel" title="Radio" imagePosition="left" alignment="left" inset="2" id="338">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <cells>
                                         <column>
-                                            <buttonCell type="radio" title="Rich text" imagePosition="leading" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="257">
+                                            <buttonCell type="radio" title="Rich text" imagePosition="left" alignment="left" controlSize="small" state="on" tag="1" inset="2" id="257">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                         </column>
                                         <column>
-                                            <buttonCell type="radio" title="Plain text" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="259">
+                                            <buttonCell type="radio" title="Plain text" imagePosition="left" alignment="left" controlSize="small" inset="2" id="259">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
@@ -85,7 +85,7 @@
                                         <outlet property="nextKeyView" destination="52" id="267"/>
                                     </connections>
                                 </matrix>
-                                <textField verticalHuggingPriority="750" id="35">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="35">
                                     <rect key="frame" x="9" y="52" width="92" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Window width:" id="320">
@@ -94,7 +94,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="37">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="37">
                                     <rect key="frame" x="105" y="52" width="39" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="321">
@@ -107,7 +107,7 @@
                                         <outlet property="nextKeyView" destination="38" id="269"/>
                                     </connections>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="40">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="40">
                                     <rect key="frame" x="149" y="52" width="75" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="characters" id="322">
@@ -116,7 +116,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="38">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="38">
                                     <rect key="frame" x="105" y="30" width="39" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="323">
@@ -129,7 +129,7 @@
                                         <outlet property="nextKeyView" destination="3" id="289"/>
                                     </connections>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="41">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="41">
                                     <rect key="frame" x="149" y="30" width="74" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="lines" id="324">
@@ -138,18 +138,16 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="36">
-                                    <rect key="frame" x="9" y="25" width="92" height="21"/>
+                                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="36">
+                                    <rect key="frame" x="9" y="30" width="92" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" id="325">
+                                    <textFieldCell key="cell" alignment="left" title="Window height:" id="325">
                                         <font key="font" metaFont="smallSystem"/>
-                                        <string key="title">Window height:
-</string>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="261">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="261">
                                     <rect key="frame" x="12" y="3" width="226" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="These settings apply to new documents." id="326">
@@ -193,7 +191,7 @@
                                         <outlet property="nextKeyView" destination="180" id="290"/>
                                     </connections>
                                 </button>
-                                <textField verticalHuggingPriority="750" id="14">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="14">
                                     <rect key="frame" x="163" y="9" width="138" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" alignment="left" title="Font name" id="315">
@@ -202,7 +200,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="2">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="2">
                                     <rect key="frame" x="163" y="33" width="138" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" alignment="left" title="Font name" id="316">
@@ -211,7 +209,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="69">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="69">
                                     <rect key="frame" x="9" y="34" width="89" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Rich text font:" id="317">
@@ -220,7 +218,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="70">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="70">
                                     <rect key="frame" x="9" y="10" width="89" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Plain text font:" id="318">
@@ -255,7 +253,7 @@
                                 <button toolTip="If selected, read-only files will be marked as read/write when saved" id="53">
                                     <rect key="frame" x="11" y="46" width="168" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <buttonCell key="cell" type="check" title="Save files writable" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="309">
+                                    <buttonCell key="cell" type="check" title="Save files writable" imagePosition="left" alignment="left" controlSize="small" inset="2" id="309">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -267,7 +265,7 @@
                                 <button toolTip="If selected, automatically attempt to overwrite read-only files" id="187">
                                     <rect key="frame" x="11" y="26" width="174" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <buttonCell key="cell" type="check" title="Overwrite read-only files" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="310">
+                                    <buttonCell key="cell" type="check" title="Overwrite read-only files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="310">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -279,7 +277,7 @@
                                 <button toolTip="If selected, no backup files are kept" id="200">
                                     <rect key="frame" x="11" y="66" width="168" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <buttonCell key="cell" type="check" title="Delete backup file" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="311">
+                                    <buttonCell key="cell" type="check" title="Delete backup file" imagePosition="left" alignment="left" controlSize="small" inset="2" id="311">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -293,7 +291,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <string key="toolTip">If selected, will use ".txt" as extension on plain text files,
 unless another extension is supplied</string>
-                                    <buttonCell key="cell" type="check" title="Append &quot;.txt&quot; extension to plain text files" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="312">
+                                    <buttonCell key="cell" type="check" title="Append &quot;.txt&quot; extension to plain text files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="312">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -332,7 +330,7 @@ to be used when opening a plain text file</string>
                                         <outlet property="nextKeyView" destination="177" id="275"/>
                                     </connections>
                                 </popUpButton>
-                                <textField verticalHuggingPriority="750" id="176">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="176">
                                     <rect key="frame" x="12" y="8" width="314" height="26"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="&quot;Automatic&quot; causes TextEdit to use either the default plain text encoding of the system or Unicode, based on the file contents." id="328">
@@ -360,7 +358,7 @@ to be used when saving a plain text file</string>
                                         <outlet property="nextKeyView" destination="224" id="291"/>
                                     </connections>
                                 </popUpButton>
-                                <textField verticalHuggingPriority="750" id="172">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="172">
                                     <rect key="frame" x="9" y="66" width="45" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Open:" id="330">
@@ -369,7 +367,7 @@ to be used when saving a plain text file</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="175">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="175">
                                     <rect key="frame" x="9" y="41" width="45" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Save:" id="331">
@@ -394,7 +392,7 @@ to be used when saving a plain text file</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <string key="toolTip">If selected, RTF files will be loaded as plain text,
 allowing you to see and edit the RTF directives</string>
-                                    <buttonCell key="cell" type="check" title="Ignore rich text commands in RTF files" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="332">
+                                    <buttonCell key="cell" type="check" title="Ignore rich text commands in RTF files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="332">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -408,7 +406,7 @@ allowing you to see and edit the RTF directives</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <string key="toolTip">If selected, HTML files will be loaded as plain text,
 allowing you to see and edit the HTML directives</string>
-                                    <buttonCell key="cell" type="check" title="Ignore rich text commands in HTML files" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="333">
+                                    <buttonCell key="cell" type="check" title="Ignore rich text commands in HTML files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="333">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -417,7 +415,7 @@ allowing you to see and edit the HTML directives</string>
                                         <outlet property="nextKeyView" destination="171" id="273"/>
                                     </connections>
                                 </button>
-                                <textField verticalHuggingPriority="750" id="230">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="230">
                                     <rect key="frame" x="12" y="1" width="264" height="30"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="334">
@@ -442,7 +440,7 @@ setting can also be specified in the Open dialog.</string>
                                 <button id="224">
                                     <rect key="frame" x="11" y="63" width="195" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <buttonCell key="cell" type="check" title="Check spelling as you type " bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="335">
+                                    <buttonCell key="cell" type="check" title="Check spelling as you type " bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="335">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -451,7 +449,7 @@ setting can also be specified in the Open dialog.</string>
                                         <outlet property="nextKeyView" destination="262" id="271"/>
                                     </connections>
                                 </button>
-                                <textField verticalHuggingPriority="750" id="229">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="229">
                                     <rect key="frame" x="12" y="4" width="321" height="30"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="These apply to newly opened documents. They can also be specified per-document (see the Edit and Format menus)." id="336">
@@ -463,7 +461,7 @@ setting can also be specified in the Open dialog.</string>
                                 <button id="262">
                                     <rect key="frame" x="11" y="42" width="111" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <buttonCell key="cell" type="check" title="Show ruler" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="337">
+                                    <buttonCell key="cell" type="check" title="Show ruler" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="337">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -482,6 +480,7 @@ setting can also be specified in the Open dialog.</string>
                 <outlet property="delegate" destination="-2" id="138"/>
                 <outlet property="initialFirstResponder" destination="37" id="285"/>
             </connections>
+            <point key="canvasLocation" x="139" y="161.5"/>
         </window>
     </objects>
 </document>
