@@ -198,7 +198,7 @@ static void LinkBackRunAppNotFoundPanel(NSString* appName, NSURL* url)
 	}
 	result = [alert runModal] ;
 	[alert release] ;
-	if (NSAlertSecondButtonReturn == result) {
+	if (NSAlertSecondButtonReturn == result && url) {
 		[[NSWorkspace sharedWorkspace] openURL: url] ;
 	}
 }
