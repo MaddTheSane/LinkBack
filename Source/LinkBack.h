@@ -35,13 +35,14 @@
 
 #import <Foundation/NSDictionary.h>
 #import <Foundation/NSDate.h>
+#import <AppKit/NSPasteboard.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class NSPasteboard;
 
-// Use this pasteboard type to put LinkBack data to the pasteboard.  Use +[NSDictionary linkBackDataWithServerName:appData:] to create the data.
-extern NSString*const LinkBackPboardType ;
+/// Use this pasteboard type to put LinkBack data to the pasteboard.  Use +[NSDictionary linkBackDataWithServerName:appData:] to create the data.
+extern NSPasteboardType const LinkBackPboardType NS_SWIFT_NAME(linkBack) ;
 
 // Default Action Names.  These will be localized for you automatically.
 extern NSString*const LinkBackEditActionName ;
@@ -61,19 +62,17 @@ id __null_unspecified MakeLinkBackData(NSString* __null_unspecified serverName, 
 id __null_unspecified LinkBackGetAppData(id __null_unspecified linkBackData) DEPRECATED_ATTRIBUTE;
 BOOL LinkBackDataBelongsToActiveApplication(id __null_unspecified data) DEPRECATED_ATTRIBUTE;
 
-//
-// LinkBack Data Category
-//
-
-// Use these methods to create and access linkback data objects.  You can also use the helper functions above.
-
+///
+/// LinkBack Data Category
+///
+/// Use these methods to create and access linkback data objects.
 @interface NSDictionary (LinkBackData)
 
-+ (NSDictionary*)linkBackDataWithServerName:(NSString*)serverName appData:(nullable id)appData ;
++ (NSDictionary<NSString*,id>*)linkBackDataWithServerName:(NSString*)serverName appData:(nullable id)appData ;
 
-+ (NSDictionary*)linkBackDataWithServerName:(NSString*)serverName appData:(nullable id)appData suggestedRefreshRate:(NSTimeInterval)rate ;
++ (NSDictionary<NSString*,id>*)linkBackDataWithServerName:(NSString*)serverName appData:(nullable id)appData suggestedRefreshRate:(NSTimeInterval)rate ;
 
-+ (NSDictionary*)linkBackDataWithServerName:(NSString*)serverName appData:(nullable id)appData actionName:(nullable NSString*)action suggestedRefreshRate:(NSTimeInterval)rate ;
++ (NSDictionary<NSString*,id>*)linkBackDataWithServerName:(NSString*)serverName appData:(nullable id)appData actionName:(nullable NSString*)action suggestedRefreshRate:(NSTimeInterval)rate ;
 
 @property (readonly) BOOL linkBackDataBelongsToActiveApplication ;
 
@@ -108,8 +107,8 @@ BOOL LinkBackDataBelongsToActiveApplication(id __null_unspecified data) DEPRECAT
 /// used for cross app communications
 @protocol LinkBack <NSObject>
 - (oneway void)remoteCloseLink ;
-- (void)requestEditWithPasteboardName:(bycopy NSString*)pboardName ; ///< from client
-- (void)refreshEditWithPasteboardName:(bycopy NSString*)pboardName ; ///< from server
+- (void)requestEditWithPasteboardName:(bycopy NSPasteboardName)pboardName ; ///< from client
+- (void)refreshEditWithPasteboardName:(bycopy NSPasteboardName)pboardName ; ///< from server
 @end
 
 @interface LinkBack : NSObject <LinkBack> {
