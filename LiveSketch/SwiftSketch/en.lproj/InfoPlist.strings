@@ -1,0 +1,14 @@
+﻿// InfoPlist.strings
+// Sketch Example
+//
+
+
+    CFBundleName = "Sketch";
+    CFBundleGetInfoString = "Apple Sketch Application Example 1.2.0.  Copyright © 1998-2001, Apple Computer, Inc.";
+    NSHumanReadableCopyright = "Copyright © 1998-2001, Apple Computer, Inc.";
+
+    // Document type human-readable names.
+    "Apple Sketch Graphic Format" = "Apple Sketch Graphic Format";
+    "NSPDFPboardType" = "Portable Document Format (PDF)";
+    "NSTIFFPboardType" = "Tagged Image File Format (TIFF)";
+

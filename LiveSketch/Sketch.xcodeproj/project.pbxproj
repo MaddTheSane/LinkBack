@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		554461671DCACD8100D638C2 /* LinkBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55877E9D1DCAC9EC00052688 /* LinkBack.framework */; };
+		55510379219A340B00C80648 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55510378219A340B00C80648 /* AppDelegate.swift */; };
+		5551037B219A340B00C80648 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5551037A219A340B00C80648 /* Document.swift */; };
+		55510380219A340D00C80648 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5551037F219A340D00C80648 /* Assets.xcassets */; };
+		5551038C219A342B00C80648 /* LinkBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55877E9D1DCAC9EC00052688 /* LinkBack.framework */; };
+		5551038D219A342B00C80648 /* LinkBack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55877E9D1DCAC9EC00052688 /* LinkBack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		555103A4219A415800C80648 /* ToolPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5551039E219A415800C80648 /* ToolPalette.xib */; };
+		555103A9219A415C00C80648 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 555103AB219A415C00C80648 /* InfoPlist.strings */; };
+		555103AC219A416400C80648 /* Draw2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555103AE219A416400C80648 /* Draw2.xib */; };
+		555103AF219A416A00C80648 /* DrawWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555103B1219A416A00C80648 /* DrawWindow.xib */; };
+		555103B2219A417100C80648 /* GridPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555103B4219A417100C80648 /* GridPanel.xib */; };
+		555103B5219A417A00C80648 /* Inspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555103B7219A417A00C80648 /* Inspector.xib */; };
 		55877E471DCAC97300052688 /* SKTDrawAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE3FE888A39C02AAC07 /* SKTDrawAppDelegate.h */; };
 		55877E481DCAC97300052688 /* SKTDrawWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE4FE888A39C02AAC07 /* SKTDrawWindowController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		55877E491DCAC97300052688 /* SKTGraphicView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE5FE888A39C02AAC07 /* SKTGraphicView.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -70,6 +81,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5551038A219A341D00C80648 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20C6D44707D44CE900600D19 /* LinkBack.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = LinkBack;
+		};
+		5551038E219A342B00C80648 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20C6D44707D44CE900600D19 /* LinkBack.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = LinkBack;
+		};
 		55877E9C1DCAC9EC00052688 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20C6D44707D44CE900600D19 /* LinkBack.xcodeproj */;
@@ -80,6 +105,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		55510390219A342B00C80648 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5551038D219A342B00C80648 /* LinkBack.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55877E861DCAC97300052688 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,11 +192,31 @@
 		0A3ECF3AFE888A39C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20C6D44707D44CE900600D19 /* LinkBack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LinkBack.xcodeproj; path = ../Source/LinkBack.xcodeproj; sourceTree = SOURCE_ROOT; };
 		26D1BC9902E4B4D608C917DD /* SKT_Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKT_Prefix.h; sourceTree = "<group>"; };
+		55510376219A340B00C80648 /* SwiftSketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55510378219A340B00C80648 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5551037A219A340B00C80648 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		5551037F219A340D00C80648 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55510384219A340D00C80648 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55510385219A340D00C80648 /* SwiftSketch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftSketch.entitlements; sourceTree = "<group>"; };
+		5551039E219A415800C80648 /* ToolPalette.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolPalette.xib; sourceTree = "<group>"; };
+		555103AA219A415C00C80648 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		555103AD219A416400C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Draw2.xib; sourceTree = "<group>"; };
+		555103B0219A416A00C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DrawWindow.xib; sourceTree = "<group>"; };
+		555103B3219A417100C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GridPanel.xib; sourceTree = "<group>"; };
+		555103B6219A417A00C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Inspector.xib; sourceTree = "<group>"; };
 		55877E8C1DCAC97300052688 /* Info-Sketch__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Sketch__Upgraded_.plist"; sourceTree = "<group>"; };
 		55877E8D1DCAC97300052688 /* LiveSketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveSketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55510373219A340B00C80648 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5551038C219A342B00C80648 /* LinkBack.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55877E821DCAC97300052688 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +237,7 @@
 				0A3ECEEBFE888A39C02AAC07 /* Other Sources */,
 				0A3ECF0DFE888A39C02AAC07 /* Resources */,
 				0A3ECF2DFE888A39C02AAC07 /* Notes */,
+				55510377219A340B00C80648 /* SwiftSketch */,
 				0A3ECF37FE888A39C02AAC07 /* Frameworks */,
 				20846A42FE943C2411CA2CEA /* Products */,
 				55877E8C1DCAC97300052688 /* Info-Sketch__Upgraded_.plist */,
@@ -306,8 +363,27 @@
 			isa = PBXGroup;
 			children = (
 				55877E8D1DCAC97300052688 /* LiveSketch.app */,
+				55510376219A340B00C80648 /* SwiftSketch.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		55510377219A340B00C80648 /* SwiftSketch */ = {
+			isa = PBXGroup;
+			children = (
+				555103AE219A416400C80648 /* Draw2.xib */,
+				555103B1219A416A00C80648 /* DrawWindow.xib */,
+				555103B4219A417100C80648 /* GridPanel.xib */,
+				555103AB219A415C00C80648 /* InfoPlist.strings */,
+				555103B7219A417A00C80648 /* Inspector.xib */,
+				5551039E219A415800C80648 /* ToolPalette.xib */,
+				55510378219A340B00C80648 /* AppDelegate.swift */,
+				5551037A219A340B00C80648 /* Document.swift */,
+				5551037F219A340D00C80648 /* Assets.xcassets */,
+				55510384219A340D00C80648 /* Info.plist */,
+				55510385219A340D00C80648 /* SwiftSketch.entitlements */,
+			);
+			path = SwiftSketch;
 			sourceTree = "<group>";
 		};
 		55877E991DCAC9EC00052688 /* Products */ = {
@@ -348,6 +424,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		55510375219A340B00C80648 /* SwiftSketch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55510389219A340D00C80648 /* Build configuration list for PBXNativeTarget "SwiftSketch" */;
+			buildPhases = (
+				55510372219A340B00C80648 /* Sources */,
+				55510373219A340B00C80648 /* Frameworks */,
+				55510374219A340B00C80648 /* Resources */,
+				55510390219A342B00C80648 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5551038B219A341D00C80648 /* PBXTargetDependency */,
+				5551038F219A342B00C80648 /* PBXTargetDependency */,
+			);
+			name = SwiftSketch;
+			productName = SwiftSketch;
+			productReference = 55510376219A340B00C80648 /* SwiftSketch.app */;
+			productType = "com.apple.product-type.application";
+		};
 		55877E451DCAC97300052688 /* Sketch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55877E881DCAC97300052688 /* Build configuration list for PBXNativeTarget "Sketch" */;
@@ -374,7 +470,14 @@
 		0A3ECED7FE888A39C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
+				TargetAttributes = {
+					55510375219A340B00C80648 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 55877E8F1DCAC97300052688 /* Build configuration list for PBXProject "Sketch" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -382,6 +485,7 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 0A3ECED8FE888A39C02AAC07 /* Sketch */;
 			projectDirPath = "";
@@ -394,6 +498,7 @@
 			projectRoot = "";
 			targets = (
 				55877E451DCAC97300052688 /* Sketch */,
+				55510375219A340B00C80648 /* SwiftSketch */,
 			);
 		};
 /* End PBXProject section */
@@ -409,6 +514,20 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55510374219A340B00C80648 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55510380219A340D00C80648 /* Assets.xcassets in Resources */,
+				555103B5219A417A00C80648 /* Inspector.xib in Resources */,
+				555103B2219A417100C80648 /* GridPanel.xib in Resources */,
+				555103A4219A415800C80648 /* ToolPalette.xib in Resources */,
+				555103AF219A416A00C80648 /* DrawWindow.xib in Resources */,
+				555103AC219A416400C80648 /* Draw2.xib in Resources */,
+				555103A9219A415C00C80648 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55877E581DCAC97300052688 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,6 +561,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55510372219A340B00C80648 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5551037B219A340B00C80648 /* Document.swift in Sources */,
+				55510379219A340B00C80648 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55877E701DCAC97300052688 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,6 +595,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5551038B219A341D00C80648 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LinkBack;
+			targetProxy = 5551038A219A341D00C80648 /* PBXContainerItemProxy */;
+		};
+		5551038F219A342B00C80648 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LinkBack;
+			targetProxy = 5551038E219A342B00C80648 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0A3ECEEEFE888A39C02AAC07 /* DrawWindow.xib */ = {
@@ -533,9 +674,131 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		555103AB219A415C00C80648 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				555103AA219A415C00C80648 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		555103AE219A416400C80648 /* Draw2.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				555103AD219A416400C80648 /* Base */,
+			);
+			name = Draw2.xib;
+			sourceTree = "<group>";
+		};
+		555103B1219A416A00C80648 /* DrawWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				555103B0219A416A00C80648 /* Base */,
+			);
+			name = DrawWindow.xib;
+			sourceTree = "<group>";
+		};
+		555103B4219A417100C80648 /* GridPanel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				555103B3219A417100C80648 /* Base */,
+			);
+			name = GridPanel.xib;
+			sourceTree = "<group>";
+		};
+		555103B7219A417A00C80648 /* Inspector.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				555103B6219A417A00C80648 /* Base */,
+			);
+			name = Inspector.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55510386219A340D00C80648 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SwiftSketch/SwiftSketch.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SwiftSketch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.MaddTheSane.SwiftSketch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		55510387219A340D00C80648 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SwiftSketch/SwiftSketch.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SwiftSketch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.MaddTheSane.SwiftSketch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
 		55877E891DCAC97300052688 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -676,6 +939,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55510389219A340D00C80648 /* Build configuration list for PBXNativeTarget "SwiftSketch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55510386219A340D00C80648 /* Debug */,
+				55510387219A340D00C80648 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55877E881DCAC97300052688 /* Build configuration list for PBXNativeTarget "Sketch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
