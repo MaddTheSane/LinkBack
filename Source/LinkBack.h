@@ -76,15 +76,15 @@ BOOL LinkBackDataBelongsToActiveApplication(id __null_unspecified data) DEPRECAT
 
 @property (readonly) BOOL linkBackDataBelongsToActiveApplication ;
 
-- (nullable id)linkBackAppData ;
-- (nullable NSString*)linkBackSourceApplicationName ;
-- (nullable NSString*)linkBackActionName ;
-- (nullable NSString*)linkBackVersion ;
-- (nullable NSURL*)linkBackApplicationURL ;
+@property (readonly, retain, nullable) id linkBackAppData ;
+@property (readonly, copy, nullable) NSString *linkBackSourceApplicationName ;
+@property (readonly, copy, nullable) NSString *linkBackActionName ;
+@property (readonly, copy, nullable) NSString *linkBackVersion ;
+@property (readonly, retain, nullable) NSURL *linkBackApplicationURL ;
 
 @property (readonly) NSTimeInterval linkBackSuggestedRefreshRate ;
 
-- (NSString*)linkBackEditMenuTitle ;
+@property (readonly, copy) NSString *linkBackEditMenuTitle ;
 
 @end
 
