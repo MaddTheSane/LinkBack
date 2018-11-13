@@ -10,7 +10,7 @@
 			<key>CFBundleTypeIconFile</key>
 			<string>Draw2File</string>
 			<key>CFBundleTypeName</key>
-			<string>SketchDocument</string>
+			<string>Apple Sketch Graphic Format</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
@@ -24,6 +24,35 @@
 			<key>NSExportableTypes</key>
 			<array>
 				<string>com.adobe.pdf</string>
+				<string>public.tiff</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>pdf</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>NSPDFPboardType</string>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.adobe.pdf</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>tiff</string>
+				<string>tif</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>NSTIFFPboardType</string>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>LSItemContentTypes</key>
+			<array>
 				<string>public.tiff</string>
 			</array>
 		</dict>
@@ -46,6 +75,10 @@
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>LinkBackApplicationURL</key>
+	<string>http://www.linkbackproject.org</string>
+	<key>LinkBackServer</key>
+	<string>sketch</string>
 	<key>NSMainNibFile</key>
 	<string>Draw2</string>
 	<key>NSPrincipalClass</key>

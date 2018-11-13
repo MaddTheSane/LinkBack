@@ -8,7 +8,11 @@
 import Cocoa
 import LinkBack
 
+//NSString *SKTDrawDocumentType = @"Apple Sketch Graphic Format";
+let SKTDrawDocumentType = NSPasteboard.PasteboardType("Apple Sketch Graphic Format")
+
 class Document: NSDocument {
+	private var link: LinkBack?
 
 	override init() {
 	    super.init()
@@ -37,7 +41,43 @@ class Document: NSDocument {
 		// If you do, you should also override isEntireFileLoaded to return false if the contents are lazily loaded.
 		throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
 	}
+	
+	func closeLinkIfNeeded() {
+		if let link = link {
+			link.representedObject = nil
+			link.closeLink()
+			self.link = nil
+		}
+	}
+	
+	convenience init(linkBack aLink: LinkBack) {
+		self.init()
+		link = aLink
+		link?.representedObject = self
+		
+		// get graphics from link
+		let linkBackData = link?.pasteboard.propertyList(forType: .linkBack) as! NSDictionary
+		var graphics = linkBackData.linkBackAppData
+		//graphics = [self drawDocumentDictionaryFromData: graphics] ;
+		//graphics = [self graphicsFromDrawDocumentDictionary: graphics] ;
+		//[self setGraphics: graphics] ;
 
-
+		// fix up undo
+		undoManager?.removeAllActions()
+		updateChangeCount(.changeCleared)
+	}
+	
+	override func close() {
+		closeLinkIfNeeded()
+		super.close()
+	}
+	
+	override func save(_ sender: Any?) {
+		if let link = link {
+			
+		} else {
+			super.save(sender)
+		}
+	}
 }
 

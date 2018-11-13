@@ -1,9 +1,9 @@
-﻿// InfoPlist.strings
+// InfoPlist.strings
 // Sketch Example
 //
 
 
-    CFBundleName = "Sketch";
+    CFBundleName = "SwiftSketch";
     CFBundleGetInfoString = "Apple Sketch Application Example 1.2.0.  Copyright © 1998-2001, Apple Computer, Inc.";
     NSHumanReadableCopyright = "Copyright © 1998-2001, Apple Computer, Inc.";
 

@@ -201,7 +201,7 @@
 		55510384219A340D00C80648 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55510385219A340D00C80648 /* SwiftSketch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftSketch.entitlements; sourceTree = "<group>"; };
 		5551039E219A415800C80648 /* ToolPalette.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolPalette.xib; sourceTree = "<group>"; };
-		555103AA219A415C00C80648 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		555103AA219A415C00C80648 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		555103AD219A416400C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Draw2.xib; sourceTree = "<group>"; };
 		555103B0219A416A00C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DrawWindow.xib; sourceTree = "<group>"; };
 		555103B3219A417100C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GridPanel.xib; sourceTree = "<group>"; };
