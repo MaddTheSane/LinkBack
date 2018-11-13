@@ -19,6 +19,8 @@
 		555103AF219A416A00C80648 /* DrawWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555103B1219A416A00C80648 /* DrawWindow.xib */; };
 		555103B2219A417100C80648 /* GridPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555103B4219A417100C80648 /* GridPanel.xib */; };
 		555103B5219A417A00C80648 /* Inspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555103B7219A417A00C80648 /* Inspector.xib */; };
+		555103B9219A441900C80648 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555103B8219A441900C80648 /* Graphics.swift */; };
+		555103BB219A4BFC00C80648 /* GraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555103BA219A4BFC00C80648 /* GraphicView.swift */; };
 		55877E471DCAC97300052688 /* SKTDrawAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE3FE888A39C02AAC07 /* SKTDrawAppDelegate.h */; };
 		55877E481DCAC97300052688 /* SKTDrawWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE4FE888A39C02AAC07 /* SKTDrawWindowController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		55877E491DCAC97300052688 /* SKTGraphicView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3ECEE5FE888A39C02AAC07 /* SKTGraphicView.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -204,6 +206,8 @@
 		555103B0219A416A00C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DrawWindow.xib; sourceTree = "<group>"; };
 		555103B3219A417100C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GridPanel.xib; sourceTree = "<group>"; };
 		555103B6219A417A00C80648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Inspector.xib; sourceTree = "<group>"; };
+		555103B8219A441900C80648 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
+		555103BA219A4BFC00C80648 /* GraphicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicView.swift; sourceTree = "<group>"; };
 		55877E8C1DCAC97300052688 /* Info-Sketch__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Sketch__Upgraded_.plist"; sourceTree = "<group>"; };
 		55877E8D1DCAC97300052688 /* LiveSketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveSketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -371,14 +375,16 @@
 		55510377219A340B00C80648 /* SwiftSketch */ = {
 			isa = PBXGroup;
 			children = (
+				55510378219A340B00C80648 /* AppDelegate.swift */,
+				5551037A219A340B00C80648 /* Document.swift */,
+				555103B8219A441900C80648 /* Graphics.swift */,
+				555103BA219A4BFC00C80648 /* GraphicView.swift */,
 				555103AE219A416400C80648 /* Draw2.xib */,
 				555103B1219A416A00C80648 /* DrawWindow.xib */,
 				555103B4219A417100C80648 /* GridPanel.xib */,
 				555103AB219A415C00C80648 /* InfoPlist.strings */,
 				555103B7219A417A00C80648 /* Inspector.xib */,
 				5551039E219A415800C80648 /* ToolPalette.xib */,
-				55510378219A340B00C80648 /* AppDelegate.swift */,
-				5551037A219A340B00C80648 /* Document.swift */,
 				5551037F219A340D00C80648 /* Assets.xcassets */,
 				55510384219A340D00C80648 /* Info.plist */,
 				55510385219A340D00C80648 /* SwiftSketch.entitlements */,
@@ -565,6 +571,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555103B9219A441900C80648 /* Graphics.swift in Sources */,
+				555103BB219A4BFC00C80648 /* GraphicView.swift in Sources */,
 				5551037B219A340B00C80648 /* Document.swift in Sources */,
 				55510379219A340B00C80648 /* AppDelegate.swift in Sources */,
 			);
