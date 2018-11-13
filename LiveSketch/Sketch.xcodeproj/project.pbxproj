@@ -80,6 +80,8 @@
 		55877E811DCAC97300052688 /* Sketch_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ECEECFE888A39C02AAC07 /* Sketch_main.m */; settings = {ATTRIBUTES = (); }; };
 		55877E841DCAC97300052688 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B61A73FFA8B0EB11CA2CEA /* Cocoa.framework */; };
 		55AAD71A1E127E7500027287 /* LinkBack.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55877E9D1DCAC9EC00052688 /* LinkBack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55CA284B219A5AAC00D38BDB /* Sketch.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF12FE888A39C02AAC07 /* Sketch.scriptSuite */; };
+		55CA284C219A5AAF00D38BDB /* Sketch.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = 0A3ECF0EFE888A39C02AAC07 /* Sketch.scriptTerminology */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -525,7 +527,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				55510380219A340D00C80648 /* Assets.xcassets in Resources */,
+				55CA284B219A5AAC00D38BDB /* Sketch.scriptSuite in Resources */,
 				555103B5219A417A00C80648 /* Inspector.xib in Resources */,
+				55CA284C219A5AAF00D38BDB /* Sketch.scriptTerminology in Resources */,
 				555103B2219A417100C80648 /* GridPanel.xib in Resources */,
 				555103A4219A415800C80648 /* ToolPalette.xib in Resources */,
 				555103AF219A416A00C80648 /* DrawWindow.xib in Resources */,

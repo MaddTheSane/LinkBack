@@ -10,12 +10,12 @@
 			<key>CFBundleTypeIconFile</key>
 			<string>Draw2File</string>
 			<key>CFBundleTypeName</key>
-			<string>Apple Sketch Graphic Format</string>
+			<string>Apple Sketch Graphic Format 3</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.apple.sketch2</string>
+				<string>com.apple.sketch3</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
@@ -26,6 +26,22 @@
 				<string>com.adobe.pdf</string>
 				<string>public.tiff</string>
 			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>Draw2File</string>
+			<key>CFBundleTypeName</key>
+			<string>Apple Sketch Graphic Format</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.sketch2</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>$(PRODUCT_MODULE_NAME).Document</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -78,7 +94,7 @@
 	<key>LinkBackApplicationURL</key>
 	<string>http://www.linkbackproject.org</string>
 	<key>LinkBackServer</key>
-	<string>sketch</string>
+	<string>sketch3</string>
 	<key>NSMainNibFile</key>
 	<string>Draw2</string>
 	<key>NSPrincipalClass</key>
@@ -101,6 +117,25 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>sketch2</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Apple Sketch 3 document</string>
+			<key>UTTypeIconFile</key>
+			<string>Draw2File</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.apple.sketch3</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>sketch3</string>
 				</array>
 			</dict>
 		</dict>

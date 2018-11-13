@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, LinkBackServerDelegate {
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		//[LinkBack publishServerWithName: @"sketch" delegate: self]
-		LinkBack.publishServer(withName: "sketch", delegate: self)
+		LinkBack.publishServer(withName: "sketch3", delegate: self)
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {

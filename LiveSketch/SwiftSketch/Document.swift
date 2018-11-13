@@ -9,7 +9,8 @@ import Cocoa
 import LinkBack
 
 //NSString *SKTDrawDocumentType = @"Apple Sketch Graphic Format";
-let SKTDrawDocumentType = NSPasteboard.PasteboardType("Apple Sketch Graphic Format")
+let SKTDrawDocumentTypeV2 = NSPasteboard.PasteboardType("Apple Sketch Graphic Format")
+let SKTDrawDocumentType = NSPasteboard.PasteboardType("Apple Sketch Graphic Format 3")
 
 class Document: NSDocument {
 	private var link: LinkBack?
