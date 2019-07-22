@@ -48,12 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 NSString* MakeLinkBackServerName(NSString* bundleIdentifier, NSString* name) ;
 
 /// a LinkBack server is created for each published server.  This simply responds to connection requests to create new live links.
-@interface LinkBackServer : NSObject <LinkBackServer> {
-    NSString *bundleIdentifier;
-    NSConnection* listener ;
-    NSString* name ;
-    __unsafe_unretained id<LinkBackServerDelegate> delegate ;
-}
+@interface LinkBackServer : NSObject <LinkBackServer> 
 
 + (nullable LinkBackServer*)LinkBackServerWithName:(NSString*)name;
 + (nullable LinkBackServer*)LinkBackServerWithName:(NSString*)aName bundleIdentifier:(NSString *)bundleID;

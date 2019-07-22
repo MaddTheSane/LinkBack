@@ -43,8 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 extern NSPasteboardType const LinkBackPboardType NS_SWIFT_NAME(linkBack) ;
 
 // Default Action Names.  These will be localized for you automatically.
-extern NSString*const LinkBackEditActionName ;
-extern NSString*const LinkBackRefreshActionName ;
+extern NSString * const LinkBackEditActionName ;
+extern NSString * const LinkBackRefreshActionName ;
 
 //
 // Support Functions
@@ -108,6 +108,9 @@ BOOL LinkBackDataBelongsToActiveApplication(id __null_unspecified data) DEPRECAT
 - (void)requestEditWithPasteboardName:(bycopy NSPasteboardName)pboardName ; ///< from client
 - (void)refreshEditWithPasteboardName:(bycopy NSPasteboardName)pboardName ; ///< from server
 @end
+
+
+static NSString* LinkBackServerBundleIdentifierKey = @"bundleId" ;
 
 @interface LinkBack : NSObject <LinkBack> {
     LinkBack* peer ; ///< the client or server on the other side.
