@@ -64,7 +64,8 @@ NSString* MakeLinkBackServerName(NSString* bundleIdentifier, NSString* name) ;
 + (nullable LinkBackServer*)LinkBackServerWithName:(NSString*)name inApplication:(NSString*)bundleIdentifier launchIfNeeded:(BOOL)flag fallbackURL:(NSURL*)url appName:(NSString*)appName ;
 
 /// This method is used by clients to connect
-- (instancetype)initWithName:(NSString*)name bundleIdentifier:(NSString *)bundleID delegate:(id<LinkBackServerDelegate>)aDel;
+- (instancetype)initWithName:(NSString*)name bundleIdentifier:(NSString *)bundleID delegate:(id<LinkBackServerDelegate>)aDel NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (BOOL)publish ; ///< creates the connection and adds to the list.
 - (void)retract ;

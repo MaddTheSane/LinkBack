@@ -51,7 +51,7 @@ NSMutableDictionary* LinkBackServers = nil ;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (!LinkBackServers) LinkBackServers = [[NSMutableDictionary alloc] init];
+        LinkBackServers = [[NSMutableDictionary alloc] init];
     });
 }
 
