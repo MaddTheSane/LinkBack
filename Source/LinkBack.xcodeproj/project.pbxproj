@@ -217,7 +217,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1020;
 			};
 			buildConfigurationList = 4A8BBBD608AB123000C5998B /* Build configuration list for PBXProject "LinkBack" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -347,6 +347,7 @@
 			baseConfigurationReference = 4ADFF51008AB31B200281C2B /* Omni-Global-Debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -361,6 +362,7 @@
 			baseConfigurationReference = 4ADFF51108AB31B200281C2B /* Omni-Global-Release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
