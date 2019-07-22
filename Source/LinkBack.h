@@ -39,8 +39,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class NSPasteboard;
-
 /// Use this pasteboard type to put LinkBack data to the pasteboard.  Use +[NSDictionary linkBackDataWithServerName:appData:] to create the data.
 extern NSPasteboardType const LinkBackPboardType NS_SWIFT_NAME(linkBack) ;
 
