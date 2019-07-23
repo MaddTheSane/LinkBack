@@ -43,7 +43,7 @@ NSString* MakeLinkBackServerName(NSString* bundleIdentifier, NSString* name)
     return [bundleIdentifier stringByAppendingFormat: @":%@",name] ;
 }
 
-NSMutableDictionary* LinkBackServers = nil ;
+static NSMutableDictionary* LinkBackServers = nil ;
 
 @implementation LinkBackServer
 {

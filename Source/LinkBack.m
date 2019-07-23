@@ -203,7 +203,7 @@ NSString* LinkBackEditNoneMenuTitle(void)
 // LinkBack Class
 //
 
-NSMutableDictionary* keyedLinkBacks = nil ;
+static NSMutableDictionary* keyedLinkBacks = nil ;
 
 @implementation LinkBack
 
